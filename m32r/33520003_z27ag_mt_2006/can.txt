@@ -1,0 +1,20 @@
+SIDs:
+0x139 - APPS TPS extra TX
+0x13d - RPM extra TX
+0x14d - Engine to Metere revolutions, odometer, coolant
+0x152 - Engine to Trip Computer data
+
+0x159 - Engine to ? flaggy data
+0x7e8 - Engine to OBD Tool
+0x1b1 - ? to Engine ?
+0x231 - ABS to Engine speed data [u8:data*6][uint16_t:speed]
+
+0x2f1 - EPS to Engine data [u8:torque][u8:data1]
+0x300 - ASC to Engine data [commands and torque u8*4]
+0x443 - AC to Engine data [u8: ac_pressure][u8: inputs[1 - ac high idle, 5&!6 - acmax?, 7 - ac on]][3bits: 2 - ?, u5: fan speed: valid values are 0,6,20][u8]
+0x570 - ? to Engine data [u8*3][u8][be_uint24_t:?][u8]
+
+0x7e0 - OBD Tool to Engine
+0x210 - RPM APPS related TX
+0x312 - Engine to ASC torques
+0x01c - RX smth?

@@ -1,0 +1,3240 @@
+Address		Size	Name				Notes
+/*Data area*/
+0x000000	0x84	eit_table			-
+0x000084	0x10	uint8_t flash_password[16];
+0x000094	0x7c	icu_table			-
+0x000110	0xf0	/*Unused area*/			-
+#- /*Data area*/
+0x000200	1	uint8_t flash_default_mut_enabled_flags	= 0;
+0x000201	1	uint8_t flash_test_data0_purpose	= 0;
+0x000202	1	uint8_t flash_test_data1_purpose	= 0;
+0x000203	1	uint8_t flash_test_data2_purpose	= 0;
+
+0x00020b	1	uint8_t flash_disable_immobilizer		= 0;
+0x00020c	1	uint8_t flash_tomo_disabled_dtc_flags	= 0;
+0x00020d	1	uint8_t flash_trust_monitor_disable_dtc_flags	= 0;
+0x00020e	2	uint16_t flash_rom_version3;
+0x000210	1	uint8_t flash_use_default_vehicle_speed	= 0;
+0x000211	1	/*padding*/
+0x000212	2	uint16_t flash_default_vehicle_speed	= 0;
+0x000214	2	uint16_t flash_default_mode_idx		= 0;
+0x000216	2	uint16_t flash_use_mode_idx_table	= 0;
+/*^^ zero area*/
+0x000218	0x10	uint16_t flash_rom_version0[8];
+0x000228	2	uint16_t flash_rom_version1;
+0x00022a	2	uint16_t flash_rom_version2;
+
+0x00022c	2	uint16_t flash22c_u16 = 0x41;
+0x00022e	0x10	uint16_t flash_adc_mode_to_idx_table[8];
+0x00023e	0x20	struct { uint8_t data[4]; } flash23e_structa[8] = { 0x80, 0x42, 0x31, 0x04 };
+0x00025e	0x10	uint16_t flash25e_u16a[8] = { 0xe2a1 };
+0x00026e	0x10	uint16_t flash_mode_flags0_init[8] = { 0x0001 };//hmm i suspect reflash, AUDM had 0x0020 here
+0x00027e	0x10	uint16_t flash_mode_flags1_init[8] = { 0x56d0 };//AUDM: 0x56da - no immo and rear o2??
+0x00028e	0x10	uint16_t flash_mode_flags2_init[8] = { 0xa319 };//same as AUDM
+0x00029e	0x10	uint16_t flash_mode_flags3_init[8] = { 0x8889 };//AUDM: 0x89df
+0x0002ae	0x10	uint16_t flash_mode_flags4_init[8] = { 0x4300 };//AUDM: 0x4200
+0x0002be	0x10	uint16_t flash_mode_flags5_init[8] = { 0x0600 };//same as AUDM
+#- 0x0002ca	0x10	uint16_t flash2ca_u16a[8] = { 0x0004 };
+#- 
+0x0002f4	1	uint8_t flash_enable_extra_mode_flags	= 1;
+/*mode_flags[3] disable bits*/
+0x0002f5	1	uint8_t flash_allow_catalyst_check	= 1;
+0x0002f6	1	uint8_t flash2f6_u8	= 1;
+0x0002f7	1	uint8_t flash_allow_misfire_check	= 1;
+0x0002f8	1	uint8_t flash2f8_u8	= 1;
+0x0002f9	1	uint8_t flash2f9_u8	= 1;
+0x0002fa	1	uint8_t flash_allow_fuel_trim_check	= 1;
+0x0002fb	1	uint8_t flash_allow_idle_check	= 1;
+0x0002fc	1	uint8_t flash_allow_egr_and_mdp_check	= 1;
+0x0002fd	1	uint8_t flash_allow_extensive_purge_check	= 1;
+/**/
+0x0002fe	1	uint8_t flash_save_extreme_engine_conditions	= 0;//disables some calcs
+
+0x000305	1	uint8_t flash305_u8	= 0;
+0x000306	1	uint8_t flash_ac_control_mode	= 2;
+0x000307	/*padding*/
+0x000308	1	uint8_t flash_modulated_displacement_mode = 1;
+0x000309	1	uint8_t flash_open_loop_adjustment_mode = 1;
+0x00030a	1	uint8_t flash_enable_heavy_mode_enrichment = 0;
+0x00030b	1	uint8_t flash_low_knock_register_cylinder_on_second_run = 0;
+0x00030c	1	uint8_t flash_enable_high_load_overheat_spark_retard = 0;
+0x00030d	1	uint8_t flash_enable_hot_engine_start_spark_compensation = 1;
+0x00030e	1	uint8_t flash_running_midrange_acceleration_mode = 2;
+0x00030f	1	uint8_t flash_enable_ac_off_transient_idle_compensation = 0;
+0x000310	1	uint8_t flash_active_steering_mode	= 0;
+0x000311	1	uint8_t flash_enable_engine_braking_idle_compensation = 0;
+
+0x000313	1	uint8_t flash_high_rpm_engine_braking_mode_flags = 0x05;//0x01 - enables high rpm engine braking (throttle min limit), 0x02 - high rpm engine braking only with neutral apps,  0x04 - egr duty with comp
+0x000314	1	uint8_t flash_egr_enabled	= 0;
+
+0x000317	1	uint8_t flash317_u8	= 0;
+
+0x00031b	1	uint8_t flash_als_enabled = 0;
+0x00031c	1	uint8_t flash_disable_alternator_on_start = 1;
+0x00031d	1	uint8_t flash31d_f8 = 0;
+0x00031e	1	uint8_t flash_enable_ac_working_indication = 0;
+0x00031f	1	uint8_t flash_ac_control_mode_flags = 0x0f;
+0x000320	1	uint8_t flash_boost_control_mode	= 1;
+
+0x000324	1	uint8_t flash_spark_count_ipw_compensation_mode = 3;
+0x000325	1	uint8_t flash_enable_very_hot_start_correction = 1;
+
+0x000327	1	uint8_t flash_rpm_dip_compensation_mode = 0;
+
+0x000329	1	uint8_t flash329_u8	= 0;
+0x00032a	1	uint8_t flash_oxygen_trim_stepping_mode = 0;
+
+0x000331	1	uint8_t flash_very_cold_warmup_enabled = 0;
+0x000332	1	uint8_t flash_standing_boost_enabled = 1;
+
+0x000336	1	uint8_t flash_tps_sync_ipw_low_precision = 0;
+0x000337	1	uint8_t flash_warmup_spark_retard_limit_enabled = 0;
+
+0x00033c	1	uint8_t flash_oxygen_trim_fuel_cut_mode = 1;
+
+0x000341	1	uint8_t flash_ac_delayed_switch_off	= 1;
+
+0x000349	1	uint8_t flash_load_sharped_decrease_disabled = 0;
+
+0x00034d	1	uint8_t flash_enable_old_idle_transient_target_throttle_position_min = 0;
+
+0x00036d	1	uint8_t flash_enable_running_spark_assist_on_neutral = 1;
+
+0x00036f	1	uint8_t flash_sio0_multiprotocol_support		= 1;
+0x000370	1	uint8_t flash_midrange_acceleration_update_mode		= 1;
+
+0x000373	1	uint8_t flash_alternative_cylinder_mask_from_index	= 0;
+
+0x00037a	1	uint8_t flash_disable_mivec_control_on_apps_neutral = 1;
+
+0x000381	1	uint8_t flash_const_knock_sensor_ksa_kti		= 0;
+0x000382	1	uint8_t flash_knock_ic_control_mode			= 0;
+0x000383	1	uint8_t flash_knock_enable_bandpass_update		= 1;
+0x000384	1	uint8_t flash_use_alternative_reset_trims_condition	= 0;
+0x000385	1	uint8_t flash_disable_alternator_with_ac		= 0;
+0x000386	1	uint8_t flash_knock_use_knock_smoothed 			= 1;
+0x000387	1	uint8_t flash_rom_crc_checker_error_counter_support 	= 1;
+0x000388	1	uint8_t flash_rom_crc_check_full_flash 			= 1;
+0x000389	1	uint8_t flash_rom_crc_check_counter_enabled		= 1;
+0x00038a	1	uint8_t flash_some_coil_sync_option_enabled		= 1;
+0x00038b	1	uint8_t flash_asc_validation_enabled 			= 1;
+0x00038c	1	uint8_t flash_subtract_neutral_from_apps_range		= 0;
+
+0x00038f	1	uint8_t flash_ignore_asc_torque_control_in_gear_shift = 0;
+
+0x00039d	1	uint8_t flash_save_max_execution_time	= 0;//if nonzero - save maximum values in execution time counters, reset upon fp12910_f16 & 0x40
+
+0x0003a0	1	uint8_t flash_apps_sub_2v5max_output = 1;
+
+0x0003ad	1	uint8_t flash_standing_high_rpm_protection_clutch_mode = 1;
+0x0003ae	1	uint8_t flash_reset_octane_and_knock_with_trims	= 0;
+0x0003b0	1	uint8_t flash_gradually_decay_fuel_film_on_cut;
+0x0003b1	1	uint8_t flash_can_slot12_15_rx_const_data = 0;
+
+0x0003b5	1	uint8_t flash_clutch_mode = 1;
+0x0003b6	1	uint8_t flash_spark_spool_idle_add_on_rpm_acceleration_only = 1;
+0x0003b7	1	uint8_t flash_ttp_stabilizer_low_limit_disable_on_spark_spool = 1;
+0x0003b8	1	uint8_t flash_spark_spool_on_clutch_disengagement_only = 1;
+0x0003b9	1	uint8_t flash_ffilm_clear_on_low_diff = 0;
+0x0003ba	1	uint8_t flash_asc_disable_completely = 0;
+0x0003bb	1	uint8_t flash_running_overrev_protection_torque_limit_on_overrev_only = 1;
+0x0003bc	1	uint8_t flash3bc_u8 = 1;
+0x0003bd	1	uint8_t flash_baro_pressure_test = 0;
+0x0003be	1	uint8_t flash_accel_pedal_sub_test_value_substitution = 0;
+0x0003bf	1	uint8_t flash_p87_setreset_mode = 0;
+0x0003c0	0x440	/*Unused area*/
+0x000800	2	uint16_t flash_injector_latency_scaling	= 15;//injector latency scaling
+
+0x000804	2	uint16_t flash_injector_min_pulse_width	= 3;
+
+0x000808	2	uint16_t flash_injector_min_pulse_zero_at_rpm	= 0xff;//8k
+
+0x00080c	2	uint16_t flash_injector_scaling = 109;//29241/109 = 268cc/min
+0x00080e	2	uint16_t flash_maf_aprx_rate_idle = 223;
+0x000810	2	uint16_t flash_maf_aprx_rate_default = 223;
+
+0x000816	2	uint16_t flash_tps_load_to_air_conversion_rate = 72;
+
+0x000826	2	uint16_t flash_engine_cranking_rpm_max_start = 13;
+
+0x00082a	2	uint16_t flash_engine_cranking_rpm_max_cont = 15;
+
+0x00082e	2	uint16_t flash_engine_cranking_rpm_max_cold_additive = 3;
+0x000830	2	uint16_t flash_engine_cranking_cold_coolant_max = 20;
+
+0x000836	2	uint16_t flash_cranking_decay1_stage1_min = 32;
+0x000838	2	uint16_t flash_cranking_decay1_stage2_min = 13;
+
+0x00083e	2	uint16_t flash_cranking_decay1_stage1_update_interval_normal = 1;
+0x000840	2	uint16_t flash_cranking_decay1_stage1_update_interval_cold = 1;
+0x000842	2	uint16_t flash_cranking_decay1_stage1_cold_coolantt_max = 28;
+
+0x00085a	2	uint16_t flash_apps_neutral_engine_braking_rpm_age_min = 16;
+0x00085c	2	uint16_t flash_init_apps_neutral_engine_braking_delay_i1b5on = 24;
+0x00085e	2	uint16_t flash_init_apps_neutral_engine_braking_delay_i1b5off = 24;
+
+0x000864	2	uint16_t flash_standing_engine_braking_rpm_shift = 0x30;
+
+
+0x000876	2	uint16_t flash_revolution_period_limit = 1119;//about 6.7k rpm
+0x000878	2	uint16_t flash_speed_limit_threshold_on = 92;//184 kph
+0x00087a	2	uint16_t flash_speed_limit_threshold_off = 88;//176 kph
+
+0x000882	2	uint16_t flash_speed_limit_engagement_rpm_min = 128;//4k rpm
+0x000884	2	uint16_t flash_init_no_overload_decay = 40;
+0x000886	2	uint16_t flash_camshaft_fault_cranking_stop_age_min = 80;
+0x000888	2	uint16_t flash_o2_front_rich2_threshold = 31;//~0.6V
+0x00088a	2	uint16_t flash_default_o2_front_rich_threshold = 26;//~0.507V
+0x00088c	2	uint16_t flash_o2_front_rich_threshold_shift_baro_pressure_min = 183;
+0x00088e	2	uint16_t flash_o2_front_rich_threshold_shift_on_low_baro_pressure = 0;
+0x000890	2	uint16_t flash_init_stoich_cross_decay = 0xff;
+0x000892	2	uint16_t flash_o2_front_sensors_heatup_rpm_age_max = 10;
+0x000894	2	uint16_t flash_closed_loop_coolant_temp_min = 47;//7 deg
+0x000896	2	uint16_t flash_init_fuel_cut_delayed_decay = 12;
+0x000898	2	uint16_t flash_init_fuel_cut_continuing_decay_mode0 = 80;
+0x00089a	2	uint16_t flash_baro_pressure_disabled_threshold = 156;
+0x00089c	2	uint16_t flash_open_loop_load_hysteresis = 8;
+
+0x0008a0	2	uint16_t flash_init_open_load_adjustment_decay_update_delay = 20;
+0x0008a2	2	uint16_t flash_open_load_adjustment_decay_max = 38;
+
+0x0008a4	2	uint16_t flash_tps_open_loop_hysteresis = 13;
+0x0008a6	2	uint16_t flash_oxygen_trim_map_load_threshold = 0x40;
+0x0008a8	2	uint16_t flash_oxygen_trim_map_rpm_threshold_low = 0x21;//~1038 rpm
+0x0008aa	2	uint16_t flash_oxygen_trim_map_rpm_threshold_high = 0x38;//1750 rpm
+0x0008ac	2	uint16_t flash_oxygen_trim_map_load_threshold2 = 0x48;
+0x0008ae	2	uint16_t flash_oxygen_trim_map_rpm_threshold_low2 = 0x25;//~1156 rpm
+0x0008b0	2	uint16_t flash_oxygen_trim_map_rpm_threshold_high2 = 0x38;//1750 rpm
+0x0008b2	2	uint16_t flash_oxygen_trim_min_stoich_cross_decayed = 115;
+0x0008b4	2	uint16_t flash_init_oxygen_feedback_trim_high_load = 0x8d;
+0x0008b6	2	uint16_t flash_init_oxygen_feedback_trim_other = 0x80;
+0x0008b8	2	uint16_t flash_init_oxygen_feedback_trim_low_coolant = 0x80;
+0x0008ba	2	uint16_t flash_oxygen_feedback_trim_init_coolant_low_threshold = 50;
+0x0008bc	2	uint16_t flash_oxygen_feedback_trim_rpm_high_on = 0;
+0x0008be	2	uint16_t flash_oxygen_feedback_trim_rpm_high_off = 0;
+0x0008c0	2	uint16_t flash_init_oxygen_trim_idle_steps_delay = 160;
+0x0008c2	2	uint16_t flash_o2_offset_trim_airflow_unstable = 1;
+
+0x0008ce	2	uint16_t flash_init_trim_direction_update_disable_decay_short; = 4;
+0x0008d0	2	uint16_t flash_init_trim_direction_update_disable_decay_long; = 4;
+0x0008d2	2	uint16_t flash_trim_direction_update_coolant_normal_off = 112;
+0x0008d4	2	uint16_t flash_trim_direction_update_coolant_normal_on = 121;
+0x0008d6	2	uint16_t flash_transient_load_for_trim_direction_update_threshold = 255;
+0x0008d8	2	uint16_t flash_init_transient_load_for_trim_direction_update_decay = 80;
+0x0008da	2	uint16_t flash_fuel_trim_update_disabled_coolant_temp_max = 121;//81deg
+0x0008dc	2	uint16_t flash_fuel_trim_update_disabled_iat_min = 90;//50deg
+0x0008de	2	uint16_t flash_fuel_trim_update_disabled_baro_pressure_min = 216;
+0x0008e0	2	uint16_t flash_fuel_trim_update_disabled_baro_pressure_max = 156;
+0x0008e2	2	uint16_t flash_fuel_trim_update_disabled_load_max = 0x1a;
+
+0x0008ea	2	uint16_t flash_init_fuel_trim_update_disabled_decay = 200;
+
+0x0008f0	2	uint16_t flash_fuel_trim_max = 192;
+0x0008f2	2	uint16_t flash_fuel_trim_min = 64;
+
+0x00093e	2	uint16_t flash_load_sharping_ratio_low = 4;
+0x000940	2	uint16_t flash_load_sharping_ratio_normal = 6;
+0x000942	2	uint16_t flash_load_sharping_base = 2;
+
+0x000946	2	uint16_t flash_init_disabled_ipw_addition_load_delta_limit = 0xff
+0x000948	2	uint16_t flash_init_disabled_ipw_subtraction_load_delta_limit = 0xff;
+0x00094a	2	uint16_t flash_init_aftercranking_ipw_subtraction_restrict_decay = 0;
+0x00094c	2	uint16_t flash_ipw_addition_rate_decay_by_coolant_min = 1;
+0x00094e	2	uint16_t flash_ipw_addition_rate_decay_coolant_hot = 90;
+0x000950	2	uint16_t flash_init_ipw_addition_rate_decay_timer_hot = 7;
+0x000952	2	uint16_t flash_init_ipw_addition_rate_decay_timer_normal = 10;
+0x000954	2	uint16_t flash_ipw_addition_rate_decay_coolant_cold = 0;
+0x000956	2	uint16_t flash_init_ipw_addition_rate_decay_timer_cold = 10;
+
+0x000998	2	uint16_t flash_init_tps_opening_adding_fuel_decay = 10;
+0x00099a	2	uint16_t flash_tps_opening_delta_threshold = 4;
+0x00099c	2	uint16_t flash_tps_opening_additional_ipw_max = 35;
+0x00099e	2	uint16_t flash_tps_opening_addition_ipw_limit_conversion_rate = 0x20
+0x0009a0	2	uint16_t flash_tps_opening_additional_ipw_limit_early_correction = 0x80;
+0x0009a2	4	struct bounds adc_byte_baro_pressure_bounds = { .high = 0xe4, .low = 0x64 };
+0x0009a6	2	uint16_t flash_baro_pressure_power_min = 109;
+0x0009a8	2	uint16_t flash_init_baro_pressure_error_cooldown = 14;
+0x0009aa	2	uint16_t flash_pot_afr_control_coolant_temp_min = 103;//63 degrees
+0x0009ac	2	uint16_t flash_pot_afr_control_load_max_off = 0x40;
+0x0009ae	2	uint16_t flash_pot_afr_control_load_max_on = 0x3d;
+0x0009b0	2	uint16_t flash_pot_afr_control_o2_front_base = 104;
+0x0009b2	2	uint16_t flash_pot_afr_control_o2_front_max = 230;
+0x0009b4	2	uint16_t flash_pot_afr_control_o2_front_min = 26;
+0x0009b6	2	uint16_t flash_pot_afr_control_o2_front_min_used = 10;
+
+0x0009bc	2	uint16_t flash_engine_rpm_delta_calculation_rpm_age_min = 40;
+
+0x0009c0	2	uint16_t flash_lean_spool_activation_load_hysteresis = 0x75;
+0x0009c2	2	uint16_t flash_lean_spool_coolant_temp_min = 0xff;
+0x0009c4	2	uint16_t flash_lean_spool_start_map_rpm = 0x60;//3k rpm
+0x0009c6	2	uint16_t flash_lean_spool_default_afr = 0x80;
+0x0009c8	2	uint16_t flash_lean_spool_cut_rpm = 0xc0;//6k rpm
+0x0009ca	2	uint16_t flash_overheat_protection_afr_lean_limit = 147;//AFR ~12.8
+0x0009cc	2	uint16_t flash_overheat_protection_rpm_min = 0x50;//2.5krpm
+0x0009ce	2	uint16_t flash_overheat_protection_coolant_temp_on = 148;//108deg
+0x0009d0	2	uint16_t flash_overheat_protection_coolant_temp_off = 145;//105deg
+
+0x000a34	2	uint16_t flash_modulated_displacement_load_max_off = 1;
+0x000a36	2	uint16_t flash_modulated_displacement_load_max_on = 0;
+0x000a38	2	uint16_t flash_modulated_displacement_rpm_age_min = 20;
+0x000a3a	2	uint16_t flash_init_modulated_displacement_active_decay = 80;
+
+0x000a4e	2	uint16_t flash_tps_delta_fast_throttle_move_threshold = 3;
+0x000a50	2	uint16_t flash_init_fast_throttle_move_decay = 40;
+0x000a52	2	uint16_t flash_high_speed_cruise_vehicle_speed_on = 75;//150kph
+0x000a54	2	uint16_t flash_high_speed_cruise_vehicle_speed_off = 70;//140kph
+0x000a56	2	uint16_t flash_high_speed_cruise_rpm_min = 0x70;//3.5k rpm
+0x000a58	2	uint16_t flash_high_speed_cruise_spark_comp = 12;
+0x000a5a	2	uint16_t flash_high_speed_cruise_enrichment = 20;
+
+
+#- 
+#- 0x000a72	2	uint16_t flasha72_u16 = 189;
+#- 0x000a74	2	uint16_t flasha74_u16 = 3;
+
+0x000a78	2	uint16_t flash_init_vehicle_movement_decay = 200;
+
+0x000a7e	2	uint16_t flash_afr_basic_rich_limit = 202;// AFR ~9.3
+0x000a80	2	uint16_t flash_init_hot_cranking_injection_restriction_decay = 3;
+
+0x000a86	2	uint16_t flash_ipw_addition_disable_on_apps_neutral_coolant_min = 60;
+0x000a88	2	uint16_t flash_init_ipw_addition_disable_on_apps_neutral_decay = 160;
+0x000a8a	2	uint16_t flash_base_spark_angle_scaled = 174;
+0x000a8c	2	uint16_t flash_default_spark_advance_angle = 5;
+0x000a8e	2	uint16_t flash_spark_crankshaft_accel_prediction_scaling = 128;
+0x000a90	2	uint16_t flash_spark_crankshaft_decel_prediction_scaling = 128;
+0x000a92	2	uint16_t flash_large_crankshaft_time_change_ratio = 32;
+
+0x000a98	2	uint16_t flash_spark_crankshaft_time_high = 1562;
+0x000a9a	2	uint16_t flash_advance_int1_max = 231;
+
+0x000a9e	2	uint16_t flash_some_coil_timing = 16;
+
+0x000aa2	2	uint16_t flash_spark_tps_delta_positive_threshold = 4;
+0x000aa4	2	uint16_t flash_spark_tps_delta_positive_to_load_compensation_scaling = 3;
+0x000aa6	2	uint16_t flash_init_spark_tps_delta_positive_decay = 4;
+0x000aa8	2	uint16_t flash_low_rpm_idle_spark_correction_scaling_normal_standing = 128;
+0x000aaa	2	uint16_t flash_low_rpm_idle_spark_compensation_normal_max = 5;
+0x000aae	2	uint16_t flash_init_engine_rpm_avg1_rate_standing = 232;
+0x000ab0	2	uint16_t flash_init_engine_rpm_avg1_rate_moving = 232;
+0x000ab2	2	uint16_t flash_low_rpm_idling_rpm_max_off = 64;//2k rpm
+0x000ab4	2	uint16_t flash_low_rpm_idling_rpm_max_on = 58;//1.8k rpm
+0x000ab6	2	uint16_t flash_low_rpm_idling_target_idle_rpm_scaling = 0xf1;
+0x000ab8	2	uint16_t flash_idle_spark_compensation_retard_clipping = 13;
+
+0x000abc	2	uint16_t flash_engine_braking_spark_retard = 13;
+0x000abe	2	uint16_t flash_base_spark_advance_limit_min = 10;
+0x000ac0	2	uint16_t flash_init_vehicle_moving_spark_advance_limit_wengine_braking_decay = 10;
+0x000ac2	2	uint16_t flash_init_vehicle_moving_spark_advance_limit_at_start_decay = 3;
+0x000ac4	2	uint16_t flash_base_spark_limit_reset_load_delta_positive_threshold = 12;
+0x000ac6	2	uint16_t flash_base_spark_limit_reset_rpm_max = 128;
+
+0x000aca	2	uint16_t flash_knock_control_rpm_min = 16;//500 rpm
+0x000acc	2	uint16_t flash_knock_positive_to_addition_full_sensitivity = 0x20;
+0x000ace	2	uint16_t flash_knock_positive_to_addition_reduced_sensitivity = 0x20;
+0x000ad0	2	uint16_t flash_knock_full_sensitivitity_knock_addition_max = 8;
+0x000ad2	2	uint16_t flash_knock_reduced_sensitivitity_knock_addition_max = 0;
+
+0x000ade	2	uint16_t flash_init_knock_sum_dec_delay_knock_rpm_accel_off = 160;
+0x000ae0	2	uint16_t flash_init_knock_sum_dec_delay_knock_rpm_accel_on = 35;
+0x000ae2	2	uint16_t flash_knock_rpm_accel_tps_delta_min = 5;
+0x000ae4	2	uint16_t flash_knock_rpm_accel_rpm_delta_min = 5;
+0x000ae6	2	uint16_t flash_init_knock_rpm_accel_decay = 40;
+0x000ae8	2	uint16_t flash_knock_dynamics_active_knock_sum_full_sensitivity = 0;
+0x000aea	2	uint16_t flash_knock_dynamics_active_knock_sum_reduced_sensitivity = 0;
+0x000aec	2	uint16_t flash_knock_gain_switch_down_knock_base_max = 26;
+
+0x000af0	2	uint16_t flash_knock_gain_switch_up_knock_base_min = 102;
+
+0x000af4	2	uint16_t flash_knock_gain_switch_rpm_hysteresis = 10;//312.5 rpm
+
+0x000b04	2	uint16_t flash_octane_level_update_coolant_temp_low_boundary = 117;//77 degrees
+0x000b06	2	uint16_t flash_knock_sum_threshold_octane_increase = 3;
+0x000b08	2	uint16_t flash_knock_sum_threshold_octane_decrease = 5;
+0x000b0a	2	uint16_t flash_octane_level_increase_decay = 48;
+0x000b0c	2	uint16_t flash_octane_level_decrease_decay = 24;
+0x000b0e	2	uint16_t flash_knock_sum_enrichment_threshold = 6;
+0x000b10	2	uint16_t flash_knock_sum_enrichment_multiplier = 0xe0;
+0x000b12	2	uint16_t flash_knock_sum_enrichment_rpm_min = 0x60;//3k rpm
+0x000b14	2	uint16_t flash_knock_sum_enrichment_load_min = 0x50;//50%
+0x000b16	2	uint16_t flash_low_knock_min_knock = 1;
+0x000b18	2	uint16_t flash_low_knock_threshold_low_rpm = 2;
+0x000b1a	2	uint16_t flash_low_knock_threshold_high_rpm = 2;
+0x000b1c	2	uint16_t flash_low_knock_rpm_high_on = 104;
+0x000b1e	2	uint16_t flash_low_knock_rpm_high_off = 104;
+0x000b20	2	uint16_t flash_default_low_knock_counter_treshold = 120;
+0x000b22	2	uint16_t flash_low_knock_rpm_max = 0xff;
+0x000b24	2	uint16_t flash_low_knock_rpm_min = 16;
+
+0x000b28	2	uint16_t flash_knock_above_base_threshold = 6;
+0x000b2a	2	uint16_t flash_knock_above_base_spike = 16;
+0x000b2c	2	uint16_t flashb2c_u16 = 36;
+0x000b2e	2	uint16_t flash_default_knock_adc_noise2 = 36;
+0x000b30	2	uint16_t flash_default_knock_adc_noise3 = 36;
+
+0x000b38	2	uint16_t flash_knock_default_gain =	32;
+0x000b3a	2	uint16_t flash_knock_default_bf =	14;//kHz
+0x000b3c	2	uint16_t flash_knock_bf256 =		14;//kHz
+
+0x000b40	2	uint16_t flash_const_knock_sensor_ksa_kti_settings = 0;
+0x000b42	2	uint16_t flash_knock_integral_smoothing_rate1 = 16;
+0x000b44	2	uint16_t flash_knock_integral_smoothing_rate2 = 32;
+0x000b46	2	uint16_t flash_knock_integral_smoothing_rate3 = 255;
+0x000b48	2	uint16_t flash_knock_base_component1_averaging_rate = 8;
+0x000b4a	2	uint16_t flash_coil_check_max_rpm	= 0x80;//4k rpm
+0x000b4c	2	uint16_t flash_coil_check_related_unused_vars_init = 0x30;
+0x000b4e	2	uint16_t flash_coil_check_max_power	= 0xf5;
+0x000b50	2	uint16_t flash_coil_check_min_power	= 0x6d;
+0x000b52	2	uint16_t flash_init_warmup_activation_delay = 60;
+0x000b54	2	uint16_t flash_running_spark_assist_rpm_max = 0x80;
+0x000b56	2	uint16_t flash_running_spark_assist_rpm_min = 0;
+0x000b58	2	uint16_t flash_running_spark_assist_gear_ratio_max = 0xcd8;
+0x000b5a	2	uint16_t flash_running_spark_assist_gear_ratio_min = 0;
+0x000b5c	2	uint16_t flash_running_spark_assist_coolant_min = 90;
+0x000b5e	2	uint16_t flash_running_spark_assist_engine_rpm_smooth_rate = 205;
+0x000b60	2	uint16_t flash_running_spark_assist_rpm_delta_threshold = 16;
+0x000b62	2	uint16_t flash_running_spark_assist_rpm_to_retard_conversion_ratio = 80;
+
+0x000b66	2	uint16_t flash_hot_start_spark_compensation_coolant_min = 31;
+0x000b68	2	uint16_t flash_hot_start_spark_compensation_rpm_age_max = 252;
+0x000b6a	2	uint16_t flash_hot_start_spark_compensation_rpm_min = 474;//~1850 rpm
+0x000b6c	2	uint16_t flash_hot_start_spark_compensation_max_retard = 40;
+0x000b6e	2	uint16_t flash_hot_start_spark_compensation_rpm_to_retard_ratio = 80;
+0x000b70	2	uint16_t flash_hot_start_spark_compensation_advance_max = 10;
+
+0x000ba6	2	uint16_t flash_spark_spool_load_max = 0xff;
+0x000ba8	2	uint16_t flash_spark_spool_load_min = 0x28;
+0x000baa	2	uint16_t flash_spark_spool_rpm_max = 0xe0;//7k rpm
+0x000bac	2	uint16_t flash_spark_spool_rpm_min = 0x40;//2k rpm
+0x000bae	2	uint16_t flash_spark_spool_coolant_min = 95;//55 deg
+
+0x000bb2	2	uint16_t flash_init_spark_spool_advance_limit = 0;
+0x000bb4	2	uint16_t flash_init_spark_spool_stage1_decay = 16;
+0x000bb6	2	uint16_t flash_init_spark_spool_stage2_decay = 1;
+0x000bb8	2	uint16_t flash_spark_spool_vehicle_speed_frequency_min = 60;//7.5kph
+0x000bba	2	uint16_t flash_init_spark_spool_rpm_delta_sdecay = 2;
+0x000bbc	2	uint16_t flash_spark_spool_rpm_delta_min = 8;
+0x000bbe	2	uint16_t flash_spark_spool_advance_increment = 2;
+
+0x000bde	2	uint16_t flash_ac_control_rpm_age_min = 120;
+0x000be0	2	uint16_t flash_active_steering_coolant_temp_min = 60;
+0x000be2	2	uint16_t flash_init_ignition_decay = 5;
+
+0x000bec	2	uint16_t flash_default_active_steering_compensation = 0;
+
+0x000bf2	2	uint16_t flash_init_active_steering_idle_compensation_update_timer_on = 1;
+0x000bf4	2	uint16_t flash_active_steering_idle_compensation_dec_step = 1;
+
+0x000c06	2	uint16_t flash_fans_on_idle_compensation = 0;
+0x000c08	2	uint16_t flash_fans_starting_idle_compensation = 0;
+0x000c0a	2	uint16_t flash_init_fans_disabled_decay = 0;
+0x000c0c	2	uint16_t flash_ac_off_transient_idle_compensation_coolant_min = 72;
+0x000c0e	2	uint16_t flash_init_ac_off_transient_idle_compensation = 10;
+0x000c10	2	uint16_t flash_limp_idle_mode_delay = 120;
+0x000c12	2	uint16_t flash_ac_request_changed_idle_mode_delay = 26;
+0x000c14	2	uint16_t flash_decel_shift_or_spark_spool_idle_mode_delay = 40;
+0x000c16	2	uint16_t flash_drive_to_neutral_idle_mode_delay = 4;
+0x000c18	2	uint16_t flash_neutral_to_drive_idle_mode_delay = 20;
+0x000c1a	2	uint16_t flash_active_steering_changed_idle_mode_delay = 12;
+0x000c1c	2	uint16_t flash_fans_changed_idle_mode_delay = 12;
+0x000c1e	2	uint16_t flash_positive_apps_delta_idle_mode_delay = 40;
+0x000c20	2	uint16_t flash_idle_mode_apps_delta_positive_max = 4;
+
+0x000c24	2	uint16_t flash_sas_correction_idle_mode_delay = 80;
+0x000c26	2	uint16_t flash_init_overtarget_rpm_delta_idle_delay = 68;
+0x000c28	2	uint16_t flash_overtarget_rpm_delta_for_idle_delay = 11;
+
+0x000c2c	2	uint16_t flash_init_apps_nonneutral_idle_mode_delay = 200;
+0x000c2e	2	uint16_t flash_idle_standing_mode_rpm_min = 42;
+0x000c30	2	uint16_t flash_post_active_steering_idle_delay = 40;
+0x000c32	2	uint16_t flash_fan_pre_enable_idle_mode_delay = 80;
+
+0x000c4c	2	uint16_t flash_default_st_idle_corr_ac_off = 137;
+0x000c4e	2	uint16_t flash_default_st_idle_corr_ac_on = 137;
+0x000c50	2	uint16_t flash_default_std_idle_corr_i1b5off = 137;
+0x000c52	2	uint16_t flash_init_lt_idle_corr_update_enable_delay = 40;
+0x000c54	2	uint16_t flash_init_from_nonidle_lt_idle_corr_update_enable_delay = 200;
+0x000c56	2	uint16_t flash_lt_idle_corr_update_coolant_temp_min = 121;
+0x000c58	2	uint16_t flash_lt_idle_corr_max = 0xe400;
+0x000c5a	2	uint16_t flash_lt_idle_corr_min = 0x6a00;
+0x000c5c	2	uint16_t flash_default_lt_idle_corr = 0x8c00;
+0x000c5e	2	uint16_t flash_icomp_min_spark_spool_regen_rpm_min = 0x40;//500 rpm
+0x000c60	2	uint16_t flash_init_icomp_min_spark_spool_decay_drive_anonneutral = 1;
+0x000c62	2	uint16_t flash_init_icomp_min_spark_spool_decay_neutral_anonneutral = 2;
+
+0x000c66	2	uint16_t flash_init_icomp_min_spark_spool_decay_drive_aneutral = 1;
+0x000c68	2	uint16_t flash_init_icomp_min_spark_spool_decay_neutral_aneutral = 2;
+
+0x000c6c	2	uint16_t flash_icomp_min_spark_spool_decrement = 128;
+
+0x000c90	2	uint16_t flash_spark_spool_normal_coolant_min_on = 126;
+0x000c92	2	uint16_t flash_spark_spool_normal_coolant_min_off = 110;
+0x000c94	2	uint16_t flash_icomp_min_spark_spool_base_cold_min = 20;
+0x000c96	2	uint16_t flash_extreme_rpm_drop_rpm_threshold_normal = 64;
+0x000c98	2	uint16_t flash_extreme_rpm_drop_idle_compensation_coolant_min = 93;
+0x000c9a	2	uint16_t flash_init_extreme_rpm_drop_idle_compensation = 50;
+0x000c9c	2	uint16_t flash_init_extreme_rpm_drop_idle_compensation_transient_delay = 4;
+0x000c9e	2	uint16_t flash_extreme_rpm_drop_idle_compensation_fast_runtime_min = 0;
+0x000ca0	2	uint16_t flash_extreme_rpm_drop_idle_compensation_dec_step = 50;
+0x000ca2	2	uint16_t flash_init_extreme_rpm_drop_idle_compensation_update_delay = 0;
+
+0x000cac	2	uint16_t flash_tps_correction_coolant_temp_min = 121;//81deg
+0x000cae	2	uint16_t flash_tps_correction_tps_main_max = 77;
+0x000cb0	2	uint16_t flash_tps_correction_tps_main_min = 10;
+0x000cb2	2	uint16_t flash_tps_correction_tps_delta_max = 2;
+0x000cb4	2	uint16_t flash_init_apps_tps_correction_disabled_decay = 255;
+0x000cb6	2	uint16_t flash_apps_tps_correction_idle_rpm_diff_max = 6;
+0x000cb8	2	uint16_t flash_tps_main_rcorr_max = 143;
+0x000cba	2	uint16_t flash_tps_main_rcorr_min = 113;
+0x000cbc	2	uint16_t flash_init_unknown_idle_valve_position_correction_update_delay = 20;
+0x000cbe	2	uint16_t flash_unknown_idle_valve_position_correction_rpm_error_max = 13;
+
+0x000cda	2	uint16_t flash_engine_braking_idle_compensation_ac_off = 0;
+0x000cdc	2	uint16_t flash_engine_braking_idle_compensation_ac_on = 0;
+0x000cde	2	uint16_t flash_init_engine_braking_idle_compensation = 0;
+
+0x000d00	2	uint16_t flash_init_at_driveoff_idle_compensation_update_delay_initial = 14;
+0x000d02	2	uint16_t flash_init_at_driveoff_idle_compensation_update_delay = 4;
+0x000d04	2	uint16_t flash_init_rpm_dip_compensation_decay = 40;
+0x000d06	2	uint16_t flash_init_rpm_dip_idle_compensation = 20;
+0x000d08	2	uint16_t flash_rpm_idle_idle_delay = 4;
+0x000d0a	2	uint16_t flash_rpm_dip_threshold = 26;
+0x000d0c	2	uint16_t flash_target_idle_rpm_min_i1b14_on = 115;
+0x000d0e	2	uint16_t flash_i1b14on_standing_idle_compensation_ac_on = 50;
+0x000d10	2	uint16_t flash_i1b14on_standing_idle_compensation_ac_off = 23;
+0x000d12	2	uint16_t flash_i1b10on_ac_off_moving_idle_compensation = 10;
+0x000d14	2	uint16_t flash_i1b14_change_idle_delay = 0;
+0x000d16	2	uint16_t flash_ac_related_high_baro_pressure_threshold = 180;
+
+0x000d1a	2	uint16_t flash_ac_related_rpm_age_threshold = 24;
+0x000d1c	2	uint16_t flash_ac_related_gpinputs2_h0100_rpm_age_threshold = 24;
+0x000d1e	2	uint16_t flash_ac_related_iat_threshold = 115;
+0x000d20	2	uint16_t flash_ac_related_coolant_threshold = 121;
+0x000d22	2	uint16_t flash_init_high_baro_pressure_decay = 120;
+0x000d24	2	uint16_t flash_init_transient_idle_corr_update_delay_ac_mode_switch_related = 20;
+0x000d26	2	uint16_t flash_init_isv_source_with_load_sensor_fault = 80;
+0x000d28	2	uint16_t flash_init_sas_activation_delay = 8;
+0x000d2a	2	uint16_t flash_apps_fault_idling_apps_threshold = 0xe6;
+0x000d2c	2	uint16_t flash_apps_fault_idling_load_threshold = 0x61;
+0x000d2e	2	uint16_t flash_init_apps_fault_idling_delay = 20;
+
+0x000d3c	2	uint16_t flash_hot_start_coolant_temp_min = 143;
+0x000d3e	2	uint16_t flash_hot_start_iat_min = 106;
+0x000d40	2	uint16_t flash_hot_start_lean_limit_correction = 41;
+0x000d42	2	uint16_t flash_hot_start_oxygen_trim_max = 147;
+0x000d44	2	uint16_t flash_hot_start_rpm_age_max = 120;
+0x000d46	2	uint16_t flash_hot_cranking_coolant_min = 117;//77deg
+0x000d48	2	uint16_t flash_hot_cranking_idle_rpm_min_correction = 13;
+0x000d4a	2	uint16_t flash_init_hot_cranking_decay = 5;
+0x000d4c	2	uint16_t flash_hot_cranking_hot_iat_threshold = 120;
+0x000d4e	2	uint16_t flash_hot_cranking_hot_air_icomp_ratio = 9;
+0x000d50	2	uint16_t flash_hot_cranking_normal_air_icomp_ratio = 5;
+
+0x000d58	2	uint16_t flash_fuel_pressure_solenoid_rpm_age_max_hot = 60;
+0x000d5a	2	uint16_t flash_fuel_pressure_solenoid_rpm_age_max_normal = 20;
+0x000d5c	2	uint16_t flash_fuel_pressure_solenoid_rpm_age_max_cold = 30;
+0x000d5e	2	uint16_t flash_fuel_pressure_solenoid_normal_iat_min = 0;
+0x000d60	2	uint16_t flash_fuel_pressure_solenoid_hot_iat_min = 90;
+0x000d62	2	uint16_t flash_fuel_pressure_solenoid_normal_coolant_min = 30;
+0x000d64	2	uint16_t flash_fuel_pressure_solenoid_hot_coolant_min = 130;
+0x000d66	2	uint16_t flash_light_mode_load_max = 0x58;
+0x000d68	2	uint16_t flash_light_mode_rpm_max = 0x40;//2k rpm
+0x000d6a	2	uint16_t flash_light_mode_coolant_temp_max = 151;//111deg
+0x000d6c	2	uint16_t flash_light_mode_iat_max = 90;//50deg
+0x000d6e	2	uint16_t flash_init_light_mode_decay = 5;
+0x000d70	2	uint16_t flash_heavy_mode_enrichment = 0x8d;
+
+0x000d78	2	uint16_t flash_generic_airflow_instability_vsf_theshold_over = 0xff;
+0x000d7a	2	uint16_t flash_generic_airflow_instability_vsf_theshold_below = 10;
+0x000d7c	2	uint16_t flash_init_airflow_instability_decay = 80;
+0x000d7e	2	uint16_t flash_generic_airflow_instability_tps_delta_positive_threshold = 5;
+0x000d80	2	uint16_t flash_generic_airflow_instability_load_threshold = 0xff;
+
+0x000d86	2	uint16_t flash_maf_aprx_rate_airflow_unstable = 223;
+
+0x000da4	2	uint16_t flash_init_ac_on_switch_delay_high = 12;
+0x000da6	2	uint16_t flash_init_ac_low_rpm_decay = 32;
+0x000da8	2	uint16_t flash_init_ac_vehicle_extra_fast_start_decay = 200;
+0x000daa	2	uint16_t flash_ac_control_min_rpm = 13;//~400rpm
+0x000dac	2	uint16_t flash_ac_control_vehicle_extra_fast_start_apps_on = 189;
+0x000dae	2	uint16_t flash_ac_control_vehicle_extra_fast_start_apps_off = 182;
+0x000db0	2	uint16_t flash_ac_disable_coolant_temp_off = 150;//110deg
+0x000db2	2	uint16_t flash_ac_disable_coolant_temp_on = 155;//115deg
+0x000db4	2	uint16_t flash_ac_control_vehicle_fast_start_apps_on = 105;
+0x000db6	2	uint16_t flash_ac_control_vehicle_fast_start_apps_off = 97;
+0x000db8	2	uint16_t flash_ac_control_vehicle_start_speed_frequency = 40;//5kph
+0x000dba	2	uint16_t flash_ac_control_vehicle_stop_speed_frequency = 40;//5kph
+0x000dbc	2	uint16_t flash_init_ac_vehicle_fast_start_decay = 80;
+0x000dbe	2	uint16_t flash_mil_ignition_enable_age_max = 10;
+0x000dc0	2	uint16_t flash_fuel_pressure_solenoid_oxygen_trim_min_on = 103;
+0x000dc2	2	uint16_t flash_fuel_pressure_solenoid_on_any_load_max_age = 80;
+
+0x000dd2	2	uint16_t flash_stall_value_for_fp11628_u16 = 0x80;
+/*boost control*/
+0x000dd4	2	uint16_t flash_init_wastegate_duty_error_update_decay = 8;
+0x000dd6	2	uint16_t flash_wastegate_duty_error_max_downward_correction = 0;//-64%
+0x000dd8	2	uint16_t flash_boost_control_useless_min_load = 0;
+0x000dda	2	uint16_t flash_init_boost_control_useless_load_decay = 0;
+0x000ddc	2	uint16_t flash_init_boost_cut_decay = 7;
+0x000dde	2	uint16_t flash_boost_control_octane_level_min_off = 154;
+0x000de0	2	uint16_t flash_boost_control_octane_level_min_on = 192;
+0x000de2	2	uint16_t flash_boost_control_map_fail_on = 45;//3.6 bara?
+0x000de4	2	uint16_t flash_boost_control_map_fail_off = 39;//3.12 bara?
+0x000de6	2	uint16_t flash_boost_control_rpm_min_on = 64;
+0x000de8	2	uint16_t flash_boost_control_rpm_min_off = 61;
+0x000dea	2	uint16_t flash_boost_control_rpm_max_on = 255;
+0x000dec	2	uint16_t flash_boost_control_rpm_max_off = 253;
+0x000dee	2	uint16_t flash_boost_control_load_error_axis_offset = 0x20;
+
+0x000e22	2	uint16_t flash_init_ac_holdoff_delay = 40;
+
+0x000e2a	2	uint16_t flash_init_fan_control_wot_delay_at_reset = 60;
+
+0x000e4e	2	uint16_t flash_init_fan_delay_on = 20;
+0x000e50	2	uint16_t flash_init_fan_hi_delay_on = 80;
+
+0x000e54	2	uint16_t flash_fan_control_speed_enough_off = 254;
+0x000e56	2	uint16_t flash_fan_control_speed_enough_on = 255;
+0x000e58	2	uint16_t flash_fan_control_highrpm_off = 254;
+0x000e5a	2	uint16_t flash_fan_control_highrpm_on = 254;
+0x000e5c	2	uint16_t flash_fan_control_just_below_thrermostate_off = 115;
+0x000e5e	2	uint16_t flash_fan_control_just_below_thrermostate_on = 118;
+
+0x000e62	2	uint16_t flash_fan_control_tps_wot_off = 199;
+0x000e64	2	uint16_t flash_fan_control_tps_wot_on = 210;
+0x000e66	2	uint16_t flash_fan_control_norm_temp_off = 105;//65deg
+0x000e68	2	uint16_t flash_fan_control_norm_temp_on = 110;//70deg
+0x000e6a	2	uint16_t flash_init_fan_control_wot_delay = 200;
+
+0x000e7e	2	uint16_t flash_fan_control_test_rpm_age_max = 0;
+
+0x000ec2	2	uint16_t flash_high_rpm_engine_braking_off = 46;//1.4k rpm
+0x000ec4	2	uint16_t flash_high_rpm_engine_braking_on = 48;//1.5k rpm
+0x000ec6	2	uint16_t flash_high_rpm_engine_braking_idle_delay = 40;
+0x000ec8	2	uint16_t flash_init_egr_related_engine_braking_delay = 20;
+0x000eca	2	uint16_t flash_alternator_sense_rpm_low = 34;
+0x000ecc	2	uint16_t flash_alternator_sense_rpm_mid = 67;
+0x000ece	2	uint16_t flash_alternator_sense_rpm_high = 134;
+0x000ed0	2	uint16_t flash_alternator_sense_aprx_rate_low = 230;
+0x000ed2	2	uint16_t flash_alternator_sense_aprx_rate_mid = 230;
+0x000ed4	2	uint16_t flash_alternator_sense_aprx_rate_high = 230;
+0x000ed6	2	uint16_t flash_alternator_sense_aprx_current_mid = 86;
+0x000ed8	2	uint16_t flash_alternator_sense_aprx_current_high = 172;
+0x000eda	2	uint16_t flash_init_alternator_duty_base_update_timer_nonidle = 4;
+0x000edc	2	uint16_t flash_init_alternator_duty_base_update_timer_idle = 4;
+0x000ede	2	uint16_t flash_alternator_duty_inc_max = 31;
+0x000ee0	2	uint16_t flash_alternator_closed_loop_rpm_age_min = 20;
+0x000ee2	2	uint16_t flash_alternator_high_rpm_on = 40;//1250 rpm
+0x000ee4	2	uint16_t flash_alternator_high_rpm_off = 32;//1000 rpm
+0x000ee6	2	uint16_t flash_alternator_high_load_on = 170;
+0x000ee8	2	uint16_t flash_alternator_high_load_off = 160;
+0x000eea	2	uint16_t flash_alternator_closed_loop_coolant_min = 65;
+0x000eec	2	uint16_t flash_init_field_sense_ok_decay = 10;
+0x000eee	2	uint16_t flash_alternator_current_positive_threshold = 51;
+0x000ef0	2	uint16_t flash_alternator_current_negative_threshold = 19;
+0x000ef2	2	uint16_t flash_alternator_idle_compensation_conversion_ratio = 13;
+0x000ef4	2	uint16_t flash_alternator_idle_compensation_max = 10;
+0x000ef6	2	uint16_t flash_alternator_idle_compensation_scaling = 3;
+0x000ef8	2	uint16_t flash_init_transient_idle_corr_update_delay_by_alternator = 80;
+0x000efa	2	uint16_t flash_alternator_idle_mode_delay = 0;
+0x000efc	2	uint16_t flash_alternator_idle_mode_delay_rpm_age_min = 0;
+0x000efe	2	uint16_t flash_init_alternator_accel_or_start_slow_decay = 100;
+0x000f00	2	uint16_t flash_init_alternator_non_accel_or_start_slow_decay = 0
+0x000f02	2	uint16_t flash_init_alternator_non_accel_or_start_fast_decay = 30;
+0x000f04	2	uint16_t flash_init_alternator_accel_or_start_fast_decay = 40;
+0x000f06	2	uint16_t flash_init_alternator_after_accel_or_start_fast_decay = 0;
+0x000f08	2	uint16_t flash_init_alternator_apps_non_neutral_or_fuel_cut_decay = 0;
+0x000f0a	2	uint16_t flash_alternator_duty_base_max_accel_command = 0xff;
+0x000f0c	2	uint16_t flash_alternator_duty_base_max_accel_apps_noneutral = 0xff;
+0x000f0e	2	uint16_t flash_alternator_duty_base_max_apps_neutral_transient = 0xff;
+0x000f10	2	uint16_t flash_alternator_cold_cranking_coolant_temp_max = 35;
+0x000f12	2	uint16_t flash_alternator_duty_cold_cranking = 0;
+0x000f14	2	uint16_t flash_alternator_postcranking_rpm_min = 40;//1250 rpm
+0x000f16	2	uint16_t flash_alternator_postcranking_rpm_age_min = 10;
+
+0x000f1c	2	uint16_t flash_extended_slow_tests_engine_runtime_min = 4;
+
+0x000f22	2	uint16_t flash_maf_fault_detection_rpm_min = 16;//500rpm
+
+0x000f28	4	struct bounds adc_byte_coolant_temp_bounds = { .high = 236, .low = 5 };
+
+0x000f34	2	uint16_t flash_coolant_temp_filtered_update_min = 80;
+0x000f36	2	uint16_t flash_default_coolant_temp = 121;
+0x000f38	4	struct bounds adc_byte_iat_bounds = { .high = 234, .low = 10 };
+0x000f3c	2	uint16_t flash_default_iat = 0x41;//25 degrees
+
+0x000f42	2	uint16_t flash_vss_fault_detection_rpm_min = 0x50;//2.5k rpm
+0x000f44	2	uint16_t flash_vss_fault_detection_load_min = 0x7c;
+0x000f46	2	uint16_t flash_baro_pressure_fault_max = 230;
+0x000f48	2	uint16_t flash_baro_pressure_fault_min = 10;
+0x000f4a	2	uint16_t flash_injector_fault_slow_test_rpm_max = 0x20;//1k rpm
+0x000f4c	2	uint16_t flash_injector_fault_slow_test_tps_max = 50;
+
+0x000f52	2	uint16_t flash_knock_dynamics_load_min = 0x30;
+0x000f54	2	uint16_t flash_knock_dynamics_rpm_min_low = 0x50;
+0x000f56	2	uint16_t flash_knock_dynamics_rpm_min_med = 0x50;
+0x000f58	2	uint16_t flash_knock_dynamics_rpm_min_high = 0x50;//2.5k rpm
+0x000f5a	2	uint16_t flash_knock_dynamics_load_max = 0xff;
+0x000f5c	2	uint16_t flash_knock_dynamics_rpm_max = 0xff;
+0x000f5e	2	uint16_t flash_knock_dynamics_active_knock_off = 50;
+
+0x000f66	2	uint16_t flash_knock_dynamics_active_knock_on = 200;
+
+0x000fa8	2	uint16_t flash_trim_diag_hot_start_coolant_min = 140;
+0x000faa	2	uint16_t flash_trim_diag_hot_start_iat_min = 100;
+
+0x000fbe	2	uint16_t flash_misfire_count_sum_threshold = 32;
+
+0x000fc4	2	uint16_t flash_misfire_count_dtc_set_threshold = 9;
+0x000fc6	2	uint16_t flash_misfire_control_rpm_min = 0x10;
+0x000fc8	2	uint16_t flash_misfire_control_rpm_max = 0xd0;
+0x000fca	2	uint16_t flash_misfire_control_load_max = 0xcd;
+0x000fcc	2	uint16_t flash_misfire_control_baro_pressure_max = 216;
+0x000fce	2	uint16_t flash_misfire_control_apps_pos_delta_max = 3;
+0x000fd0	2	uint16_t flash_misfire_control_apps_neg_delta_max = 3;
+0x000fd2	2	uint16_t flash_misfire_shaft_accel_sampling_rpm_max_drive = 0x60;
+0x000fd4	2	uint16_t flash_misfire_shaft_accel_sampling_rpm_max_neutral = 3;
+0x000fd6	2	uint16_t flash_init_misfire_uncontrollable_decay_high_baro_pressure = 30;
+0x000fd8	2	uint16_t flash_init_misfire_uncontrollable_decay_drive_conditions = 5;
+0x000fda	2	uint16_t flash_init_misfire_uncontrollable_decay_ac_switch = 30;
+0x000fdc	2	uint16_t flash_init_misfire_uncontrollable_decay_default = 50;
+0x000fde	2	uint16_t flash_init_misfire_control_shaft_accel_sdecay = 20;
+
+0x001134	2	uint16_t flash_init_used_baro_sensor_ok_decay = 20;
+0x001136	2	uint16_t flash_init_o2_frequency_update_timer = 20;
+0x001138	2	uint16_t flash_init_catalyst_o2_frequency_measurement_delay = 20;
+0x00113a	2	uint16_t flash_catalyst_o2_frequency_check_flow_min_drive = 8;
+0x00113c	2	uint16_t flash_catalyst_o2_frequency_check_flow_min_neutral = 8;
+0x00113e	2	uint16_t flash_catalyst_o2_frequency_check_flow_max_drive = 48;
+0x001140	2	uint16_t flash_catalyst_o2_frequency_check_flow_max_neutral = 48;
+0x001142	2	uint16_t flash_catalyst_o2_frequency_check_rpm_max = 0x60;
+
+0x0011ec	2	uint16_t flash_init_fuel_trims_malfunction_set_dtc_delay = 50;
+0x0011ee	2	uint16_t flash_init_fuel_trim_diag_delay = 0;
+0x0011f0	2	uint16_t flash_fuel_trim_valid_max = 192;
+0x0011f2	2	uint16_t flash_fuel_trim_valid_min = 64;
+
+0x0011f6	2	uint16_t flash_o2_front_use_delay_reset_threshold = 26;
+0x0011f8	2	uint16_t flash_afterstart_o2_front_use_delay_coolant_min = 114;
+
+0x0011fc	2	uint16_t flash_fuel_trim_diag_stft_smoothing_rate = 255;
+0x0011fe	2	uint16_t flash_fuel_trim_diag_upper_bound_stft_smoothed_min = 0x8d;
+0x001200	2	uint16_t flash_fuel_trim_diag_lower_bound_stft_smoothed_max = 0x73;
+
+0x001254	2	uint16_t flash_o2_heater_check_coolant_min = 60;
+0x001256	2	uint16_t flash_o2_heater_check_power_max = 218;
+0x001258	2	uint16_t flash_o2_heater_check_power_min = 150;
+
+0x001280	2	uint16_t flash_init_at_selector_check_delay = 100;
+0x001282	2	uint16_t flash_at_drive_check_cranking_stop_age_min = 80;
+0x001284	2	uint16_t flash_init_at_drive_check_delay = 20;
+
+0x0012c8	2	uint16_t flash_init_mdp_usable_span_delay = 180;
+0x0012ca	2	uint16_t flash_mdp_usable_span = 102;
+0x0012cc	2	uint16_t flash_mdp_check_runtime_min = 240;
+0x0012ce	2	uint16_t flash_init_mdp_dtc_set_delay = 8;
+0x0012d0	2	uint16_t flash_init_idlemon_error_set_delay = 100;
+0x0012d2	2	uint16_t flash_idlemon_power_min = 141;
+0x0012d4	2	uint16_t flash_idlemon_check_below_target_load_max = 0x6e;
+0x0012d6	2	uint16_t flash_init_idlemon_rpm_stuck_off_target_delay = 20;
+0x0012d8	2	uint16_t flash_idlemon_tps_range_max = 3;
+0x0012da	2	uint16_t flash_idlemon_hard_check_runtime_age_min = 120;
+0x0012dc	2	uint16_t flash_idlemon_hard_ltft_off_min = 255;
+0x0012de	2	uint16_t flash_idlemon_hard_iat_min = 85;
+0x0012e0	2	uint16_t flash_idlemon_rpm_above_threshold_hard = 39;
+0x0012e2	2	uint16_t flash_idlemon_rpm_above_threshold_normal = 26;
+0x0012e4	2	uint16_t flash_idlemon_rpm_below_error_set_threshold = 13;
+0x0012e6	2	uint16_t flash_idlemon_rpm_above_error_reset_threshold = 26;
+0x0012e8	2	uint16_t flash_idlemon_rpm_below_error_reset_threshold = 13;
+0x0012ea	2	uint16_t flash_idlemon_coolant_min = 80;
+0x0012ec	2	uint16_t flash_closed_tps_switch_check_vsf_min = 119;
+0x0012ee	2	uint16_t flash_init_closed_tps_switch_check_delay = 80;
+0x0012f0	2	uint16_t flash_closed_tps_switch_check_rpm_max_drive = 255;
+0x0012f2	2	uint16_t flash_closed_tps_switch_check_rpm_max_neutral = 255;
+0x0012f4	2	uint16_t flash_closed_tps_switch_error_counter_threshold = 15;
+0x0012f6	2	uint16_t flash_engine_overboost_check_coolant_temp_min = 119;
+0x0012f8	2	uint16_t flash_engine_overboost_check_tps_min = 0xd7;
+0x0012fa	2	uint16_t flash_init_engine_no_overboost_decay = 15;
+0x0012fc	2	uint16_t flash_slow_valve_test_power_min = 253;
+0x0012fe	2	uint16_t flash_slow_valve_test_power_max = 254;
+
+0x001306	2	uint16_t flash_init_hydraulic_power_steering_switch_ok_decay = 40;
+0x001308	2	uint16_t flash_hydraulic_power_steering_switch_error_threshold = 10;
+
+0x001320	2	uint16_t flash_init_oxygen_feedback_trim_valid_decay = 8;
+0x001322	2	uint16_t flash_oxygen_feedback_trim_valid_max = 0xab;
+0x001324	2	uint16_t flash_oxygen_feedback_trim_valid_min = 0x33;
+0x001326	2	uint16_t flash_trim_fault_reset_rpm_range = 12;
+0x001328	2	uint16_t flash_trim_fault_reset_load_range = 0x2b;
+
+0x001366	2	uint16_t flash_apps_ineuc_max = 255;
+0x001368	2	uint16_t flash_apps_ineuc_min = 151;
+0x00136a	2	uint16_t flash_init_apps_main_ineuc_update_delay = 120;
+0x00136c	2	uint16_t flash_apps_ineuc_power_min = 0x88;
+0x00136e	2	uint16_t flash_apps_ineuc_rpm_age_min = 0xc8;
+
+0x001372	2	uint16_t flash_apps_ineuc_step_max = 12;
+0x001374	2	uint16_t flash_very_cold_warmup_iat_prestart_threshold = 22;
+0x001376	2	uint16_t flash_very_cold_warmup_coolant_prestart_threshold = 25;
+
+0x00138c	2	uint16_t flash_alternator_high_current_on = 58;
+0x00138e	2	uint16_t flash_alternator_high_current_off = 38;
+0x001390	2	uint16_t flash_alternator_high_current_on_ex = 208;
+
+0x001394	2	uint16_t flash_cranking_decay2_stage1_min = 32;
+0x001396	2	uint16_t flash_cranking_decay2_stage2_min = 13;
+
+0x0013b6	2	uint16_t flash_o2_front_heater_afterstart_heatup_duty = 128;
+
+0x0013d2	2	uint16_t flash_init_standing_boost_delay = 8;
+0x0013d4	2	uint16_t flash_standing_boost_rpm_min = 0x40;
+0x0013d6	2	uint16_t flash_standing_boost_load_min = 0x96;
+
+0x0013fe	2	uint16_t flash_low_coolant_idle_compensation_coolant_off = 122;
+0x001400	2	uint16_t flash_low_coolant_idle_compensation_coolant_on = 117;
+0x001402	2	uint16_t flash_init_low_coolant_idle_compensation_update_delay = 36;
+0x001404	2	uint16_t flash_oxygen_trim_low_coolant_stepping_threshold = 100;
+0x001406	2	uint16_t flash_egr_flow_test_neutral_vsf_min = 0;
+0x001408	2	uint16_t flash_ac_related_alternator_sense_duty_high_on = 204;
+0x00140a	2	uint16_t flash_ac_related_alternator_sense_duty_high_off = 77;
+
+0x00145a	2	uint16_t flash_purge_lsvdp_min = 0;
+0x00145c	2	uint16_t flash_purge_lsvdn_min = 0;
+
+0x001468	2	uint16_t flash_init_fuel_cut_continuing_decay_mode1 = 80;
+
+0x001482	2	uint16_t flash_alternator_coolant_normal_on = 65;
+0x001484	2	uint16_t flash_alternator_coolant_normal_off = 65;
+
+0x00152a	2	uint16_t flash_init_idlemon_ac_transient_decay = 20;
+
+0x001542	2	uint16_t flash_init_ac_off_switch_delay_high = 12;
+
+0x001552	2	uint16_t flash_init_fuel_trim_malfunction_reset_ignition_cycle_decay = 80;
+
+0x001556	2	uint16_t flash_hydraulic_power_steering_check_coolant_temp_min = 70;
+0x001558	2	uint16_t flash_trim_diag_stfts_normal_low_max = 0xb3;
+0x00155a	2	uint16_t flash_trim_diag_stfts_normal_low_min = 0x4d;
+0x00155c	2	uint16_t flash_trim_diag_stfts_normal_med_max = 0xb3;
+0x00155e	2	uint16_t flash_trim_diag_stfts_normal_med_min = 0x4d;
+
+0x001564	2	uint16_t flash_vss_fault_detection_rpm_max = 0x80;//4k rpm
+0x001566	2	uint16_t flash_vss_fault_detection_load_max = 0xbf;//~120%
+
+0x00156a	2	uint16_t flash_rpm_limit_with_maf_fault = 0x80;//4k rpm
+
+0x001598	2	uint16_t flash_ffilm_off_on_heavy_load_on_drive = 0xff;
+0x00159a	2	uint16_t flash_ffilm_off_on_heavy_load_off_drive = 0xff;
+0x00159c	2	uint16_t flash_ffilm_on_rpm_age_min = 0;
+
+0x0015a0	2	uint16_t flash_trim_diag_stfts_normal_high_max = 0xb3;
+0x0015a2	2	uint16_t flash_trim_diag_stfts_normal_high_min = 0x4d;
+
+0x0015b0	2	uint16_t flash_adc_by_ac_pressure_max = 0xf6;
+0x0015b2	2	uint16_t flash_adc_by_ac_pressure_min = 0x0a;
+0x0015b4	2	uint16_t flash_default_ac_pressure = 1;
+0x0015b6	2	uint16_t flash_ac_pressure_high_on = 0xff;
+0x0015b8	2	uint16_t flash_ac_pressure_high_off = 0xfe;
+0x0015ba	2	uint16_t flash_ac_pressure_change_init_transient_idle_corr_update_delay = 80;
+0x0015bc	2	uint16_t flash_init_ac_off_switch_delay_low = 14;
+0x0015be	2	uint16_t flash_init_ac_on_switch_delay_low = 22;
+0x0015c0	2	uint16_t flash_ac_pressure_too_high_on = 0xff;
+0x0015c2	2	uint16_t flash_ac_pressure_too_high_off = 0xff;
+0x0015c4	2	uint16_t flash_ac_pressure_too_low_off = 0;
+0x0015c6	2	uint16_t flash_ac_pressure_too_low_on = 0;
+0x0015c8	2	uint16_t flash_ac_pressure_normal_off = 0x40;
+0x0015ca	2	uint16_t flash_ac_pressure_normal_on = 0x53;
+
+0x001602	2	uint16_t flash_trim_diag_stfts_hot_low_max = 0xb3;
+0x001604	2	uint16_t flash_trim_diag_stfts_hot_low_min = 0x4d;
+0x001606	2	uint16_t flash_trim_diag_stfts_hot_med_max = 0xb3;
+0x001608	2	uint16_t flash_trim_diag_stfts_hot_med_min = 0x4d;
+0x00160a	2	uint16_t flash_trim_diag_stfts_hot_high_max = 0xb3;
+0x00160c	2	uint16_t flash_trim_diag_stfts_hot_high_min = 0x4d;
+0x00160e	2	uint16_t flash_init_stft_dtc_set_delay = 50;
+
+0x00168c	2	uint16_t flash_ac_torque_loss = 0;
+
+0x0016ae	2	uint16_t flash_init_misfire_engine_start_sdecay = 20;
+
+0x001786	2	uint16_t flash_init_o2_heater_recheck_delay = 600;
+
+0x0017d8	2	uint16_t flash_winter_cranking_coolant_max = 18;
+0x0017da	2	uint16_t flash_cold_start_to_running_spark_coolant_max = 18;
+0x0017dc	2	uint16_t flash_cold_start_to_running_spark_step = 13;
+
+0x0017ee	2	uint16_t flash_torque_calculations_predict_alternator_on = 0x30;
+0x0017f0	2	uint16_t flash_torque_calculations_predict_alternator_off = 0x30;
+
+0x0017f6	2	uint16_t flash_init_maf_tps_low_decay = 4;
+0x0017f8	2	uint16_t flash_maf_charge_min = 0;
+0x0017fa	2	uint16_t flash_inverse_cylinder_volume = 196;
+0x0017fc	2	uint16_t flash_load_source_value_compensated_sharped_max = 0xffff;
+0x0017fe	2	uint16_t flash_maf_ok_ignition_min = 20;
+0x001800	2	uint16_t flash_init_maf_ok_decay = 4;
+0x001802	2	uint16_t flash_maf_ok_min = 44;
+0x001804	2	uint16_t flash_maf_ok_max = 250;
+0x001806	2	uint16_t flash_maf_low_tps_hysteresis = 16;
+0x001808	2	uint16_t flash_cylinder_volume = 55;
+
+0x00181a	2	uint16_t flash_apps_corrected_neutral = 205;
+0x00181c	2	uint16_t flash_init_accel_boundary_conditions_delay = 12;
+0x00181e	2	uint16_t flash_init_accel_pedal_fault_long_delay = 40;
+0x001820	2	uint16_t flash_accel_pedal_shorted_power_threshold = 246;
+
+0x001824	2	uint16_t flash_init_accel_pedal_main_not_shorted_power_400hz_decay = 20;
+0x001826	2	uint16_t flash_accel_pedal_shorted_ground_threshold = 10;
+0x001828	2	uint16_t flash_accel_pedal_matching_diff_max = 16;
+0x00182a	2	uint16_t flash_init_unused_etc_feedback_dtc_decays = 40;
+
+0x00182e	2	uint16_t flash_init_accel_pedal_corrected_matching_ok_decay = 8;
+0x001830	2	uint16_t flash_apps_neutral_switch_threshold = 96;
+0x001832	2	uint16_t flash_accel_pedal_matching_disturb_threshold = 3;
+0x001834	2	uint16_t flash_init_apps_neutral_switch_fault_fast_detection_decay = 10;
+
+0x00183c	2	uint16_t flash_init_tps_main_return_spring_position = 92;
+
+0x001850	2	uint16_t flash_apps_correction_delta_positive_max = 2;
+0x001852	2	uint16_t flash_adc_full_accel_pedal_main_correction_max = 188;
+0x001854	2	uint16_t flash_adc_full_accel_pedal_main_correction_min = 78;
+
+0x001884	2	uint16_t flash_accel_pedal_position_scaled_increment_limit = 102;
+
+0x0018ac	2	uint16_t flash_accel_pedal_fast_press_threshold = 3;
+0x0018ae	2	uint16_t flash_apps_ineutral_off = 228;
+0x0018b0	2	uint16_t flash_apps_ineutral_on = 225;
+0x0018b2	2	uint16_t flash_apps_fast_press_hysteresis = 3;
+
+0x0018b6	2	uint16_t flash_apps_effective_range = 614;
+0x0018b8	2	uint16_t flash_tps_topen_base = 0x2ff;
+
+0x0018bc	2	uint16_t flash_init_apps_ineuc_activation_delay = 40;
+0x0018be	2	uint16_t flash_tps_neuc_max = 0x8f;
+0x0018c0	2	uint16_t flash_tps_neuc_min = 0x3d;
+0x0018c2	2	uint16_t flash_tps_topen_max = 931;
+0x0018c4	2	uint16_t flash_tps_topen_min = 807;
+
+0x0018e4	2	uint16_t flash_init_mivec_large_target_angle_error_decay = 10;
+
+0x0018ec	2	uint16_t flash_mivec_angle_measurable_rpm_min = 0;
+
+0x0018f8	2	uint16_t flash_cam_parking_angle_smooth_rate = 242;
+0x0018fa	2	uint16_t flash_mivec_controllable_rpm_min = 0x1c;
+0x0018fc	2	uint16_t flash_init_mivec_controllable_decay = 100;
+0x0018fe	2	uint16_t flash_mivec_controllable_rpm_hysteresis = 3;
+
+0x001902	2	uint16_t flash_mivec_control_parking_samples_min = 100;
+
+0x001908	2	uint16_t flash_cam_parking_coolant_max = 140;
+0x00190a	2	uint16_t flash_cam_parking_rpm_min = 0x20;
+0x00190c	2	uint16_t flash_init_intake_valve_timing_control_ok_decay = 100;
+
+0x00191a	2	uint16_t flash_mivec_controllable_rpm_max = 127;
+0x00191c	2	uint16_t flash_init_coolant_temp_sensor_filtered_fault_delay_appstart = 40;
+0x00191e	2	uint16_t flash_init_mivec_zero_duty_test_delay = 4;
+0x001920	2	uint16_t flash_init_mivec_zero_duty_error_set_delay = 40;
+
+0x001926	2	uint16_t flash_cam_advance_angle_settled_smooth_rate = 242;
+
+0x00192c	2	uint16_t flash_mivec_forced_parking_coolant_min = 40;
+
+0x001932	2	uitn16_t flash_mivec_forced_parking_target_idle_rpm_min_drive = 0xa0;
+0x001934	2	uint16_t flash_mivec_forced_parking_target_idle_rpm_min_neutral = 0x6c;
+0x001936	2	uint16_t flash_mivec_forced_parking_idle_delay = 80;
+
+0x001998	2	uint16_t flash_init_canrx6_short_decay = 40;
+0x00199a	2	uint16_t flash_init_canrx7_short_decay = 40;
+0x00199c	2	uint16_t flash_init_canrx8_short_decay = 40;
+0x00199e	2	uint16_t flash_init_fp13618_u16_unused_decay = 40;
+0x0019a0	2	uint16_t flash_init_canrx10_short_decay = 40;
+0x0019a2	2	uint16_t flash_init_canrx11_short_decay = 200;
+0x0019a4	2	uint16_t flash_init_canrx6_short_timeout = 40;
+0x0019a6	2	uint16_t flash_init_canrx7_short_timeout = 40;
+0x0019a8	2	uint16_t flash_init_canrx8_short_timeout = 40;
+0x0019aa	2	uint16_t flash_init_fp13586_u16_unused_decay = 40;
+0x0019ac	2	uint16_t flash_init_canrx10_short_timeout = 40;
+0x0019ae	2	uint16_t flash_init_canrx11_short_timeout = 200;
+0x0019b0	2	uint16_t flash_can0_brownout_off = 0x88;
+0x0019b2	2	uint16_t flash_can0_brownout_on = 0x7b;
+0x0019b4	2	uint16_t flash_init_canrx4_data0 = 10;
+
+0x0019ba	2	uint16_t flash_init_winter_start_decay_normal = 0;
+0x0019bc	2	uint16_t flash_cranking_low_fuel_cranking_ipw_correction = 90;
+0x0019be	2	uint16_t flash_cranking_low_fuel_start_pulse_ipw_correction = 51;
+0x0019c0	2	uint16_t flash_cranking_low_fuel_coolant_max = 18;
+
+0x0019c6	2	uint16_t flash_cranking_ipw_baro_pressure_correction_ratio = 61;
+0x0019c8	2	uint16_t flash_init_winter_start_decay_cold = 0;
+0x0019ca	2	uint16_t flash_winter_start_cold_coolant_max = 15;
+
+0x001a76	2	uint16_t flash_init_o2_heater_check_phase2_decay = 10;
+0x001a78	2	uint16_t flash_init_o2_heater_check_phase3_decay = 20;
+0x001a7a	2	uint16_t flash_init_o2_heater_check_phase1_decay = 4;
+0x001a7c	2	uint16_t flash_init_o2_heater_check_pass_decay = 3;
+0x001a7e	2	uint16_t flash_gear_shift_reset_vsf_on = 40;
+0x001a80	2	uint16_t flash_gear_shift_reset_vsf_off = 24;
+
+0x001a8e	2	uint16_t flash_engine_craking_spark_mode_coolant_min_normal = 60;
+0x001a90	2	uint16_t flash_engine_craking_spark_mode_coolant_min_cold = 30;
+0x001a92	2	uint16_t flash_closed_loop_load_threshold_high_octane_level_min = 128;
+
+0x001ae6	2	uint16_t flash_hydraulic_power_steering_check_vehicle_speed_min = 25;
+
+0x001b2e	2	uint16_t flash_shaft_sensor_diagnostics_rpm_min = 14;
+
+0x001b50	2	uint16_t flash_low_rpm_idle_spark_correction_scaling_normal_moving = 64;
+0x001b52	2	uint16_t flash_low_rpm_idle_moving_vehicle_speed_frequency_min = 80;//10kph
+
+0x001b56	2	uint16_t flash_ffilm_off_on_heavy_load_on_neutral = 0xff;
+0x001b58	2	uint16_t flash_ffilm_off_on_heavy_load_off_neutral = 0xff;
+
+0x001bc2	2	uint16_t flash_idle_target_throttle_position_max = 0x7ff;//*2 in code
+
+0x001bce	2	uint16_t flash_init_basic_rich_delay = 20;
+
+0x001c06	2	uint16_t flash_mtc_base_smoothing_rate_min = 6;
+0x001c08	2	uint16_t flash_mtc_base_smoothing_rate_decrement = 26;
+0x001c0a	2	uint16_t flash_init_mivec_target_current_base = 0x4ccd;
+0x001c0c	2	uint16_t flash_mivec_unsettling_angle_diff_threshold = 0x134;
+0x001c0e	2	uint16_t flash_mivec_low_error_threshold = 33;
+0x001c10	2	uint16_t flash_init_mivec_settled_error_delay = 20;
+0x001c12	2	uint16_t flash_mivec_angle_model_limit_update_mtc_min = 0x80;
+0x001c14	2	uint16_t flash_init_mtc_base_smoothing_rate = 0xff;
+0x001c16	2	uint16_t flash_init_mivec_target_current_integral_part = 22;
+0x001c18	2	uint16_t flash_mivec_uncontrollable_target_current = 0;
+0x001c1a	2	uint16_t flash_mivec_linear_duty_max = 0xff;
+0x001c1c	2	uint16_t flash_mivec_linear_duty_min = 0;
+0x001c1e	2	uint16_t flash_mivec_current_error_scaling = 7864;
+0x001c20	2	uint16_t flash_mivec_current_error_diff_scaling = 13107;
+0x001c22	2	uint16_t flash_mivec_advance_min = 0xf00;//0 degrees
+0x001c24	2	uint16_t flash_mivec_advance_max = 0x700;//38.4 degrees
+0x001c26	2	uint16_t flash_mivec_large_target_angle_error_threshold = 154;//about 3 degrees?
+0x001c28	2	uint16_t flash_mtc_base_adapt_mtc_integral_max = 0x9a;
+0x001c2a	2	uint16_t flash_mtc_base_adapt_mtc_integral_min = 0x6a;
+0x001c2c	2	uint16_t flash_mivec_target_current_base_max = 0x66;
+0x001c2e	2	uint16_t flash_mivec_target_current_base_min = 0x37;
+0x001c30	2	uint16_t flash_mivec_stuck_cam_advance_diff_on = 0x30;
+0x001c32	2	uint16_t flash_mivec_stuck_cam_advance_diff_off = 0x24;
+0x001c34	2	uint16_t flash_mtc_intergral_part_max = 157;
+0x001c36	2	uint16_t flash_mtc_intergral_part_min = 103;
+0x001c38	2	uint16_t flash_mivec_target_max = 0xff;
+0x001c3a	2	uint16_t flash_mivec_target_min = 0;
+0x001c3c	2	uint16_t flash_cam_advance_angle_measure_max = 0xff * 32;
+0x001c3e	2	uint16_t flash_cam_advance_angle_measure_min = 0;
+0x001c40	2	uint16_t flash_mivec_model_limit_inc = 0;
+0x001c42	2	uint16_t flash_mivec_boundary_margin = 2;
+0x001c44	2	uint16_t flash_mivec_current_test_target1 = 0;
+0x001c46	2	uint16_t flash_mivec_current_test_target2 = 0;
+0x001c48	2	uint16_t flash_init_mivec_current_test_decay = 0xff;
+0x001c4a	2	uint16_t flash_mivec_test_target_angle1 = 0;
+0x001c4c	2	uint16_t flash_mivec_test_target_angle2 = 0;
+0x001c4e	2	uint16_t flash_init_mivec_target_test_decay = 0xff;
+0x001c50	2	uint16_t flash_cam_parking_angle_min = 0x68;
+0x001c52	2	uint16_t flash_cam_parking_angle_max = 0x88;
+0x001c54	2	uint16_t flash_eps_torque_active_steering_threshold = 0xff;
+
+0x001ccc	2	uint16_t flash_init_accel_pedal_match_sub_x_main_decay = 12;
+0x001cce	2	uint16_t flash_init_evt_motor_feedback_main_ok = 16;
+0x001cd0	2	uint16_t flash_init_ignition_long_decay = 40;
+
+0x001cd6	2	uint16_t flash_accel_pedal_main_shorted_power_at_400hz_reset_threshold = 76;
+
+0x001cf6	2	uint16_t flash_p1227_fault_rpm_limit = 255;
+0x001cf8	2	uint16_t flash_stationary_rpm_limit_i1b5on = 255;
+0x001cfa	2	uint16_t flash_stationary_rpm_limit_i1b5off = 255;
+0x001cfc	2	uint16_t flash_stanionary_rev_limit_vssf_max = 40;//5kph
+
+0x001d02	2	uint16_t flash_init_stationary_rev_limit_fuel_cut_delay = 12;
+
+0x001d1c	2	uint16_t flash_etc_coolant_normal_off = 80;
+0x001d1e	2	uint16_t flash_etc_coolant_normal_on = 82;
+
+0x001d36	2	uint16_t flash_tps_ineuc_second_test_inc_max = 10;
+
+0x001d3e	2	uint16_t flash_tps_main_return_spring_position_min = 25;
+0x001d40	2	uint16_t flash_tps_ineuc_first_test_inc_max = 0x3ff;
+
+0x001d46	2	uint16_t flash_tps_main_return_spring_position_max = 102;
+
+0x001dae	2	uint16_t flash_init_can_ac_control_decay = 16;
+
+0x001db2	2	uint16_t flash_torque_scaling_ratio = 219;
+0x001db4	2	uint16_t flash_torque_cut_spark_retard_on = 7;
+0x001db6	2	uint16_t flash_torque_cut_spark_retard_off = 4;
+
+0x001dc6	2	uint16_t flash_init_warmup_spark_retard_rate_correction1_inc_delay = 1;
+
+0x001dcc	2	uint16_t flash_warmup_spark_retard_rate_correction2_dec_step = 5;
+0x001dce	2	uint16_t flash_init_warmup_spark_retard_rate_correction2_sub_delay = 1;
+0x001dd0	2	uint16_t flash_afterstart_warmup_rpm_age_max = 3080;
+0x001dd2	2	uint16_t flash_afterstart_warmup_conditions_check_rpm_age_max = 60;
+0x001dd4	2	uint16_t flash_init_warmup_standing_inc_delay_on_apps_neutral = 1;
+0x001dd6	2	uint16_t flash_init_warmup_standing_inc_delay_off_apps_neutral = 1;
+0x001dd8	2	uint16_t flash_warmup_standing_apprx_rate_inc_step = 8;
+0x001dda	2	uint16_t flash_warmup_standing_apprx_rate_dec_step = 26;
+
+0x001dde	2	uint16_t flash_init_warmup_progression_rate_increase_delay = 1;
+0x001de0	2	uint16_t flash_init_warmup_regression_rate_update_delay_drive_acoff = 3;
+
+0x001de6	2	uint16_t flash_warmup_standing_vsf_max = 40;
+0x001de8	2	uint16_t flash_warmup_spark_retard_phase1_rpm_age_max = 3280;
+0x001dea	2	uint16_t flash_o2_front_heater_afterstart_heatup_time = 8;
+0x001dec	2	uint16_t flash_o2_rear_heater_afterstart_heatup_time = 0;
+0x001dee	2	uint16_t flash_o2_front_heater_afterstart_heatup_phase2_duty = 102;
+
+0x001df4	2	uint16_t flash_torque_smoothing_diff_on = 0;
+0x001df6	2	uint16_t flash_torque_smoothing_diff_off = 0;
+
+0x001e02	2	uint16_t flash_ffilm_ipw_diff_comp_off = 5;
+
+0x001e30	2	uint16_t flash_mivec_feedback_current_scaling = 128;
+0x001e32	2	uint16_t flash_some_mivec_target_current_max = 128;
+0x001e34	2	uint16_t flash_mivec_valve_duty_max = 0xff;
+0x001e36	2	uint16_t flash_some_mivec_target_current_min = 0;
+0x001e38	2	uint16_t flash_mivec_valve_duty_min = 0;
+0x001e3a	2	uint16_t flash_can_vehicle_speed_frequency_movement_threshold = 5;
+
+0x001e3e	2	uint16_t flash_early_maf_smooth_rate = 223;
+0x001e40	2	uint16_t flash_early_maf_apprx_runtime_age_threshold = 200;
+0x001e42	2	uint16_t flash_init_mut_wait_for_eeprom_area_reset_parameter_decay = 50;
+0x001e44	2	uint16_t flash_eeprom_fault_counter_threshold = 20;
+
+0x001e4a	2	uint16_t flash_init_ac_switch_on_after_effect_decay = 0;
+0x001e4c	2	uint16_t flash_init_knock_idle_delay = 100;
+0x001e4e	2	uint16_t flash_init_knock_idle_time_delay = 80;
+0x001e50	2	uint16_t flash_knock_window_size_bank2 = 20;
+0x001e52	2	uint16_t flash_default_knock_smoothed_bank2 = 9362;
+0x001e54	2	uint16_t flash_default_knock_smooth_rate_bank2 = 0;
+0x001e56	2	uint16_t flash_knock_smooth_rate_increment_bank2 = 0x20;
+0x001e58	2	uint16_t flash_knock_smooth_rate_max_bank2 = 0xe0;
+0x001e5a	2	uint16_t flash_knock_window_size = 20;
+0x001e5c	2	uint16_t flash_default_knock_smoothed = 9362;
+0x001e5e	2	uint16_t flash_default_knock_smooth_rate = 0;
+0x001e60	2	uint16_t flash_knock_smooth_rate_increment = 0x20;
+0x001e62	2	uint16_t flash_knock_smooth_rate_max = 0xe0;
+0x001e64	2	uint16_t flash_init_warmup_progression_rate_running_decay = 0;
+0x001e66	2	uint16_t flash_init_warmup_regression_rate_running_decay = 0;
+0x001e68	2	uint16_t flash_warmup_spark_retard_run_rpm_delta_max = 13;
+0x001e6a	2	uint16_t flash_etc_test_target_throttle_position_fast_runtime_age_max = 2400;
+0x001e6c	2	uint16_t flash_overboost_limp_rpm_min = 0;
+0x001e6e	2	uint16_t flash_overboost_limp_rpm_min_i1b5off = 0;
+
+0x001e76	4	struct bounds adc_byte_sensor_power_bounds = { .high = 154, .low = 102 };
+0x001e7a	2	uint16_t flash_init_sensor_power_faults_delay	= 8;
+0x001e7c	2	uint16_t flash_lt_idle_corr_diff_max = 0x500;
+0x001e7e	2	uint16_t flash_adc_full_coolant_filtered_glitch_delta_threshold = 13;
+0x001e80	2	uint16_t flash_adc_full_coolant_filtered_glitch_offset_threshold = 13;
+0x001e82	2	uint16_t flash_active_steering_idle_compensation_max = 0;
+0x001e84	2	uint16_t flash_at_driveoff_idle_compensation_max = 32;
+
+0x001e88	2	uint16_t flash_tps_main_return_spring_fault_threshold = 204;
+0x001e8a	2	uint16_t flash_tps_main_p0120_area_threshold = 0x80;
+0x001e8c	2	uint16_t flash_sub_p0225_area_threshold = 0x80;
+0x001e8e	2	uint16_t flash_some_apps_neutral_position = 0x80;
+0x001e90	2	uint16_t flash_rom_crc_error_counter_max = 100;
+
+
+0x001e98	2	uint16_t flash_init_no_overboost_decay = 20;
+0x001e9a	2	uint16_t flash_overboost_pressure_limit = 39;
+0x001e9c	2	uint16_t flash_init_low_voltage_ok_decay = 40;
+0x001e9e	2	uint16_t flash_low_voltage_off = 0x5a;
+0x001ea0	2	uint16_t flash_low_voltage_on = 0x56;
+0x001ea2	2	uint16_t flash_init_tps_odd_samples_skip_decay = 1;
+0x001ea4	2	uint16_t tps_main_odd_sample_diff_threshold = 61;
+
+0x001eae	2	uint16_t flash_apps_sensors_mismatch_apps_limit_scale = 0x16;
+0x001eb0	2	uint16_t flash_init_shaft_sensor_low_rpm_ok_decay = 256;
+
+0x001eb6	2	uint16_t flash_maf_aprx_rate_high_flow = 247;
+0x001eb8	2	uint16_t flash_maf_tps_high_hysteresis = 0;
+0x001eba	2	uint16_t flash_maf_load_high_hysteresis = 0;
+0x001ebc	2	uint16_t flash_maf_aprx_rate_apps_transient_phase2 = 223;
+0x001ebe	2	uint16_t flash_maf_apps_transient_coolant_min = 40;
+0x001ec0	2	uint16_t flash_maf_apps_transient_rpm_max = 0xe0;
+0x001ec2	2	uint16_t flash_maf_apps_transient_rpm_min = 0x29;
+0x001ec4	2	uint16_t flash_maf_apps_transient_load_min = 0x60;
+0x001ec6	2	uint16_t flash_init_maf_apps_transient_update_timer_phase1 = 16;
+0x001ec8	2	uint16_t flash_maf_apps_high_hysteresis = 8;
+0x001eca	2	uint16_t flash_init_maf_apps_transient_update_timer_phase2 = 60;
+0x001ecc	2	uint16_t flash_maf_apps_transient_vsf_min = 20;
+0x001ece	2	uint16_t flash_acceleration_shift_apps_threshold = 1;
+0x001ed0	2	uint16_t flash_init_acceleration_gear_shift_update_decay = 4;
+0x001ed2	2	uint16_t flash_acceleration_gear_shift_gear_ration_threshold = 0x7b9;
+0x001ed4	2	uint16_t flash_low_load_engine_braking_load_hysteresis = 2;
+0x001ed6	2	uint16_t flash_closed_loop_min_load_hysteresis = 8;
+
+0x001eda	2	uint16_t flash_init_st_idle_corr_update_enable_delay = 40;
+0x001edc	2	uint16_t flash_st_idle_corr_smoothing_rate = 26;
+
+0x001f16	2	uint16_t flash_htonic_target_idle_rpm_limit_smoothing_rate = 243;
+
+0x001f28	2	uint16_t flash_skip_additional_tps_inputs_rpm_on = 0x90;//4500
+0x001f2a	2	uint16_t flash_skip_additional_tps_inputs_rpm_off = 0x80;//4000
+
+
+#- 
+#- /*should not be used - dead data*/
+#- 0x001f8c	2	uint16_t flash1f8c_u16 = 0;
+#- 0x001f8e	12	uint16_t flash1f8e_u16a[6] = { 0, };
+#- 0x001f9a	2	uint16_t flash1f9a_u16 = 0;
+#- 0x001f9c	12	uint16_t flash1f9c_u16a[6] = { 0, };
+#- 
+
+0x001faa	2	uint16_t flash_init_can_brownout_decay = 0x78;
+
+0x001fb6	2	uint16_t flash_init_mivec_forced_parking_delay = 200;
+0x001fb8	2	uint16_t flash_init_vss_alt_fault_delay = 40;
+
+0x001fc8	2	uint16_t flash_vvt_check_power_threshold = 0x7b;
+0x001fca	2	uint16_t flash_vvt_abnormally_large_current_threshold = 240;
+0x001fcc	2	uint16_t flash_vvt_abnormally_large_current_with_high_power_threshold = 101;
+0x001fce	2	uint16_t flash_vvt_abnormally_low_current_with_high_duty_threshold = 8;
+0x001fd0	2	uint16_t flash_vvt_check_duty_threshold = 0x3333;
+0x001fd2	2	uint16_t flash_init_vvt_short_curcuit_delay = 4;
+0x001fd4	2	uint16_t flash_init_vvt_current_leak_delay = 40;
+0x001fd6	2	uint16_t flash_init_vvt_open_curcuit_delay = 40;
+0x001fd8	2	uint16_t flash_init_vvt_abnormal_state = 40;
+
+0x001ff6	2	uint16_t flash_low_rpm_idle_spark_correction_scaling_warmup_standing = 128;
+0x001ff8	2	uint16_t flash_low_rpm_idle_spark_correction_scaling_warmup_moving = 64;
+0x001ffa	2	uint16_t flash_low_rpm_idle_spark_compensation_warmup_max = 5;
+
+0x001ffe	2	uint16_t flash_init_vvt_dtc_set_delay = 40;
+
+0x002014	2	uint16_t flash_init_canrx6_long_decay = 60;
+0x002016	2	uint16_t flash_init_canrx7_long_decay = 60;
+
+0x00201a	2	uint16_t flash_init_canrx8_long_decay = 60;
+
+0x00201e	2	uint16_t flash_init_canrx10_long_decay = 60;
+0x002020	2	uint16_t flash_init_canrx11_long_decay = 5;
+
+0x002048	2	uint16_t flash_deceleration_shift_apps_threshold = 5;
+0x00204a 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_low_gear_apps_non_neutral_stage1 = 25;
+0x00204c 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_low_gear_apps_non_neutral_stage2 = 2;
+0x00204e 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_low_gear_apps_neutral_stage1 = 25;
+0x002050	2	uint16_t flash_deceleration_gear_shift_limit_decrement_low_gear_apps_neutral_stage2 = 1;
+0x002052 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_high_gear_apps_non_neutral_stage1 = 23;
+0x002054 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_high_gear_apps_non_neutral_stage2 = 10;
+0x002056 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_high_gear_apps_neutral_stage1 = 23;
+0x002058 	2	uint16_t flash_deceleration_gear_shift_limit_decrement_high_gear_apps_neutral_stage2 = 1;
+0x00205a	2	uint16_t flash_deceleration_gear_shift_low_gear_limit_correction = 255;
+0x00205c	2	uint16_t flash_deceleration_gear_shift_high_gear_limit_correction = 255;
+0x00205e	2	uint16_t flash_deceleration_gear_shift_high_gear_ratio_threshold = 0x7d9;
+
+0x002062	2	uint16_t flash_deceleration_gear_shift_reset_positive_apps_delta = 1;
+
+0x00209e	2	uint16_t flash_extreme_rpm_drop_rpm_threshold_cold = 77;
+0x0020a0	2	uint16_t flash_extreme_rpm_drop_idle_compensation_reset_rpm_threshold = 96;
+0x0020a2	2	uint16_t flash_extreme_rpm_drop_coolant_border = 93;
+0x0020a4	2	uint16_t flash_extreme_rpm_drop_idle_mode_delay = 60;
+
+0x00212a	2	uint16_t flash_init_etc_motor_feedback_ok_decay = 0xff;
+0x00212c	2	uint16_t flash_etc_motor_feedback_check_rpm_age_min = 120;
+
+0x002142	2	uint16_t flash_init_active_steering_idle_compensation_acoff = 40;
+0x002144	2	uint16_t flash_init_active_steering_idle_compensation_acon = 50;
+0x002146	2	uint16_t flash_active_steering_on_age_threshold_acoff = 1;
+0x002148	2	uint16_t flash_active_steering_on_age_threshold_acon = 2;
+0x00214a	2	uint16_t flash_active_steering_idle_compensation_max_acoff_drive = 10;
+0x00214c	2	uint16_t flash_active_steering_idle_compensation_max_acoff_neutral = 15;
+0x00214e	2	uint16_t flash_active_steering_idle_compensation_max_acon_drive = 13;
+0x002150	2	uint16_t flash_active_steering_idle_compensation_max_acon_neutral = 18;
+0x002152	2	uint16_t flash_init_active_steering_idle_compensation_update_timer_acoff = 1;
+0x002154	2	uint16_t flash_init_active_steering_idle_compensation_update_timer_acon = 1;
+0x002156	2	uint16_t flash_active_steering_off_age_threshold = 40;
+
+0x0021d6	2	uint16_t flash_init_apps_limiting_stabilizer_low_limit_update_decay = 3;
+
+0x002238	2	uint16_t flash_maf_fault_detection_ignition_age_min = 120;
+0x00223a	2	uint16_t flash_maf_fault_detection_adc_max = 0xfa;
+0x00223c	2	uint16_t flash_maf_fault_detection_adc_min = 0x0a;
+
+0x00224e	2	uint16_t flash_accel_speed_limit_correction_dec_high = 4;
+0x002250	2	uint16_t flash_accel_speed_limit_correction_dec_low = 2;
+0x002252	2	uint16_t flash_accel_speed_limit_correction_inc = 4;
+0x002254	2	uint16_t flash_accel_speed_limit_vehicle_speed_on = 90;//180kph
+0x002256	2	uint16_t flash_accel_speed_limit_vehicle_speed_off = 87;//174kph
+0x002258	2	uint16_t flash_accel_speed_limit_correction_tps_high_threshold = 205;
+0x00225a	2	uint16_t flash_accel_speed_limit_correction_max = 0x80;
+0x00225c	2	uint16_t flash_accel_speed_limit_correction_min = 0x40;
+0x00225e	2	uint16_t flash_accel_speed_limit_correction_reset_apps_threshold = 51;
+
+0x002294	12	uint16_t flash_running_overrev_torque_limits[6] = { ? };
+0x0022a0	2	uint16_t flash_running_overrev_torque_limit_max = 0xf0;
+0x0022a2	2	uint16_t flash_running_overrev_protection_rpm_min = 198;//6.2k rpm
+
+0x0022a6	2	uint16_t flash_maf_x_iat_mapped_max = 0x55;
+0x0022a8	2	uint16_t flash_iat_gradient_maf_compensation_multiplier = 60;
+0x0022aa	2	uint16_t flash_iat_gradient_maf_compensation_min = 4096;
+0x0022ac	2	uint16_t flash_iat_gradient_maf_compensation_max = 8192;
+0x0022ae	2	uint16_t flash_iat_u32_smooth_rate = 255;
+
+0x0022ce	2	uint16_t flash_boost_control_coolant_temp_min_on = 70;//30 degrees
+0x0022d0	2	uint16_t flash_boost_control_coolant_temp_min_off = 65;//25 degrees
+
+0x0022fe	2	uint16_t flash_accel_pedal_sub_shorted_power_threshold = 128;
+
+0x002310	2	uint16_t flash_init_maf_transient_decay = 40;
+0x002312	2	uint16_t flash_init_brakes_release_idle_correction_decay = 60;
+0x002314	2	uint16_t flash_brakes_release_idle_correction = 15;
+0x002316	2	uint16_t flash_crawling_fast_runtime_min = 160;
+0x002318	2	uint16_t flash_crawling_coolant_min = 120;
+0x00231a	2	uint16_t flash_crawling_vehicle_speed_min = 0;
+0x00231c	2	uint16_t flash_crawling_vehicle_speed_max = 45;
+0x00231e	2	uint16_t flash_crawling_lean_limit = 151;
+0x002320	2	uint16_t flash_init_crawling_open_loop_decay = 20;
+0x002322	2	uint16_t flash_vehicle_start_spark_retard = 13;
+0x002324	2	uint16_t flash_init_mivec_curcuit_check_pass_decay_afterignition = 5;
+0x002326	2	uint16_t flash_init_mivec_curcuit_check_decay_phase = 10;
+
+0x00233e	2	uint16_t flash_boost_control_high_gear_ratio = 0x850;
+0x002340	2	uint16_t flash_init_acceleration_gear_shift_clutch_disengagement_delay = 0;
+0x002342	2	uint16_t flash_init_deceleration_gear_shift_clutch_disengagement_delay = 0;
+0x002344	2	uint16_t flash_ignition_to_speed_calc_delay = 52;
+0x002346	2	uint16_t flash_init_warmup_spark_retard_rate_correction1_run_delay = 0;
+
+0x002350	2	uint16_t flash_warmup_regression_rate_dec_step_drive_acon = 26;
+0x002352	2	uint16_t flash_warmup_regression_rate_dec_step_neutral_acoff = 26;
+0x002354	2	uint16_t flash_warmup_regression_rate_dec_step_neutral_acon = 26;
+0x002356	2	uint16_t flash_init_warmup_regression_rate_update_delay_drive_acon = 3;
+0x002358	2	uint16_t flash_init_warmup_regression_rate_update_delay_neutral_acon = 4;
+0x00235a	2	uint16_t flash_init_warmup_regression_rate_update_delay_neutral_acoff = 4;
+0x00235c	2	uint16_t flash_afterstart_warmup_target_idle_rpm_min_ac_on = 109;
+0x00235e	2	uint16_t flash_afterstart_warmup_target_idle_rpm_min_ac_on_i1b5off = 88;
+
+0x002376	2	uint16_t flash_apps_coolant_correction_high_gear_ratio = 0x7b9;
+0x002378	2	uint16_t flash_acceleration_gear_shift_age_max = 0xffff;
+0x00237a	2	uint16_t flash_ffilm_ipw_diff_comp_hysteresis = 0;
+0x00237c	2	uint16_t flash_high_rpm_timeout_rpm_threshold1 = 208;//6.5k rpm
+0x00237e	2	uint16_t flash_high_rpm_timeout_rpm_threshold2 = 128;//4k rpm
+0x002380	2	uint16_t flash_init_high_rpm_timeout1 = 10;//2 seconds
+0x002382	2	uint16_t flash_init_high_rpm_timeout2 = 30;//5 seconds
+0x002384	2	uint16_t flash_high_rpm_timeout2_coolant_temp_min = 115;//75
+0x002386	2	uint16_t flash_high_rpm_timeout_apps_threshold = 16;
+0x002388	2	uint16_t flash_high_rpm_limit_with_clutch_engaged = 0xff;//disabled
+0x00238a	2	uint16_t flash_init_launch_standing_delay = 84;
+0x00238c	2	uint16_t flash_launch_vsf_max = 12;
+0x00238e	2	uint16_t flash_launch_rpm_max = 0xff;
+
+0x002392	2	uint16_t flash_asc_torque_limiting_ignition_age_min = 200;
+0x002394	2	uint16_t flash_init_asc_keepalive_decay = 44;
+0x002396	2	uint16_t flash_gear_shift_transition_rate_increment = 1;
+0x002398	2	uint16_t flash_gear_shift_transition_rate_decrement = 1;
+0x00239a	2	uint16_t flash_init_gear_shift_counter = 2;
+0x00239c	2	uint16_t flash_init_canrx9_short_decay = 40;
+0x00239e	2	uint16_t flash_init_canrx9_long_decay = 60;
+0x0023a0	2	uint16_t flash_init_canrx9_short_timeout = 40;
+0x0023a2	2	uint16_t flash_running_overrev_protection_rpm_diff_max = 10;//312 rpm
+0x0023a4	2	uint16_t flash_running_overrev_protection_default_torque_limit = 10;
+0x0023a6	12	uint16_t flash_running_overrev_speed_thresholds[6] = { ? };
+0x0023b2	2	uint16_t flash_running_overrev_speed_min = 5;//10 kph
+
+0x0023c0	2	uint16_t flash_diag_tps_full_mismatch_error_counter_threshold = 80;
+0x0023c2	2	uint16_t flash_diag_tps_full_mismatch_counter_threshold = 200;
+0x0023c4	2	uint16_t flash_diag_tps_full_mismatch_remargin = 102;
+0x0023c6	2	uint16_t flash_diag_tps_full_mismatch_emargin = 20;
+0x0023c8	2	uint16_t flash_limp_rpm_apps_neutral_max_off = 38;//1.2k
+0x0023ca	2	uint16_t flash_limp_rpm_apps_neutral_max_on = 45;//1.4k
+0x0023cc	2	uint16_t flash_limp_rpm_apps_nonneutral_max_off = 45;//1.4k
+0x0023ce	2	uint16_t flash_limp_rpm_apps_nonneutral_max_on = 96;
+0x0023d0	2	uint16_t flash_taflow_base_emargin = 64;
+0x0023d2	2	uint16_t flash_taflow_low_mload_emargin = 0;
+0x0023d4	2	uint16_t flash_taflow_reset_base_emargin = 13;
+
+0x0023dc	2	uint16_t flash_taflow_mload_notrust_max = 0x60;//120%
+0x0023de	2	uint16_t flash_taflow_nontrust_rpm_min = 0xc0;//750 rpm
+0x0023e0	2	uint16_t flash_tps_main_nontrust_counter_threshold = 25;
+0x0023e2	2	uint16_t flash_tps_sub_nontrust_counter_threshold = 25;
+0x0023e4	2	uint16_t flash_init_tps_airflow_aps_neutral_cross_decay = 22;
+0x0023e6	2	uint16_t flash_taflow_aps_neucross_emargin = 16;
+0x0023e8	2	uint16_t flash_taflow_light_emargin = 16;
+0x0023ea	2	uint16_t flash_taflow_heavy_emargin = 24;
+
+0x0023f4	2	uint16_t flash_taflow_light_rpm_max = 0x200;
+
+0x0023f8	2	uint16_t flash_taflow_light_trequest_error_max = 200;
+0x0023fa	2	uint16_t flash_taflow_heavy_load_min = 0xa0;
+0x0023fc	2	uint16_t flash_taflow_heavy_tps_min = 0x80;
+0x0023fe	2	uint16_t flash_taflow_heavy_rpm_min = 0x300;
+0x002400	2	uint16_t flash_tps_aiflow_cross_mismatch_threshold = 14;
+0x002402	2	uint16_t flash_maf_nontrust_error_threshold = 25;
+0x002404	2	uint16_t flash_init_running_overrev_detection_delay = 40;
+
+0x0028a0	2	uint8_t flash_o2_offset_trim_drive_u8a[2];
+0x0028a2	2	uint8_t flash_o2_offset_trim_neutral_u8a[2];
+0x0028a4	1	uint8_t flash_oxygen_trim_after_fuel_cut_dec_step = 12;
+0x0028a5	1	uint8_t flash_oxygen_trim_after_fuel_cut_inc_step = 38;
+0x0028a6	1	uint8_t flash_oxygen_trim_idle_dec_step = 11;
+
+0x0028a8	1	uint8_t flash_oxygen_trim_idle_inc_step = 7;
+
+0x0028ab	12	uint8_t flash_oxygen_trim_dec_step_u8a[12];
+0x0028b7	12	uint8_t flash_oxygen_trim_inc_step_u8a[12];
+
+0x002b3c	9	struct map8_desc flash_ignition_compensation_vs_baro_pressure_map = { .type 2, .offset = 0, .source = 0xcd36, data = {0x80} };
+
+
+0x002d72	4	uint8_t flash_fan_control_vehicle_speed_thresholds_ac_off[4] = { 20, 22, 35, 40 };
+0x002d76	4	uint8_t flash_fan_control_vehicle_speed_thresholds_ac_on[4] = { 20, 22, 35, 40 };
+0x002d7a	18	uint8_t flash_fan_control_coolant_temp_threshold_ac_off[18];
+0x002d8c	18	uint8_t flash_fan_control_coolant_temp_threshold_ac_on[18];
+
+0x003296	?	struct map8_desc flash_oxygen_trim_min_vs_coolant_2dmap8;
+0x0032a2	?	struct map8_desc flash_oxygen_trim_max_vs_coolant_2dmap8;
+
+0x0032bc	?	struct map8_desc flash_cranking_decay2_stage3_update_interval_vs_coolant_2dmap8;
+
+0x0032dc	?	struct map8_desc flash_purge_duty_max_base_low_3dmap8;
+0x00332a	?	struct map8_desc flash_purge_duty_max_base_high_3dmap8;
+
+
+0x0034a7	12	uint8_t flash_oxygen_trim_dec_step_low_coolant_u8a[12];
+0x0034b3	12	uint8_t flash_oxygen_trim_inc_step_low_coolant_u8a[12];
+0x0034bf	12	uint8_t flash34bf_u8a[12];
+
+0x0034d3	12	uint8_t flash34d3_u8a[12];
+
+0x003558	?	struct map8_desc flash_icomp_min_spark_spool_base_vs_coolant_2dmap8;
+
+0x003634	?	struct map8_desc flash_modon_ac_icomp_base_min_simple_i1b5off_3dmap8;
+
+0x003688	?	struct map8_desc flash_modon_ac_icomp_base_min_simple_i1b5on_3dmap8;
+
+0x0037e4	?	struct map16_desc flash_combustion_torque_output_3dmap16;
+0x0039ce	?	struct map16_desc flash_target_torque_output_low_gear_3dmap8;
+
+0x003c54	?	struct map8_desc flash_torque_loss_vs_rpm_2dmap8;
+0x003c66	?	struct map8_desc flash_octane_level_torque_loss_3dmap8;
+0x003d24	?	struct map8_desc flash_coolant_torque_loss_2dmap8;
+
+0x003d42	?	struct map8_desc flash_alternator_torque_loss_3dmap8;
+0x003dcc	?	struct map8_desc flash_torque_cut_spark_retard_conversion_3dmap8;
+
+0x003f9c	?	struct map8_desc flash_fuel_film_negative_compensation_unusable_vs_coolant_prestart_2dmap8;
+
+0x00403c	?	struct map16_desc flash_isv_to_target_throttle_position_2dmap16;
+0x0040ac	?	struct map8_desc flash_mivec_forced_parking_icomp_vs_coolant_drive_2dmap8;
+0x0040b8	?	struct map8_desc flash_mivec_forced_parking_icomp_vs_coolant_neutral_2dmap8;
+0x0040c4	?	struct map8_desc flash_mivec_forced_parking_icomp_acon_vs_coolant_drive_2dmap8;
+0x0040d0	?	struct map8_desc flash_mivec_forced_parking_icomp_acon_vs_coolant_neutral_2dmap8;
+
+0x00416e	?	struct map8_desc flash_knock_base_correction_vs_rpm_2dmap8;
+0x00418e	?	struct map8_desc flash_knock_base_engine_noise_vs_rpm_2dmap8;
+
+0x0041be	?	struct map8_desc flash_cold_start_fast_runtime_threshold_init_vs_coolant_2dmap8;
+
+0x004397	18	uint8_t flash_spark_advance_cranking[18];
+
+0x0043fa	?	struct map8_desc flash_midrange_acceleration_sparkc_retard_base_vs_load_low_gear_2dmap8;
+
+0x004458	?	struct map8_desc flash_coolant_x_accel_correction_high_gear_3dmap8;
+0x004530	?	struct map8_desc flash_low_gear_apps_limit_vs_rpm_2dmap8;
+
+0x00458e	?	struct map8_desc flash_spark_angle_high_octane_mivec_advance_max_3dmap8;
+0x0046ec	?	struct map8_desc flash_spark_angle_low_octane_mivec_advance_max_3dmap8;
+0x00484a	?	struct map8_desc flash_warmup_retard_mivec_advance_max_3dmap8;
+0x0049a8	?	struct map8_desc flash_spark_angle_high_octane_mivec_advance_target_3dmap8;
+0x004b06	?	struct map8_desc flash_spark_angle_low_octane_mivec_advance_target_3dmap8;
+0x004c64	?	struct map8_desc flash_warmup_retard_mivec_advance_target_3dmap8;
+0x004dc2	?	struct map8_desc flash_spark_angle_high_octane_mivec_advance_min_3dmap8;
+0x004f20	?	struct map8_desc flash_spark_angle_low_octane_mivec_advance_min_3dmap8;
+0x00507e	?	struct map8_desc flash_warmup_retard_mivec_advance_min_3dmap8;
+0x0051dc	?	struct map8_desc flash_high_octane_fuel_3dmap8;
+0x0052e0	?	struct map8_desc flash_low_octane_fuel_3dmap8;
+
+0x00547c	18	uint8_t flash_engine_braking_rpm_corrections_alt_unused[18];
+0x00548e	18	uint8_t flash_engine_braking_rpm_corrections[18];
+
+0x0054ac	?	struct map8_desc flash_warmup_fuel1_3dmap8;
+0x005532	?	struct map8_desc flash_warmup_fuel2_3dmap8;
+0x0055b8	?	struct map8_desc flash_warmup_fuel_correction_vs_rpm_2dmap8;
+
+0x0055de	?	struct map8_desc flash_midrange_acceleration_sparkc_retard_base_vs_load_high_gear_2dmap8;
+
+0x0055ec	0x18	struct map8_desc flash_start_ipw_vs_coolant_2dmap16;
+0x005604	0x28	struct map8_desc flash_fuel_level_sensor_2dmap16;
+0x00562c	4	uint8_t flash_fuel_trim_index_maf_sensor_flow_thresholds[4] = { 0x08, 0x06, 0xff, 0xff };
+0x005630	4	uint8_t flash_oxygen_trim_step_idle_rpm_thresholds[4] = { 0x2a, 0x28, 0x23, 0x21 };
+
+0x0060f0	0x10a	struct map16_desc flash_maf_scaling1_2dmap16;
+0x0061fa	?	struct map16_desc flash_default_maf_scaled1_base_vs_rpm_2dmap16;
+0x00621c	?	struct map8_desc flash_maf_charge_max_base_vs_rpm_2dmap16;
+0x006240	0x10	struct map8_desc flash_maf_low_tps_vs_rpm_2dmap8;
+0x006250	12	struct map8_desc flash_maf_baro_pressure_compensation_2dmap8;
+0x00625c	?	struct map8_desc flash_injection_efficiency_vs_rpm_x_load_3dmap8;
+0x006394	0x10	struct map8_desc flash_accelerator_lean_limit_2dmap8;
+0x0063a4	0x12	struct map8_desc flash_ipw_addition_load_delta_min_vs_load_2dmap8;
+0x0063b6	0x12	struct map8_desc flash_ipw_addition_load_delta_min_fast_throttle_vs_load_2dmap8;
+0x0063c8	0x12	struct map8_desc flash_ipw_subtraction_load_delta_min_vs_load_2dmap8;
+0x0063da	0x12	struct map8_desc flash_ipw_subtraction_load_delta_min_fast_throttle_vs_load_2dmap8;
+
+0x00640c	?	struct map8_desc flash_wastegate_correction_vs_tps_limit_2dmap8;
+0x006418	?	struct map8_desc flash_wastegate_duty_vs_load_error_correction_2dmap8;
+
+0x00649e	?	struct map8_desc flash_ipw_safe_change_load_threshold_vs_rpm_2dmap8;
+
+0x0064bc	14	struct map8_desc flash_load_limit_vs_rpm_2dmap8;
+0x0064ca	12	struct map8_desc flash_maf_limits_coolant_compensation_2dmap8;
+0x0064d6	12	struct map8_desc flash_maf_limits_iat_compensation_2dmap8;
+
+
+#- 0x006246	0x100	uint16_t flash_maf_scaling1_u16a[128];
+#- 
+#- 0x00634a	0x22	struct map16_desc flash634a_map16 = { .type = 2, .offset = 0, .source = 0xcd36, data = {0xffff} };//axis c1b0
+#- 0x00636c	0x22	struct map16_desc flash634a_map16 = { .type = 2, .offset = 0, .source = 0xcd36, data = {?} };//axis c1b0
+#- 0x00638e	0x12	struct map8_desc flash638e_map8 = { .type = 2, .offset = 0, .source = 0xcd36, data = {0xff };//axis c1b0
+#- 0x0063a0
+#- 
+#- 0x00654a	15	struct map8_desc flash654a_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&axis_target_cd3a), data = {0x80} };//axis b3e8
+#- 0x006559	1	/*padding*/
+#- 0x00655a	13	struct map8_desc flash655a_map8 = { .type = 2, .offset = 0, .source = 0xcd36, data = {?} };//axis c28c
+#- 0x006567	1	/*padding*/
+#- 0x006568	0x15	struct map8_desc flash6568_map8 = { .type = 2, .offset = 0, .source = 0xcd36, data = {?} };//axis c2a4
+#- 0x00657d	1	/*padding*/
+#- 0x00657e
+
+0x0087c2	?	struct map8_desc flash_apps_limiting_stabilizer_upper_limit_low_gear_neutral_3dmap8 = {};
+0x008888	?	struct map8_desc flash_apps_limiting_stabilizer_upper_limit_high_gear_neutral_3dmap8 = {};
+#- 
+#- 0x00a71c	0x85	struct map8_desc flasha71c_map8 = { .type = 3, .offset = 0, .sourcex = 0xcd36, .sourcey = 0xcd38, .sizex = 14, data = {?} };//axis x=c26a, y=c6f4
+#- 0x00a7a1	1	/*padding*/
+#- 0x00a7a2	0x85	struct map8_desc flasha7a2_map8 = { .type = 3, .offset = 0, .sourcex = 0xcd36, .sourcey = 0xcd38, .sizex = 14, data = {?} };//axis x=c26a, y=c6f4
+#- 0x00a827	1	/*padding*/
+#- 0x00a828	11	struct map8_desc flasha828_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&flash_iat_axisb86c_target), data = {?} };//axis b86c
+#- 
+#- 0x00a96a	0x3a	struct map16_desc flasha96a_map16 = { .type = 2, .offset = 0, .source = 0xcd36, data = {?} };//axis cc16
+#- 0x00a9a4	12	struct map8_desc flasha9a4_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&coolant_temp_filtered_axis_target_cd3e), data = {?} };//axis b80c
+#- 0x00a9b0	12	struct map8_desc flasha9b0_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&coolant_temp_filtered_axis_target_cd3e), data = {?} };//axis b80c
+#- 
+#- 0x00aa5a	0x14	struct map8_desc flashaa5a_map8 = { .type = 2, .offset = 0, .source = 0xcd36, data = {?} };//axis c45a - rpm
+#- 
+#- 0x00afea	0x22a	struct map16_desc flashafea_map8 = { .type = 3, .offset = 0, .sourcex = 0xcd36, .sourcey = 0xcd38, .sizex = 16, data = {?} };//axis x=ba86, y=bb3c
+#- 0x00b214
+
+0x00b19e	?	struct axis_desc flash_apps_limiting_stabilizer_rpm_axis = { };
+
+#- 
+#- 0x00b3e8	0x1c	struct axis_desc flashb3e8_axis = { .target = to_ramptr(&axis_target_cd3a), .source = to_ramptr(&engine_rpm), .size = 11, .data = {?} };
+#- 0x00b404	0x20	struct axis_desc flashb404_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&fp12708_u16), .size = 13, .data = {?} };
+#- 0x00b424	0x1a	struct axis_desc flashb424_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&fp12708_u16), .size = 10, .data = {?} };
+#- 0x00b43e	0x1a	struct axis_desc flashb43e_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&fp12708_u16), .size = 10, .data = {?} };
+#- 0x00b458	0x16	struct axis_desc flashb458_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&fp12230_u16), .size = 8, .data = {?} };
+#- 
+#- 0x00b502	0x14	struct axis_desc flashb502_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&adc_byte_power_source), .size = 7, .data = {?} };
+#- 0x00b516	0x18	struct axis_desc flashb516_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&adc_byte_power_source), .size = 9, .data = {?} };
+#- 0x00b52e	0x16	struct axis_desc flashb52e_axis = { .target = to_ramptr(&axis_target_cd38), .source = to_ramptr(&adc_byte_power_source), .size = 9, .data = {?} };
+#- 
+#- 0x00b80c	0x16	struct axis_desc flashb80c_axis = { .target = to_ramptr(&coolant_temp_filtered_axis_target_cd3e), .source = to_ramptr(&coolant_temp_filtered), .size = 8, .data = {?} };
+#- 0x00b822	0x18	struct axis_desc flashb822_axis = { .target = to_ramptr(&coolant_temp_filtered_axis_target_cd40), .source = to_ramptr(&coolant_temp_filtered), .size = 9, .data = {?} };
+#- 0x00b83a	0x1c	struct axis_desc flashb83a_axis = { .target = 0xcd36, .source = to_ramptr(&coolant_temp_filtered), .size = 11, .data = {?} };
+#- 0x00b856	0x16	struct axis_desc flashb856_axis = { .target = 0xcd36, .source = 0xcd30, .size = 8, .data = {?} };
+#- 0x00b86c	0x14	struct axis_desc flash_iat_axisb86c = { .target = to_ramptr(&flash_iat_axisb86c_target), .source = to_ramptr(&iat), .size = 7, .data = {?} };
+#- 0x00b880	0x18	struct axis_desc flashb880_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&engine_rpm), .size = 9, .data = {?} };
+#- 
+#- 0x00ba2a	0x16	struct axis_desc flashba2a_axis = { .target = to_ramptr(&coolant_temp_filtered_axis_target_cd44), .source = to_ramptr(&coolant_temp_filtered), .size = 8, .data = {?} };
+#- 
+#- 0x00ba86	0x26	struct axis_desc flashba86_axis = { .target = 0xcd36, .source = 0xce5c, .size = 16, .data = {?} };
+#- 0x00baac	0x20	struct axis_desc flashba2a_axis = { .target = 0xcd36, .source = 0xce5c, .size = 13, .data = {?} };
+#- 0x00bacc
+#- 
+#- 0x00bb3c	0x28	struct axis_desc flashbb3c_axis = { .target = 0xcd38, .source = 0xcd30, .size = 17, .data = {?} };
+#- 0x00bb64	0x1a	struct axis_desc flashbb64_axis = { .target = 0xcd38, .source = 0xcd30, .size = 10, .data = {?} };
+#- 0x00bb7e	0x22	struct axis_desc flashbb7e_axis = { .target = 0xcd38, .source = 0xce90, .size = 14, .data = {?} };
+#- 
+#- 0x00bc12	0x28	struct axis_desc flashbc12_axis = { .target = 0xcd36, .source = 0xcd30, .size = 17, .data = {?} };
+#- 0x00bc3a
+#- 
+#- 0x00bc6c	0x70	struct axis_desc flashbc6c_axis = { .target = 0xcd36, .source = 0xcd30, .size = 53, .data = {?} };
+#- 0x00bcdc
+#- 
+#- 0x00bd2c	0x18	struct axis_desc flashbd2c_axis = { .target = to_ramptr(&coolant_temp_filtered_axis_target_cd46), .source = to_ramptr(&coolant_temp_filtered), .size = 9, .data = {?} };
+#- 0x00bd44
+#- 
+#- 0x00bdb8	0x1a	struct axis_desc flashbdb8_axis = { .target = to_ramptr(&axis_target_cd36), .source = to_ramptr(&engine_rpm), .size = 10, .data = {?} };
+#- 0x00bdd2	0x22	struct axis_desc flashbdd2_axis = { .target = to_ramptr(&axis_target_cd38), .source = to_ramptr(&axis_source_cd30), .size = 14, .data = {?} };
+#- 
+#- 
+#- 0x00c012	0x20	struct axis_desc flashc012_axis = { .target = 0xcd36, .source = 0xce5c, .size = 13, .data = {?} };
+#- 
+#- 0x00c1b0	0x22	struct axis_desc flashc1b0_axis = { .target = 0xcd36, .source = to_ramptr(&engine_rpm), .size = 14, .data = {?} };
+#- 0x00c1d2	0x12	struct axis_desc flashc1d2_axis = { .target = 0xcd36, .source = to_ramptr(&baro_pressure), .size = 6, .data = {?} };
+#- 0x00c1e4	0x28	struct axis_desc flashc1e4_axis = { .target = 0xcd36, .source = to_ramptr(&engine_rpm), .size = 17, .data = {?} };
+#- 0x00c20c
+#- 
+#- 0x00c26a	0x22	struct axis_desc flashc26a_axis = { .target = 0xcd36, .source = 0xce5c, .size = 14, .data = {?} };
+#- 0x00c28c	0x18	struct axis_desc flashc28c_axis = { .target = 0xcd36, .source = 0xcd30, .size =  9, .data = {?} };
+#- 0x00c2a4	0x28	struct axis_desc flashc2a4_axis = { .target = 0xcd36, .source = 0xcd30, .size = 17, .data = {?} };
+#- 0x00c2cc
+#- 
+#- 0x00c358	0x12	struct axis_desc flashc358_baro_pressure_axis = { .target = 0xcd36, .source = to_ramptr(&baro_pressure), .size =  6, .data = {?} };
+
+0x00c3fe	?	struct axis_desc flash_apps_limiting_stabilizer_driver_ttp_axis = { };
+
+#- 0x00c36a
+#- 
+#- 0x00c45a	0x26	struct axis_desc flashc45a_axis = { .target = 0xcd36, .source = to_ramptr(&engine_rpm), .size = 16, .data = {?} };
+#- 
+#- 0x00c6f4	0x18	struct axis_desc flashc6f4_axis = { .target = 0xcd38, .source = 0xcd30, .size =  9, .data = {?} };
+#- 0x00c70c
+#- 
+#- 0x00cc16	0x3a	struct axis_desc flashcc16_axis = { .target = 0xcd36, .source = 0xd3a4, .size =  26, .data = {?} };
+#- 0x00cc50
+#- 
+#- 0x00ce3c	0x20	struct map8_desc *flashce3c_multimap8u16[8] = { 0x2b14 };
+
+0x00cdf2	2	uint16_t flash_asc_canrx_error_counter_threshold = 10;
+0x00cdf4	2	uint16_t flash_target_torque_output_scaled_limit_step = 20;
+
+0x00cdf8	10	struct flash_map8_description flash_torque_correction_vs_baro_pressure_2dmap8 = {};
+0x00ce02	12	struct flash_map8_description flash_torque_correction_vs_iat_2dmap8 = {};
+0x00ce0e	?	struct flash_map8_description flash_coolant_x_accel_correction_low_gear_3dmap8 = {};
+0x00cee8	2	uint16_t flash_tomo_rpm_check_min = 0x80;//500 rpm
+0x00ceea	2	uint16_t flash_tomo_shaft_rpm_max_with_low_engine_rpm = 0x100;//1k rpm
+0x00ceec	2	uint16_t flash_tomo_rpm_check_max_error = 0x80;
+0x00ceee	2	uint16_t flash_tomo_asc_torque_request_min = 0;
+0x00cef0	2	uint16_t flash_tomo_asc_torque_request_max = 0x1fff;
+0x00cef2	2	uint16_t flash_tomo_torque_scale_up_base = 219;
+0x00cef4	2	uint16_t flash_tomo_apps_effective_range = 614;
+
+0x00cefa	2	uint16_t flash_tomo_apps_smoothing_rate = 0;
+0x00cefc	2	uint16_t flash_tomo_apps_neutral = 205;
+
+0x00cf0a	2	uint16_t flash_tomo_asc_torque_request_trust_error_threshold = 500;
+0x00cf0c	2	uint16_t flash_tomo_error_threshold = 1000;
+0x00cf0e	2	uint16_t flash_tomo_rpm_error_threshold = 500;
+0x00cf10	2	uint16_t flash_tomo_airflow_error_threshold = 600;
+0x00cf12	2	uint16_t flash_tomo_accel_pedal_trust_error_threshold = 500;
+0x00cf14	2	uint16_t flash_tomo_asc_spark_retard_error_threshold = 500;
+0x00cf16	2	uint16_t flash_tomo_airflow_trust_check_engine_runtime_min = 50;
+0x00cf18	2	uint16_t flash_tomo_engine_start_decay_step = 50;
+0x00cf1a	2	uint16_t flash_tomo_limp_rpm_apps_neutral_max_off = 307;
+0x00cf1c	2	uint16_t flash_tomo_limp_rpm_apps_neutral_max_on = 358;
+0x00cf1e	2	uint16_t flash_tomo_limp_rpm_apps_nonneutral_max_off = 358;
+0x00cf20	2	uint16_t flash_tomo_limp_rpm_apps_nonneutral_max_on = 768;
+0x00cf22	2	uint16_t flash_tomo_check_tps_power_min = 819;
+0x00cf24	2	uint16_t flash_tomo_check_throttle_power_min = 0;
+0x00cf26	2	uint16_t flash_tomo_check_power_min = 109;
+0x00cf28	2	uint16_t flash_accel_pedal_sub_test_10b_min = 41;
+0x00cf2a	2	uint16_t flash_accel_pedal_sub_test_8b_min = 10;
+0x00cf2c	2	uint16_t flash_init_accel_pedal_sub_test_decay = 10;
+0x00cf2e	2	uint16_t flash_accel_pedal_sub_test_ok_counter_min_stable = 9;
+0x00cf30	2	uint16_t flash_tomo_idle_target_throttle_position_max = 307;
+0x00cf32	2	uint16_t flash_tomo_can_asc_rx_error_age_max = 20;
+0x00cf34	2	uint16_t flash_init_tomo_asc_keepalive_decay = 500;
+0x00cf36	2	uint16_t flash_init_tomo_asc_request_valid_decay = 500;
+0x00cf38	2	uint16_t flash_init_tomo_asc_data_decay = 38000;
+0x00cf3a	2	uint16_t flash_tomo_apps_pressed_down_on = 228;
+0x00cf3c	2	uint16_t flash_tomo_apps_pressed_down_off = 225;
+
+0x00cf4e	2	uint16_t flash_init_apps_main_ineuc_guarded = 0xff;
+
+0x00cf52	2	uint16_t flash_tomo_taflow_reset_base_emargin = 13;
+0x00cf54	2	uint16_t flash_init_tomo_fuel_cut_detection_delay = 400;
+
+0x00cf7a	2	uint16_t flash_taflow_light_load_max = 0x58;
+
+0x00cf8a	2	uint16_t flash_init_aps_faults_transition_decay = 220;
+
+0x00cf92	2	uint16_t flash_tomo_taflow_low_mload_emargin = 0;
+
+0x00cf9a	2	uint16_t flash_baro_plausible_max = 0xe4;
+0x00cf9c	2	uint16_t flash_baro_plausible_min = 0x64;
+0x00cf9e	2	uint16_t flash_baro_plausibility_power_min = 0x6d;
+0x00cfa0	2	uint16_t flash_tomo_inverse_cylinder_volume = 196;
+
+0x00cfa6	2	uint16_t flash_tomo_maf_fault_check_ignition_age_min = 3000;
+0x00cfa8	2	uint16_t flash_init_tomo_maf_ok_decay = 100;
+0x00cfaa	2	uint16_t flash_tomo_maf_ok_min = 44;
+0x00cfac	2	uint16_t flash_tomo_maf_ok_max = 250;
+0x00cfae	2	uint16_t flash_tomo_gear_shift_transition_rate_inc_step = 1;
+0x00cfb0	2	uint16_t flash_tomo_gear_shift_transition_rate_dec_step = 1;
+0x00cfb2	2	uint16_t flash_init_tomo_gear_shift_counter = 2;
+
+0x00cfd6	2	uint16_t flash_tomo_deceleration_gear_shift_low_gear_limit_correction = 0xff;
+0x00cfd8	2	uint16_t flash_tomo_deceleration_gear_shift_high_gear_limit_correction = 0xff;
+0x00cfda	2	uint16_t flash_tomo_deceleration_gear_shift_high_gear_ratio_threshold = 0x7d9;
+0x00cfdc	2	uint16_t flash_tomo_geceleration_gear_shift_reset_positive_apps_delta = 1;
+0x00cfde	2	uint16_t flash_tomo_gear_shift_reset_vsf_on = 40;
+0x00cfe0	2	uint16_t flash_tomo_gear_shift_reset_vsf_off = 24;
+0x00cfe2	2	uint16_t flash_init_tomo_deceleration_gear_shift_decay = 3;
+0x00cfe4	2	uint16_t flash_init_tomo_clutch_engaged_decay = 0;
+
+
+
+
+#- 
+#- 0x00d0a4	10	struct map8_desc flashd0a4_baro_pressure_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&flash_baro_pressure_axisc358_target), data = {?} };//axis c358
+#- 0x00d0ae	0x0b	struct map8_desc flashd0ae_iat_map8 = { .type = 2, .offset = 0, .source = to_ramptr(&flash_iat_axisb86c_target), data = {?} };//axis b86c
+#- 0x00d0b9	1	-
+#- 0x00d0ba
+#- 
+#- 0x00d1de	2	uint16_t flashd1de_u16 = 20;//used in 64f68
+#- 
+#- 0x00d292	0x1ea	struct map16_desc flashd292_map16 = { .type = 3, .offset = 0, .sourcex = 0xe514, .sourcey = 0xe518, .sizex = 16, data = {?} };//axis x=d998, y=d9be
+#- 0x00d47c
+#- 
+#- 0x00d978	0x20	struct axis_desc flashd978_axis = { .target = 0xe514, .source = 0xe38c, .size =  13, .data = {?} };
+#- 0x00d998	0x26	struct axis_desc flashd998_axis = { .target = 0xe514, .source = 0xe38c, .size =  16, .data = {?} };
+#- 0x00d9be	0x24	struct axis_desc flashd9be_axis = { .target = 0xe518, .source = 0xe3bc, .size =  15, .data = {?} };
+#- 0x00d9e2
+
+0x00dc34	2	uint16_t flash_adc_full_tps_power_smooth_rate = 1;
+0x00dc36	2	uint16_t flash_adc_byte_throttle_power_smooth_rate = 1;
+
+0x00dc3a	2	uint16_t flash_tps_scaling = 1023;
+0x00dc3c	4	struct range flash_throttle_power_range1 = { .first = 0x222, .second = 0x233 };
+
+0x00dc6e	2	uint16_t flash_throttle_duty_min = 2;
+
+0x00dc7e	2	uint16_t flash_init_throttle_duty_const_max = 0x3ff;
+
+0x00dca4	4	struct range flash_throttle_power_range2 = { .first = 0x1b5, .second = 0x1c5 };
+
+0x00dcb2	2	uint16_t flash_init_tps_min_ok_decay_slow =	60;
+0x00dcb4	2	uint16_t flash_init_tps_min_main_error_decay =	10;
+0x00dcb6	2	uint16_t flash_init_tps_max_ok_decay_slow =	60;
+0x00dcb8	2	uint16_t flash_init_tps_max_main_error_decay =	10;
+0x00dcba	2	uint16_t flash_init_etc_ttp_bound_instability_decay = 200;
+0x00dcbc	2	uint16_t flash_init_tps_main_mismatches_tps_sub_and_target_decay = 200;
+0x00dcbe	2	uint16_t flash_init_tps_main_mismatch_sub_and_target_error_delay = 10;
+0x00dcc0	2	uint16_t flash_init_tps_main_match_sub_delay_fast = 10;
+0x00dcc2	2	uint16_t flash_init_tps_sub_max_ok_decay_slow = 60;
+
+0x00dce4	2	uint16_t flash_tps_main_min_threshold =		41;
+0x00dce6	2	uint16_t flash_tps_main_max_threshold =		0x3d7;
+0x00dce8	2	uint16_t flash_tps_main_max_threshold_off =	0x200;
+
+0x00dd18	2	uint16_t flash_throttle_duty_max = 0x3ff;//1023
+
+0x00dd40	2	uint16_t flash_tps_main_adapt_current_closed_min = 61;
+0x00dd42	2	uint16_t flash_tps_main_adapt_current_closed_max = 143;
+0x00dd44	2	uint16_t flash_tps_main_adapt_current_open_min = 0x333;
+0x00dd46	2	uint16_t flash_tps_main_adapt_current_open_max = 0x378;
+0x00dd48	2	uint16_t flash_init_tps_main_adapt_current_closed_valid = 102;
+0x00dd4a	2	uint16_t flash_init_tps_sub_adapt_current_closed_valid = 26;
+0x00dd4c	2	uint16_t flash_init_tps_main_adapt_open = 0x39a;
+0x00dd4e	2	uint16_t flash_init_tps_sub_adapt_open = 0xe6;
+0x00dd50	2	uint16_t flash_init_tps_min_ok_decay_fast =	10;
+0x00dd52	2	uint16_t flash_init_tps_max_ok_decay_fast =	10;
+
+0x00dd66	2	uint16_t flash_tps_sub_adapt_current_closed_min = 15;
+0x00dd68	2	uint16_t flash_tps_sub_adapt_current_closed_max = 36;
+
+0x00dd7c	4	struct range flash_throttle_power_range3 = { .first = 0x148, .second = 0x158 };
+
+0x00dd9e	2	uint16_t flash_tps_power_failure_on = 0x348;
+0x00dda0	2	uint16_t flash_tps_power_failure_off = 0x385;
+
+0x00ddc8	2	uint16_t flash_init_high_target_throttle_position_abserror_decay = 0;
+0x00ddca	2	uint16_t flash_default_ttc_error_to_current_scaling = 0x0800;
+0x00ddcc	2	uint16_t flash_default_ttc_proportional_to_integral_scaling = 0x0c80;
+0x00ddce	2	uint16_t flash_default_ttc_speed_to_current_scaling = 0x0333;
+0x00ddd0	2	uint16_t flash_init_ttc_speed_to_current_scaling_higherror = 0x2666;
+0x00ddd2	2	uint16_t flash_ttc_fixed_part_negative = 41;
+0x00ddd4	2	uint16_t flash_ttc_fixed_part_positive = 41;
+0x00ddd6	2	uint16_t flash_ttc_integral_part_correction_throttle_duty_max = 0x3ff;
+0x00ddd8	2	uint16_t flash_ttc_integral_part_hires_to_lores_scaling = 0x40;
+
+0x00dde2	2	uint16_t flash_target_throttle_position_abserror_threshold = 4;
+
+0x00ddea	2	uint16_t flash_ttc_error_to_current_scaling_max_inc_higherror = 1;
+0x00ddec	2	uint16_t flash_ttc_error_to_current_scaling_max_dec_higherror = 0x800;
+0x00ddee	2	uint16_t flash_ttc_proportional_to_integral_scaling_max_inc_higherror = 1;
+0x00ddf0	2	uint16_t flash_ttc_proportional_to_integral_scaling_max_dec_higherror = 0xa00;
+
+0x00ddfa	2	uint16_t flash_throttle_position_smooth_rate = 1;
+
+
+0x00de22	2	uint16_t flash_throttle_position_min = 0;
+0x00de24	2	uint16_t flash_throttle_position_max = 4095;
+
+0x00df26	0x20da	/*Unused area*/
+/*Code area*/
+/*sio dma protocol*/
+0x010000	0x40	void sio_dma_reset();
+0x010040	0x760	void sio_dma_mode_select(uint16_t p0);
+0x0107a0	0xb8	void sio_dma_try_wait_session_init(uint16_t port);
+0x010858	0x140	void mut_log_reply_std(uint16_t port, uint16_t format);
+0x010998	0x1ec	void sio_dma_reply_2fu16_4fu8_2vu8(uint16_t port);
+0x010b84	0x18c	void sio_dma_reply_2fu16_3vu16(uint16_t port);
+0x010d10	0x6ec	void sio_dma_code10_mode_select(uint16_t port, uint16_t port_flags);
+0x0113fc	0x19c	void sio_dma_reply_free_form_log(uint16_t port);
+0x011598	0x2ac	void sio0_dma_fill_free_form_log(uint16_t port);
+0x011844	0x6c	uint8_t *get_mut_pointer(uint16_t req);
+/*Data area*/
+0x0118b0	0x18	uint16_t *sio2_unused_fast_log_entries_ptru16a[6];
+0x0118c8	0x1c	uint16_t *flash_sio4_tx_ptru16a[7];
+/*can related const data*/
+0x0118e4	0x40	uint8_t *flash_can0_slot_cnt[16];
+0x011924	0x40	uint8_t *flash_can0_slot_sid0[16];
+0x011964	0x40	uint8_t *flash_can0_slot_sid1[16];
+0x0119a4	0x40	uint8_t *flash_can0_slot_eid0[16];
+0x0119e4	0x40	uint8_t *flash_can0_slot_eid1[16];
+0x011a24	0x40	uint8_t *flash_can0_slot_eid2[16];
+0x011a64	0x40	uint8_t *flash_can0_dlc[16];
+0x011aa4	0x40	uint8_t *flash_can0_data0[16];
+0x011ae4	0x40	uint8_t *flash_can0_data1[16];
+0x011b24	0x40	uint8_t *flash_can0_data2[16];
+0x011b64	0x40	uint8_t *flash_can0_data3[16];
+0x011ba4	0x40	uint8_t *flash_can0_data4[16];
+0x011be4	0x40	uint8_t *flash_can0_data5[16];
+0x011c24	0x40	uint8_t *flash_can0_data6[16];
+0x011c64	0x40	uint8_t *flash_can0_data7[16];
+0x011ca4	0x40	uint16_t *flash_can0_timestamp[16];
+0x011ce4	0x10	uint8_t flash_init_can0_cnt[16];
+0x011cf4	0x10	uint8_t flash_init_can0_sid0[16];
+0x011d04	0x10	uint8_t flash_init_can0_sid1[16];
+0x011d14	0x10	uint8_t flash_init_can0_eid0[16];
+0x011d24	0x10	uint8_t flash_init_can0_eid1[16];
+0x011d34	0x10	uint8_t flash_init_can0_eid2[16];
+0x011d44	0x10	uint8_t flash_init_can0_dlc[16];
+0x011d54	2	uint16_t flash_spi_delay = 1;
+
+0x011d5c	2	uint16_t flash_init_peripherals_decay = 20;
+
+0x011d60	0x38	struct flash_map8_description *flash_modon_ac_icomp_base_min_3dmap8a[14];
+0x011d98	8	struct flash_map8_description flash_modon_warmup_ac_icomp_base_min_3dmap8a[2];
+0x011da0	?	struct smth { uint8_t offset; uint8_t mask; uint16_t (call*)(); } flash11da0_structa[];
+0x011e68	?	struct smth { uint8_t offset; uint8_t mask; uint16_t (call*)(); } flash11e68_structa[];
+
+0x011ed8	0x64	struct { uint8_t offset; uint16_t mask } flash_mut_actuator_test_map[24];
+0x011f3c
+
+0x012008	0x20	uint16_t *flash_apps_limiting_stabilizer_low_limit_decrements_ptru16a[8];
+0x012028	0x10	struct map16_description flash_deceleration_gear_shift_low_limit_stage_thresholds_ptr2dmap16a[4];
+0x012038	0x204	struct {} flash12038_struct;
+0x01223c	0x204	struct {} unused_bank2_structalike_12038;
+0x012440	0x1d4	struct {} flash_cylinder_head;
+0x012614	0x1d4	struct {} flash_cylinder_head_bank2;
+0x0127e8	0x10	uint16_t *flash_normalized_crank_acceleration_prev_pointers[4];
+0x0127f8	0x10	uint16_t *flash_normalized_crank_acceleration_pointers[4];
+
+0x0128b8	0x20	uint16_t flash_mil_effective_dtc_mask[16];
+0x0128d8	0x20	uint16_t flash_obd_stored_effective_dtc_mask[16];
+0x0128f8
+
+0x012948	0x220	uint16_t flash_trouble_code_table[17][16];
+0x012b68	?	struct ? flash_obd_std_freeze_frame_description;
+0x012bf0	0x20	uint16_t flash_dtc_index_to_mask[16];
+0x012c10	0x400	uint32_t flash_crc_table[256];
+0x013010	8	uint8_t flash13010_u8a[8];
+0x013018	0x14	struct sio_dma_description flash_sio_dma_descriptions[1];
+0x01302c	0x20	struct mut_log_std_format { uint16_t period; uint8_t format_id; uint8_t count; uint8_t element_size; } flash_mut_log_std_formats[4];
+0x01304c	8	uint16_t flash_sio_dma_free_form_log_periods[4];
+0x013054	4	uint8_t flash_sio_dma_free_form_log_ids[4] = { 0x51, 0x52, 0x53, 0x54 };
+
+0x0130ac	2	uint16_t flash_mut_variables_table_size = 476;
+
+0x01311c	0xab	struct map8_desc flash_coolant_temp_sensor_map  = { .type = 2, .offset = 40, .source = to_ramptr(coolant_temp_sensor_axis_target), data = {?} };
+0x0131c5	1	/*padding*/
+0x0131c6	0x154	struct axis_desc flash_coolant_temp_sensor_axis = { .target = to_ramptr(coolant_temp_sensor_axis_target), .source = to_ramptr(temp_axis_src), .size = 167, .data = {?} };
+0x01331c	0x8f	struct map8_desc flash_iat_sensor_map = { .type = 2, .offset = 40, .source = to_ramptr(iat_sensor_axis_target), data = {?} };
+0x0133a9	1	/*padding*/
+0x0133aa	0x11c	struct axis_desc flash_iat_sensor_axis = { .target = to_ramptr(iat_sensor_axis_target), .source = to_ramptr(adc_byte_iat), .size = 139, .data = {?} };
+#- 0x013626
+
+/*Code area*/
+0x013c18	/*not used*/
+0x013cfc	4	/*Unused area*/
+0x013d00	12	void trampoline_reset_rom_crc_checker();
+0x013d0c	0x10	void reinit_rom_checker_and_reset_fast_engine_model_counter();
+0x013d1c	0x2c0	void peripherals_init();
+0x013fdc	0x214	void peripherals_reinit();
+0x0141f0	4	void nop141f0();
+0x0141f4	0x10c	void update_gpinputs();
+0x014300	0x110	void update_fast_inputs();
+0x014410	0x18	uint16_t get_ig1();
+0x014428	0x18	uint16_t get_starter_input();
+0x014440	0x18	uint16_t get_p131_inv();
+0x014458	4	uint16_t return0_call14458();
+0x01445c	0x9c	void adc_convert_coolant_iat_baro_o2();
+0x0144f8	0x18	void adc_convert_maf();
+0x014510	0x28	void guarded_adc_convert_1();	//not used?
+0x014538	0x270	void adc_convert_accel_pedal();
+0x0147a8	0x18	void adc_convert_knock();
+0x0147c0	4	void nop14954();
+0x0147c4	0x0c	void adc_convert_mode_stub();
+0x0147d0	4	void nop14964();
+0x0147d4	0x2a0	void update_gpio_outputs();
+0x014a74	0x38	void update_fast_outputs();
+0x014aac	4	void nop14aac();
+0x014ab0	4	void nop14ab0();
+0x014ab4	0x38	void update_charging_system_out();
+0x014aec	0x30	void toggle_p61();
+0x014b1c	0x1c	void reset_p63();
+0x014b38	0x174	void implement_pwm_regulation_14b38();
+0x014cac	0x18	void update_tio5_duty();
+0x014cc4	0x18	void update_purge_control_solenoid_duty(uint16_t val, uint16_t tmax, uint16_t valmax);
+0x014cd8	0x5c	void system_break_interrupt_handler();
+0x014d34	0x50	void port_set_out(uint8_t port, uint32_t mask)
+0x014d84	0x54	void port_set_in(uint8_t port, uint32_t mask)
+0x014dd8	0x2c	uint8_t port_get_inout(uint8_t port)
+0x014e04	0x4c	void port_set_alt_mode(uint8_t port, uint32_t mask)
+0x014e50	0x4c	void port_set_gpio_mode(uint8_t port, uint32_t mask)
+0x014e9c	0x24	uint8_t port_get_mode(uint8_t port)
+0x014ec0	0x18	void update_mivec_valve_duty();
+0x014ed8	0x18	void atomic_set_fp12962();
+0x014ef0	0x18	void atomic_reset_fp12962();
+0x014f08	0x104	void knock_sensor_update_ksa_kti();
+/*rom crc checker*/
+0x01500c	0x50	uint32_t sumx8(void *ptr, uint32_t count);
+0x01505c	0xf0	void rom_crc_finalized_check();
+0x01514c	0x28	void reset_rom_crc_checker();
+0x015174	0x88	void rom_crc_checker_reinit();
+0x0151fc	0x50	uint32_t rom_crc_finalize(uint32_t val);
+0x01524c	0xb0	void rom_crc_check_step();
+/*adc*/
+0x0152fc	0x20	void adc_init();
+0x01531c	0x20	void adc_reinit();
+0x01533c	0x38	void adc_run(int ch, uint16_t *byte_result_ptr, uint16_t *full_result_ptr);
+0x015374	0xe8	uint16_t adc0_run_helper(unsigned channel);
+0x01545c	0xe8	uint16_t adc1_run_helper(unsigned channel);
+/*not used frequency maf functions*/
+0x015544
+0x0155cc
+0x0155f4
+0x0156a8
+0x015760
+0x0157b8
+/*fast engine model timer and idle*/
+0x0157c4	0x34	void fast_engine_model_timer_init();
+0x0157f8	0x2c	void fast_engine_model_timer_reinit_checked();
+0x015824	0x18	void fast_engine_model_time_reset_counter();
+0x01583c	0xb8	void tid1_interrupt_handler();
+0x0158f4	0x34	void idle_loop();
+0x015928	0x38	void heartbeat750();
+0x015960	0x2c	void mjto5_interrupt_handler();
+0x01598c	0xa4	void top_coil_init();
+0x015a30	0x30	void top_coil_reinit();
+0x015a60	0x200	void top_coil_sync_low(uint16_t mask, uint16_t deadline)
+0x015c60	0x200	void top_coil_sync_high(uint16_t mask, uint16_t deadline)
+0x015e60	0xec	void top_coil_stop(uint16_t mask);
+0x015f4c	0x11c	void top_coil_disable_high(uint16_t mask);
+0x0160b8	0x12c	void top_coil_disable_low(uint16_t mask);
+0x0161e4	0x38	void coil4_interrupt_handler();
+0x01621c	0x38	void coil2_interrupt_handler();
+0x016254	0x38	void coil2_interrupt_handler();
+0x01628c	0x38	void coil1_interrupt_handler();
+0x0162c4	0x78	uint32_t get_inactive_coils();
+0x01633c	0x18	uint16_t get_p140_inv();
+0x016354	0x18	uint16_t get_p142_inv();
+0x01636c	0x18	uint16_t get_p143_inv();
+0x016384	0x18	uint16_t get_p141_inv();
+0x01639c	0x60	void clock_init();
+0x0163fc	0xec	void clock_reinit();
+0x0164e8	0x60	void injector_fault_detector_init();
+0x016548	0x30	void injector_fault_detector_reinit();
+0x016578	0x54	uint16_t update_injectors_status_flags();
+0x0165cc	0x12c	void injectors_update_status_from_spi_reply(uint32_t status);
+0x0166f8	0x34	uint16_t get_reset_tinis3();
+0x01672c	0x34	uint16_t get_reset_tinis16();
+0x016760	0x34	uint16_t get_reset_tinis15();
+0x016794	0x90	void top4_tms0_init();//unknown
+0x016824	0xac	void top4_tms0_reinit();
+0x0168d0	0x68	uint8_t get_reset_tms0ct();
+/*injector timers*/
+0x016938	0xb4	void injector_timers_init();
+0x0169ec	0x60	void injector_timers_reinit_checked();
+0x016a4c	0x154	void injector_timers_update(uint16_t t, uint16_t mask);
+0x016ba0	0x14	void atomic_nop16ba0();//not used
+0x016bb4	4	void nop16bb4();//not used
+0x016bb8	0x5c	uint8_t get_active_injectors();
+/*knock sensor*/
+0x016c14	0xe0	void knock_sensor_init();
+0x016cf4	0x98	void knock_sensor_reinit();
+0x016d8c	0x80	void top_knock_sync_edge(uint16_t t)
+0x016e0c	0x80	void top_knock_sync_edge_checked(uint16_t t);
+0x016e8c	0x80	void top_knock_sync_edge2(uint16_t t);
+0x016f0c	0x80	void top_knock_sync_edge2_checked(uint16_t t);
+0x016f8c	0x38	void top_knock_stop_high();
+0x016fc4	0x38	void top_knock_stop_low();
+0x016ffc	0x20c	void knock_update_gain();//not decoded
+0x017208	0x184	void knock_update_bandpass_frequency();
+0x01738c	4	void nop1738c();
+0x017390	4	void nop17390();
+0x017394	4	void nop17394();
+0x017398	0x5c	void unused_call17398();
+0x0173f4	0x48	void unused_call173f4();
+0x01743c	0x78	void tio5_tod0_3_5_7_init();
+0x0174b4	0x58	void tio5_to0_3_5_7_reinit_checked();
+0x01750c	0x120	void implement_purge_control_solenoid_duty_regulation(uint16_t val, uint16_t tmax, uint16_t valmax);
+0x01762c	0x120	void implement_mivec_valve_duty_regulation(uint16_t val, uint16_t tmax, uint16_t valmax);
+0x01774c	0x128	void implement_tio5_duty_regulation(uint16_t val, uint16_t tmax, uint16_t valmax);
+0x017874	0x30	uint16_t get_reset_tod03ist();
+/*sio.c*/
+0x0178a4	0x98	void sio_with_dma_init();
+0x01793c	0x1d0	void sio_reinit()
+0x017b0c	0x10	void sio0_request_transmit();
+0x017b1c	0x18	void sio0_request_transmit_checked();
+0x017b34	0x64	void sio0_request_transmit_helper();
+0x017b98	0x130	void sio0_rx_interrupt_handler();
+0x017cc8	/*sio2_init? - not used*/
+0x017d3c	/*sio2_tx_init? - not used*/
+0x017d5c	/*sio2_tx_process? - not used*/
+0x017dac	0x20	void sio4_tx_init();
+0x017dcc	0x50	void sio4_tx_process();
+0x017e1c	0x70	void sio4_rx_process();
+0x017e8c	0x0c	void sio1_rx_interrupt_handler();
+0x017e98	0x68	void sio0_tx_dma_init(unsigned size, uint8_t *buffer);
+0x017f00	0x80	void sio0_rx_dma_init(uint8_t size,uint16_t addr,uint16_t high_rate);
+0x017f80	0x20	uint16_t sio0_is_tx_complete();
+0x017fa0	0x1c	uint16_t sio0_rx_errors_status();
+0x017fbc	0x20	uint16_t sio0_is_rx_active();
+0x017fdc	0x20	void sio0_dma_disable();
+0x017ffc	4	void nop17ffc();
+0x018000	0x50	void sio2_request_transmit(uint16_t count);
+0x018050	0x3c	void sio2_tx_interrupt_helper();
+0x01808c	0x50	void sio2_rx_interrupt_helper();
+0x0180dc	0xd0	void dma59_interrupt_handler_helper();
+0x0181ac	0x74	void sio2_rx_dma_init();
+0x018220	0xa0	void sio2_update_mode_sfr();
+0x0182c0	?	void tin17_init();
+0x0182ec	?	void tin17_reinit();
+0x018308	?	void camshaft_position_sensor_interrupt_handler();
+0x0183cc	0x0c	void reset_shaft_sensor_flags();
+0x0183d8	0x100	void shaft_position_sensor_init();
+0x0184d8	0x20	void shaft_position_sensor_reinit();
+0x0184f8	?	void crankshaft_position_sensor_interrupt_handler()
+0x0188a8	?	void shaft_period2_calc_extra(uint16_t tms1mr3, uint32_t tml0mr3);
+0x018974	?	void shaft_period1_calc_extra(uint16 tms1mr3, uint32_t tml0mr3);
+0x018a38
+0x018b18
+0x018bdc	4	void unused_nop18bdc();
+0x018be0	?	void gearbox_speed_sensor_init();
+0x018c0c	?	void gearbox_speed_sensor_reinit();
+0x018c28	?	uint16_t get_and_clear_gearbox_pulse_counter();
+0x018c48	?	void gearbox_pulse_check();
+0x018c90	8	uint16_t get_time_measure0();
+0x018c98	0x3c	void update_tms1_overflow_counter();
+0x018cd4	8	uint16_t get_tms1ct();
+0x018cdc	?	void atomic_nop18cdc();
+0x018cec	?
+0x018d14	0x54	void init_interrupt_levels();
+0x018d68	0x13c	void reinit_interrupt_levels();
+0x018ea4	0x5c	/*unused*/
+0x018f00	0x408	void interrupt_control_reset_checked()
+0x019308	4	void nop19508()
+0x01930c	0x64	void mjti3_interrupt_handler();
+0x019370	0x18	void mjti2_interrupt_handler();
+0x019388	0x14	void nops19588();
+0x01939c	0x18	void mjto4_interrupt_handler();
+0x0193b4	0x30	void mjto3_interrupt_handler();
+0x0193e4	0xa8	void mjto2_interrupt_handler();
+0x01948c	4	void nop1948c();
+0x019490	4	void nop19490();
+0x019494	4	void nop19494();
+0x019498	0x28	void dma59_interrupt_handler();
+0x0194c0	0x48	void sio23_interrupt_handler();
+0x019508	4	void nop19708();
+0x01950c	0x24	void tod0_interrupt_handler();
+0x019530	4	void nop19730();
+0x019534	4	void nop19734();
+0x019538	0x84	void shaft_position_sensor_interrupt_helper();
+0x0195bc	0x54	void reset_enable_top10();
+0x019610	0x64	void top10_checked_reinit();
+0x019674	0x2f8	can0_init()				?not decoded fully yet?
+0x01996c	?	can0_init_slot?(uint16_t slot)
+0x0197c0	0x114	can0_init_rx_slot(uint16_t slot)	decoded in can.c
+0x0198d4	0x10c	can0_init_tx_slot(uint16_t slot)	decoded in can.c
+0x0199e0	0xdc	can0_deinit_slot(uint16_t slot)		decoded in can.c
+0x019abc	0x174	void can0_reinit_checked();//not decoded
+0x019c30	0x214	uint16_t can0_check();//not decoded
+0x019e44	0x60	uint16_t can0_slot_check(uint16_t slot)
+0x019ea4	0x60	uint16_t can0_slot_check_sid(uint16_t slot)
+0x019f04	0x1f0	uint16_t can0_slot_tx_update(uint16_t slot, uint8_t d0, uint8_t d1, uint8_t d2, uint8_t d3, uint8_t d4, uint8_t d5, uint8_t d6, uint8_t d7);
+0x01a0f4	0x18c	uint16_t can0_slot_rx_get_data(uint16_t slot, uint8_t *data)
+0x01a280
+0x01a358	0xac	void can0_check_bus_state();
+0x01a404	0x14	void can0_store_error_counters();
+0x01a418	0x0c	uint16_t get_sda();
+0x01a424	0x1c	void scl_up();
+0x01a440	0x1c	void scl_down();
+0x01a45c	0x1c	void sda_up();
+0x01a478	0x1c	void sda_down();
+0x01a494	0x14	void sda_in();
+0x01a4a8	0x14	void sda_out();
+0x01a4bc	0x30	void i2c_init();
+0x01a4ec	0x18	void i2c_reinit();
+0x01a504
+
+/*not used functions block - wasted spark?*/
+
+0x01acdc	0x2c	void spi_init();
+0x01ad08	0x2c	void spi_reinit();
+0x01ad34	0x1dc	uint8_t spi_transfer_byte(uint8_t cslow,uin8_t bit_reorder,uint8_t txbyte);
+0x01af10	0x14	void spi_delay(uint16_t delay);
+0x01af24	0xe8	void throttle_hardware_init();
+0x01b00c	0x48	void throttle_hardware_reinit();
+0x01b054	/*not used function*/
+0x01b100	0x58	void update_p35();
+0x01b158	0x18	uint16_t throttle_get_fs();
+0x01b170	0x28	void throttle_set_d2();//not used
+0x01b198	0x28	void throttle_reset_d2();//not used
+0x01b1c0	0x34	uint16_t is_throttle_power_ok();//not used
+0x01b1f4	0x108	void adc_convert_tps();
+0x01b2f8	0x28	void adc_convert_throttle_power();
+0x01b320	4	void nop1b520();
+0x01b324	0x1bc	void throttle_state_check();//enables/disables throttle depending on variables conditions
+0x01b4e0	0x5c	void update_throttle_duty();//controls TIO4 and TIO6
+0x01b53c	0xd4	void throttle_watch_timer_check_or_reinit();
+0x01b610	0x0c	void reset_fp5806_f16();
+0x01b61c	0x28	void set_p87();
+0x01b644	0x28	void reset_p87();
+0x01b66c	4	void nop1b66c();
+0x01b670	4	void nop1b670();
+0x01b674	4	void nop1b674();
+0x01b678	4	void nop1b678();
+0x01b67c	4	/*padding*/
+0x01b680	0x34	void reset_interrupt_handler();
+0x01b6b4	0x60	void external_interrupt_handler();//save registers, store imask, switch stack, execute interrupt handler, restore state, rte
+0x01b714	0x04	trap_handler();//jumps to reset_interrupt_handler
+0x01b718	0x0c	address_exception_handler();//stores fault address at start of memory and loops
+0x01b724	0x0c	/*unused*/
+0x01b730	0x14	write_g32(uint32_t *dest, uint16_t value)
+0x01b744	0x14	uint16_t max16(uint16_t l, uint16_t r)
+0x01b758	0x14	uint16_t min16(uint16_t l, uint16_t r)
+0x01b76c	0x2c	uint32_t *memory_check(uint32_t *start, uint32_t *end)	returns 0 for success, faulty address for error
+0x01b798	0x3c	void s_array_sub16(uint16_t *start, uint16_t *end, uint16_t val)
+0x01b7d4	0x38	void s_array_add16(uint16_t *start, uint16_t *end, uint16_t val)
+0x01b80c	0x04	-				-
+0x01b810	?	void main();
+
+0x01b920	0x40	void step_check_used_stack_memory();
+0x01b960	0x30	void init_stack_memory_counter();
+0x01b990	?	void init_application();
+0x01ba84	?	void reset_corrections_trims_etc();
+0x01baf8	?	uint16_t is_reset_corrections_trims_etc_needed();
+0x01bcfc	?	void application_reset_call1bcfc();
+0x01bd9c	?	uint16_t is_reset_corrections_trims_etc_needed_subcondition();
+0x01bde0	?	uint16_t get_long_term_trims_crc();
+0x01be38	8	/*padding*/
+0x01be40	0x18	void peripherals_init_with_decay();
+0x01be58	?	void peripherals_reinit_and_detect_stall();
+0x01becc	4	/*padding*/
+0x01bed0	?	void reset_accel_pedal_tps_corrections()
+
+0x01c22c	?	void base_engine_state_update();
+0x01c314	0x18c	void update_multimode_selection();
+0x01c4a0	?	void conditional_reset_rotation_ages();
+0x01c4e8	0x48	void update_fp7998_unused();
+0x01c4f4	?	void update_discrete_inputs();
+0x01c544	?	void update_and_process_alt_inputs();
+0x01cd80	?	/*dead code*/
+0x01ce70	?	/*dead code*/
+0x01ceb0	?	void regenerate_ignition_input_related_decays();
+0x01cf80	?	void update_first_start_flag();
+0x01cfc4	0x58	void convert_slow_sensors();
+0x01d01c	0x88	void calc_coolant_temp();
+0x01d0a4	0xf4	void calc_adc_full_coolant_temp_filtered();
+0x01d198	0xac	void map_coolant_temp();
+0x01d244	0x88	void calc_iat();
+0x012cc4	0x48	void map_iat();
+0x01d314	0x60	void calc_baro_pressure()();
+0x01d374	0x4c	uint16_t baro_pressure_sensor_failure();//1 for bounds failure, 0 for ok
+0x01d3c0	0x2c	void update_sensor_faultsb6()
+0x01d3ec	0xa0	void update_tps_apps_delta();
+0x01d48c	0x64	void update_tps_main_correction();
+0x01d4f0	0xa4	uint16_t is_tps_main_correction_enabled();
+0x01d594	?	void update_transient_aggregate_load_compensation();
+0x01d780	?	uint16_t is_transient_aggregate_load_cleared();
+0x01d7e8	0x30	void calculate_engine_rpm_and_delta();
+0x01d818	0x70	void reset_engine_rpm_state();
+0x01d888	0xbc	void calc_engine_rpm();
+0x01d944	0x114	void calc_engine_rpm_delta();
+0x01da58	0x2c	void update_fp12686();
+0x01da84	0x8c	void update_maf_sensor_state();
+0x01db10	0x2c	void calculate_engine_load();
+0x01db3c	0x308	void update_air_mass_compensations_and_limits();
+0x01de44	0x50	void reset_load_source_on_stall();
+0x01de94	0x358	void update_maf_smooth_rate();
+0x01e1ec	0x34	void update_load_source_value_delta();
+0x01e220	0x16c	void update_engine_loads();
+0x01e38c	0x78	void reset_maf_load_calc();
+0x01e404	0x14c	void update_vehicle_speed_frequency();
+0x01e550	?	void update_fp12468_u16_fp12466_u16_baro_dependant();
+0x01e58c	0xe4	void update_data_age_and_decays();
+0x01e670	0x108	void process_ac_pressure_sensor();
+0x01e778	?	void disabled_call1e778();
+0x01e824	0x328	void update_aps_faults();
+0x01eb4c	0x1b8	void conditionally_set_etc_motor_feedback_flag2();
+0x01ed04	0x110	void update_accel_speed_limit_correction();
+0x01ee14	0x104	void update_accel_pedal_corrections();
+0x01ef18	0xa4	uint16_t is_accelerator_pedal_correction_enabled();
+0x01efbc	0x10	void torque_base_calculations();
+0x01efcc	?	void probably_torque_output_calculation();
+0x01f1f4	0x2c	uint16_t get_combustion_torque_output_high_octane(uint16_t load);
+0x01f220	0x58	uint16_t get_octane_level_torque_loss();
+0x01f278	0x28	uint16_t get_meteo_torque_correction();
+0x01f2a0	0x18	uint16_t get_rpm_torque_loss();
+0x01f2b8	0x100	void update_target_torque_output_base();
+0x01f3b8	0x15c	void update_mivec_spark_state();
+0x01f514	0x54	void update_fp12476_b0_b1();
+0x01f568	0x7c	void update_low_gear_flags_and_apps_limit();
+0x01f5e4	0xb0	void copy_shaft_cont_executed_flags();
+0x01f694	0x70	void update_adc_full_coolant_temp_filtered_after_sensor_glitch(uint16_t p0)
+0x01f704	0x44	void update_coolant_temp_prestart_warmup_spark_retard_restriction();
+0x01f748	0x98	void useless_update_etc_motor_feedback_trouble();
+0x01f7e0	?	/*unused fun*/
+0x01f814	?	/*unused*/
+0x01f97c	?	/*unused*/
+0x01f9e4	?	/*unused*/
+0x01f9fc	?	/*unused*/
+0x01fa78	?	/*unused*/
+0x01faa4	?	/*unused fun*/
+0x01facc	0x5c	void update_maf_x_iat_mapped();
+0x01fb28	0x3c	void calc_iat_u32_smoothed();
+0x01fb64	0xd4	void calc_iat_gradient_maf_compensation();
+0x01fc38	?	void update_asc_and_overrev_target_torque_output_limits();
+0x01fe38	?	void update_asc_torque_controlled_spark_retard();
+0x01ffc8	?	void update_cantx_asc_predicted_torque_output();
+0x020058	0x7c	void update_asc_feedback_torque_min_max();
+0x0200d4	?	uint16_t torque_scale_up(uint16_t x, uint16_t x0, uint16_t y0);
+0x02014c	?	void update_asc_limiting_flags_extra();
+0x0201ec	?	void probably_asc_validation();
+0x020254	?	void asc_invalid_module_validation();
+0x020294	?	void asc_error_counter_validation();
+0x020318	?	void asc_general_limp_validation();
+0x020358	?	void asc_call20358();
+0x0203ec	?	void asc_request_crc_validation();
+0x020488	?	void asc_keepalive_validation();
+0x0204ec	?	void asc_torque_request_value_validation();
+0x020530	0x5c	void asc_contradiction_check();
+0x02058c	?	uint16_t get_target_torque_output_scaled_limit();
+0x0205bc	?	uint16_t call205bc();//limited increment to translate target_torque_output_scaled_limit -> target_torque_output_scaled
+0x020624	?	uint16_t odd_u16(uint16_t ch);
+0x020654	?	void update_running_overrev_protection_state();
+0x020818	0xf4	void calc_tps_airflow_maps()
+0x02090c	0x180	void tps_airflow_related_update_transient_flags();
+0x020a8c	4	/*padding*/
+0x020a90	?	void reset_call20a90();
+0x020ad4	?	void reset_call20ad4();
+0x020b00	0x90	void main_topcall20b00();
+0x020b90	?	void update_copy_run_state_and_open_loop_flags_extra_prev();
+0x020bbc	?	void update_fp12512();
+0x020bf4	?	void update_standing_boost_condition();
+0x020c80	?	void update_fp12502b6();
+0x020cc8	?	uint16_t impure_condition_call20cc8();
+0x020d54	0x30	void update_engine_running_cruise_with_normal_voltage();
+0x020d84	0x50	uint16_t is_engine_running_with_normal_voltage();
+0x020dd4	0x50	void update_oxygen_trim_step_idle_rpm_flag();
+0x020e24	0xb0	void update_reset_fp12420b15();
+0x020ed4	0x3c	void update_fuel_trim_index();
+0x020f40	0x24	void update_rolling_fuel_trim_index();
+0x020f64	?	void update_current_gear_flags_and_fp12502b8t10();
+0x020fbc	?	void update_current_gear_flags();
+0x021028	4	uint16_t return0_call21028();
+0x02102c	?	uint16_t condition_call2102c();
+0x0210b0	?	uint16_t condition_call210b0();
+0x0210f8	?	void update_reset_fp12486b7();
+0x021168	?	void update_reset_fp12486b8();
+0x0211bc	?	void update_modulated_displacement();
+0x021204	?	uint16_t is_modulated_displacement_enabled();
+0x0213e0	?	uint16_t is_standing_engine_braking_rpm_shift();
+0x021418	0x40	void update_high_rpm_engine_braking();
+0x021458	0xec	uint16_t is_high_rpm_engine_braking();
+0x021544	?	update_reset_fp9174b15();
+0x021598	?	void update_high_speed_cruise_mode();
+0x021628	?	void update_reset_fp12482b1b2();
+0x0216d4	?	void update_etc_and_overboost_fuel_cut_flag();
+0x021988	?	void update_run_state_flags_extra();
+0x0219b0	?	void update_engine_not_running_switch();
+0x0219e0	?	uint16_t is_engine_not_running();
+0x021a04	0x30	void update_engine_cranking_flag();
+0x021a34	0xdc	uint16_t is_engine_cranking();
+0x021b10	0x150	void update_vehicle_protection_limit_engagements();
+0x021c60	0x174	uint16_t disabled_protective_fuel_cut_condition_call21c60();
+0x021dd4	0x30	uint16_t is_camshaft_fault_detected();
+0x021e04	0x6c	uint16_t is_overload_detected();
+0x021e70	0x98	void get_updated_speed_limit_engagement();
+0x021f08	4	uint16_t nop21f08(uint16_t p0);
+0x021f0c	0x1c4	uint16_t get_safe_engine_braking_rpm();
+0x0220d0	0x220	uint16_t alternative_unused_safe_engine_braking_rpm();
+0x0222f0	?	uint16_t is_low_load_engine_braking_active(uint16_t rpm);
+0x022498	?	uint16_t is_apps_neutral_engine_braking(uint16_t rpm);
+
+0x0224fc	?	void update_run_state_flags_load_sensor_fault();
+0x022528	?	void update_run_state_flags_closed_loop_switch_extra();
+0x02260c	?	void update_o2_front_heatup_delays();
+0x0226f4	?	void update_engine_load_conditions_closed_loop_restriction();
+0x022730	?	void update_closed_loop_load_flags();
+0x02292c	?	void update_tps_open_loop();
+0x0229b4	?	uint16_t is_closed_loop_engine_conditions_restriction();
+
+0x022e6c	?	uint16_t is_closed_loop_allowed(const cylinder_bank *ptr)
+
+0x022ed8	?	void resolve_run_state_flags_incompatibilities();
+
+0x023194	?	void update_mivec_forced_parking();
+0x02324c	?	void update_cranking_low_fuel_first_cold_start();
+0x0232e8	0x5c	void update_odometer();
+0x023344	0xa8	void presumably_useless_call23344();
+0x0233ec	?	void update_crawling_state();
+0x023588	?
+0x0235e8	8	/*padding*/
+0x0235f0	12	void trampoline_reset_ltft();
+0x0235fc	0x20	void reset_ltft();
+0x02361c	0x74	void reset_engine_short_state();
+0x023690	0x44	void ipw_calcs();
+0x0236d4	0x68	void calc_afr_and_nominal_load_ipw();
+0x02373c	0x10	void update_afr_precalcs();
+0x02374c	0x28	void update_afr_corrections();
+0x023774	0x50	void regen_heavy_mode_delay();
+0x0237c4	0x40	void update_pot_afr_control();
+0x023804	0x84	uint16_t is_pot_afr_control_enabled();
+0x023888	0x4c	void lean_spool_control();
+0x0238d4	0x130	uint16_t is_lean_spool_active();
+0x023a04	0xa0	void update_very_hot_start_flag(const struct cylinder_bank *ptr);
+0x023aa4	0x34	void overheat_protection_enrichment_control();
+0x023ad8	0x40	uint16_t is_overheat_protection_enrichment_enabled();
+0x023b18	0x50	void update_knock_enrichment_switch();
+0x023b68	12	void trampoline_update_fuel_map_target_afr();
+0x023b74	?	void update_fuel_map_target_afr();
+0x023c7c	?	uint16_t get_fuel_map_load_source();
+0x023ca4	?	void update_injector_scaling_to_volume_correction();
+0x023ce0	?	void update_cranking_vars_call23ce0();
+0x023db4	?	void regen_decays_x1_cranking_decay1_update_timer();
+0x023e04	?	void regen_decays_x1_cranking_decay2_update_timer();
+0x023e54	12	void update_fp12270();
+0x023e60	12	void update_fp12250();
+0x023e6c	0x208	void update_afr_target_final(const struct cylinder_bank *ptr);
+0x024074	0x60	uint16_t lean_spool_correction(uint16_t p0);
+0x0240d4	?	void update_afr_derival1(const struct cylinder_bank *ptr);
+0x024150	0x18	void update_oxygen_trims_feedback();
+0x024168	0x10	void update_oxygen_trim_precalcs();
+0x024178	?	void update_oxygen_trim_change_steps();
+0x0242a8	?	uint16_t get_oxygen_trim_map_index();
+0x02431c	0x20	void conditional_regen_decays_x1_fuel_trim_update_disabled();
+0x02433c	?	uint16_t is_fuel_trim_update_disabled();
+0x024488	?	void update_some_oxygen_trims(const struct cylinder_bank *ptr);
+0x0244bc	?	void update_short_oxygen_trim_bounds(const struct cylinder_bank *ptr);
+0x024530	0x260	void update_stft_loop_enter_value(const struct cylinder_bank *ptr);
+0x024790	?	uint16_t get_stft_reinit_command(const struct cylinder_bank *ptr);
+0x024834	?	void update_oxygen_trim_step_scaling_flags(const struct unknown_struct *ptr);
+0x024944	0x13c	void update_o2_offset_trim(const struct head *ptr);
+0x024a80	?	void update_long_term_fuel_trim(const struct head *ptr);
+0x024b6c	?	void update_current_ltft_off_stft(const struct head *ptr);
+0x024c74	?	uint16_t is_update_long_trim_allowed(const struct head *ptr);
+0x024cb0	?	void update_tps_based_ipw();
+0x024d48	?	void update_cranking_ipw();
+0x024ee8	?	uint16_t get_spark_cooldown_cranking_ipw_compensation();
+0x024f20	?	uint16_t get_cranking_ipw_const128_compensation_call24f20();
+0x024f4c	?	uint16_t spark_count_cranking_ipw_compensation();
+0x025084	0x38	void update_injector_latency();
+0x0250bc	?	void reset_some_ipw_on_faults();
+0x0250ec	?	void reset_ipw_on_stall();
+0x025178	0x14	void update_ipw_add_sub_vars();
+0x02518c	?	void update_ipw_addition_vars();
+0x025314	?	void update_ipw_subtraction_base_and_load_threshold();
+0x0253c4	?	void update_ipw_add_sub_thresholds();
+0x025430	?	void update_tps_opening_ipw();
+0x0254bc	?	void ipw_update_call254bc();
+0x0257e8	?	void update_cold_start_fast_runtime_flag();
+0x025894	?	void update_ipw_int_vars();
+0x0259e8	0xf8	void update_diag_fuel_trims();
+0x025ae0	0x168	void update_fuel_film_compensations();
+0x025c48	0x88	void update_fuel_map_to_closed_loop_transition(const struct cylinder_bank *ptr);
+0x025cd0	0x20	void regen_decays_x2_fp13390_u16();
+0x025cf0	0x20	void reset_octane_level_and_knock_calc_flags();
+0x025d10	0x98	void reset_spark_advance();
+0x025da8	0x7c	void reset_knock_signal_averaging();
+0x025e24	0x34	void spark_and_knock_control();
+0x025e58	12	void update_engine_load_iat_compensated8_copy();
+0x025e64	0x38	void update_throttle_spark_load_compensation_load_threshold();
+0x025e9c	?	void update_spark_fix_flag();
+0x025ed0	0x20	uint16_t is_spark_fixed_at_5btdc();
+0x025ef0	?	void knock_control();
+0x025f64	?	void trampoline_call25da8_on_stall();
+0x025f7c	?	void update_knock_flags_or_reset_knock_sum();
+0x025fcc	?	uint16_t knock_sum_reset_precondition()
+0x026040	0x48	void update_knock_full_sensitivity_flag();
+0x026088	0xf0	uint16_t is_knock_full_sensitivity_enabled();
+0x026178	0x68	void update_knock_dynamics_vars();
+0x0261e0	0x80	uint16_t is_knock_dynamics_enabled();
+0x026260	?	void update_knock_related_flags_extra();
+0x026324	?	void update_knock_related_rpm_cross_flags();
+0x02644c	0xd0	void update_octane_level_calculated();
+0x02651c	0x78	uint16_t octane_level_update_precondition(uint16_t unused);
+0x026594	0x40	void update_octane_level();
+0x0265d4	0x40	void regen_knock_rpm_accel_cooldown();
+0x026614
+
+0x026860	0x40	void update_running_spark_assist_state();
+0x0268a0	?	uint16_t is_running_spark_assist_enabled();
+0x026944	0x30	void update_low_rpm_idling();
+0x026974	?	void is_low_rpm_idling();
+0x0269f4	?	void unused_reset_fp12054_5000();
+0x026a04	?	void update_spark_advance();
+0x026c7c	?	void update_spark_advance_final();
+0x026c98	?	uint16_t get_spark_engine_load();
+0x026cf4	?	uint16_t get_engine_load_iat_compensated();
+0x026d20	?	uint16_t warmup_and_smth_spark_correction_call26d20(uint16_t p0);
+0x027294	?	uint16_t als_spark_correction(uint16_t p0);
+0x02730c	?	uint16_t pure_condition_call2730c();
+0x02733c	?	uint16_t get_updated_base_spark_advance_limit();
+0x02745c	?	uint16_t disable_spark_advance_limit_call2745c();
+0x027488	0x14	uint16_t coolant_temp_spark_compensation();
+0x02749c	0x1c	uint16_t baro_pressure_ignition_compensation_unused();
+0x0274b8	?	uint16_t iat_high_load_spark_compensation();
+0x0275a4	?	uint16_t return0_update_fp12054b15();
+0x0275f4	?	uint16_t probably_idle_spark_correction();
+0x027774	?	uint16_t get_updated_probably_hot_engine_start_spark_compensation();
+0x027804	?	uint16_t nop_spark_compensation27804();
+0x027810	0x15c	uint16_t spark_spool_advance_limit();
+0x02796c	?	void rescale_spark_advance();
+0x0279b4	?	void update_knock_sum_max_source();
+0x0279d8	0x48	void update_coil_dwell_mappings();
+0x027a20	0x2c	void update_diag_spark_advance();
+0x027a4c	0x44	void update_knock_base_components();
+0x027a90	0x44	uint16_t get_apps_non_neutral_spark_compensation();
+0x027ad4	?	uint16_t get_mapped_spark_advance();
+0x027c90	?	void update_cold_start_to_running_spark_advance_apprx_rate();
+0x027cf4	?	void update_midrange_aceleration_main_vars();
+0x027d8c	?	/*dead fun*/
+0x027e7c	0x38	void useless_regen_knock_related_coolant_temp_low_decay();
+0x027eb4	0x1c	void update_knock_sum_max_vs_coolant();
+0x027ed0
+
+0x02815c	?	void update_coolant_temp_idle_compensation_extra();
+0x0281a8	?	void reset_some_corr_on_stall_call281a8();
+0x0281d8	?	void reset_st_idle_corr();
+0x02822c	?	void update_target_idle_rpm();
+
+0x0286b0	?	void update_active_steering_idle_compensation();
+0x0286f4	?	void disabled_update_active_steering_idle_compensation();
+
+0x0288c8	0xb0	void update_at_driveoff_idle_compensation();
+0x028978	?	void update_alternator_idle_compensation();
+0x028ab4	?	void ac_on_calc28ab4();
+0x028ba8	?	void multiregen_idle_mode_decay();
+0x028ea0	0x14	void regen_idle_mode_delay(uint16_t val);
+0x028eb4	0x14	void regen_decays_x1_fp13892_u16(uint16_t val);
+0x028ec8	12	void reset_idle_stepper_value_source_max();
+0x028ed4	4	uint16_t nop28ed4(uint16_t p0);
+0x028ed8	?	void update_icomp_cranking();
+0x028f70	0x1c	void update_icomp_min_spark_spool();
+0x028f8c	0x10	void reset_fp11796b6();
+0x028f9c	?	void decay_step_icomp_min_spark_spool();
+0x029040	?	uint16_t get_init_icomp_min_spark_spool_decay();
+0x02909c	0x34	void update_apps_fault_idling();
+0x0290d0	0x40	uint16_t is_apps_fault_idling();
+0x029110	0x188	void regen_icomp_min_spark_spool_on_apps_nonneutral();
+0x029298	4	void nop29298();
+0x02929c	?	void disabled_update_ac_off_transient_idle_compensation();
+0x029300	?	void reset_fp11714_fp11794b7();
+0x029318	?	void reset_fp11796b8();
+0x029328	0x30	void update_icomp_baro();
+0x029358	?	void update_extreme_rpm_drop_idle_compensation();
+0x0294f4	?	uint16_t is_extreme_rpm_drop();
+0x0295fc	?	void regenerate_fans_disabled_decay();
+0x029618	?	void update_rpm_dip_idle_compensation();
+0x029710	0xd0	void update_low_coolant_idle_compensation();
+0x0297e0	0x98	void update_isv_resets();
+0x029878	0x34	void regen_reset_and_reset_st_idle_corr(uint16_t p0);
+0x0298ac	0x40	void update_isv_at_load_sensor_fault();
+0x0298ec	0x54	uint16_t is_sas_active();
+0x029940	0x80	void sas_correction();
+0x0299c0	?	void call299c0();
+0x029a58	?	void call29a58();
+0x029aa4	0x14	uint16_t is_cranking_mode();
+0x029ab8	?	void cranking_mode_idle_control();
+0x029acc	?	void cranking_or_stall_icomp_calc();
+0x029afc	?	void update_acoff_idle_boundary();
+0x029b70	?	void cranking_and_idle_call29b70();
+0x029bec	?
+0x029c08	?	uint16_t pure_call29c08(uint16_t p0);
+0x029c88	?	void stall_mode_idle_control();
+0x029ca8	?	uint16_t is_idle_standing_mode();
+0x029e5c	?	void idle_mode_idle_control();
+0x029e78	?	void runtime_icomp_calc();
+0x02a174	?	uint16_t get_updated_idle_comp_base();
+0x02a2b8	?	uint16_t get_updated_ac_idle_comp_base_min();
+0x02a5f0	?	void unused_call2a5f0();
+0x02a6ec	?
+0x02a740	?	uint16_t get_updated_hot_cranking_idle_compensation();
+0x02a7f8	?	uint16_t return0_call2a7f8();
+0x02a828	?	uint16_t get_active_steering0();
+0x02a860	?	uint16_t get_engine_braking_idle_compensation0();
+0x02a8cc	?	uint16_t scaled_alternator_idle_compensation();
+0x02a8e4	?	uint16_t get_fan_related0();
+0x02a91c	4	uint16_t return0_call2a91c();
+0x02a920	?	uint16_t return0_call2a920();
+0x02a94c	?	void conditionally_update_st_idle_corr();
+0x02a9c4	?	uint16_t is_idle_corr_update_enabled();
+0x02ab04	?	void update_st_idle_corr();
+0x02aca8	?	uint16_t get_lt_idle_corr();
+0x02ace4	?	void conditionall_update_lt_idle_corr();
+0x02ad18	?	uint16_t is_lt_idle_corr_update_enabled();
+0x02adb8	?	void update_lt_idle_corr();
+0x02ae84	?	void nonidle_mode_idle_control();
+0x02aefc	?	uint16_t get_st_idle_corr_lores();
+0x02af38	?	uint16_t get_st_idle_corr_hires();
+
+0x02afcc	?	void update_unknown_idle_valve_position_correction();
+
+0x02b080	0x1c	void copy_idle_stepper_values();
+0x02b09c	0x474	void map_isv_to_etc_extra_smth();
+0x02b510	0x59c	void update_gear_shift_limits();
+0x02baac	0xa4	void update_apps_limiting_stabilizer_flags();
+0x02bb50	0x46c	void update_warmup_progression_regression_extra();
+0x02bfbc	12	void trampoline_check_lt_idle_corr_ac_extra();
+0x02bfc8	0x2a0	void check_lt_idle_corr_ac_extra();
+0x02c268	0x30	void reset_icomp_cloudy_limit_on_apps_neutral();
+0x02c298	0x9c	uint16_t brakes_release_idle_correction(uint16_t p0);
+0x02c334	0xd4	void update_torque_base_throttle_position_call2c334();
+0x02c408	0x64	void update_target_throttle_position_asc_processed();
+0x02c46c	0x18c	uint16_t uint16_t get_torque_target_throttle_position(uint16_t p0,uint16_t p1);
+0x02c5f8	0x38	uint16_t get_loss_compensated_torque_scaled_down(uint16_t p0);
+0x02c630	0x30	uint16_t get_target_throttle_position_main(uint16_t torque, uint16_t rpm);
+0x02c660	0x3c	void running_overrev_limit_target_throttle_position();
+0x02c69c	0x1c	uint16_t get_running_overrev_protection_target_throttle_position();
+0x02c6b8	0x24	uint16_t get_loss_compensated_torque(uint16_t p0);
+0x02c6dc	4	/*padding*/
+0x02c6e0	?	void reset_mtc_base_and_cam_parking();
+
+0x02c820	?	void update_support_outputs();
+0x02c89c	?	void update_fp12928b7();
+0x02c8d0	?	uint16_t pure_condition_call2c8d0();
+0x02c908	?	void update_fp12928b11();
+0x02c93c	?	uint16_t impure_condition_call2c93c();
+0x02c9e0	?	void call2c9e0();
+0x02cba8	8	/*padding*/
+0x02cbb0	?	void update_gpio1b1();
+0x02cc04	?	uint16_t pure_condition_call2cc04();
+/*boost_control.c*/
+0x02cc30	0x28	void boost_control();
+0x02cc58	0x280	void update_boost_control_flags();
+0x02ced8	0xac	uint32_t calc_wastegate_duty();
+0x02cf84	0x11c	void update_wastegate_duty_error(uint32_t base_duty);
+0x02d0a0	0x50	void update_boost_target_load();
+0x02d0f0	0xbc	void wastegate_solenoid_duty_update(uint32_t base_duty);
+0x02d1ac	4	/*padding*/
+0x02d1b0	?	update_load_output_pwm_duty();
+0x02d208	8	/*padding*/
+0x02d210	0x6c	void update_fp11684b8b9();
+0x02d27c	4	/*padding*/
+0x02d280	?	void update_fuel_pressure_solenoid_flag();
+0x02d30c	?	uint16_t is_fuel_pressure_solenoid_enabled();
+0x02d408	8	/*padding*/
+0x02d410	?	void reset_gpio1b6();
+0x02d420	?	void uncalled_call2d420();
+0x02d4e0	?	void update_als_flags();
+0x02d5f0	?	void update_externally_visible_engine_state();
+0x02da30	0x2c	void mivec_subcontrol();
+0x02da5c	?	void mivec_related_call2da5c(const struct head *ptr);
+0x02dd44	?	void head_calc_and_update_mivec_valve_duty(const struct cylinder_head *ptr);
+0x02e024	?	void update_mivec_target_and_limits();
+0x02e0c4	?	void mivec_call2e0c4(const struct head *ptr);
+0x02e168	?	void mivec_related_call2e168(const struct head *ptr);
+
+0x02e3b0	?	void cond_reset_engine_runtime();
+0x02e3f8	?	void update_debug_flags();
+0x02e6a4	?	void update_semipersistent_diagnostic_request_flags();
+0x02e85c	?	void some_tests_call2e85c();
+0x02e964	?	void slow_test_run();
+0x02eaa0	?	void update_slow_test_index(uint16_t inc);
+0x02eb30	0x58	uint16_t maf_sensor_fault_detection();
+0x02eb88	4	uint16_t return2_call2eb88();
+0x02eb8c	?	uint16_t crankshaft_position_sensor_fault_detection();
+0x02ec00	0x60	uint16_t camshaft_position_sensor_fault_detection();
+0x02ec60	?	uint16_t vehicle_speed_sensor_fault_detection();
+0x02ed28	?	uint16_t injector_fault_slow_test();
+0x02ed80
+0x02ed8c	4	uint16_t return1_call2edc8();
+0x02edcc	4	uint16_t return1_call2edcc();
+0x02edd0	0a4	uint16_t coolant_temp_sensor_fault_detection();
+0x02ee74	0x20	uint16_t generator_field_terminal_fault_detection();
+0x02ee94	?	uint16_t knock_sensor_fault_detection();
+0x02eec8	?	uint16_t iat_sensor_fault_detection();
+0x02eee0	0x30	uint16_t tps_fault_detection();
+0x02ef10	0x38	uint16_t baro_pressure_sensor_fault_detection();
+0x02ef48	?	uint16_t return1_by_const_call2ef48();
+
+0x02f060	0x1c	uint16_t tps_power_fault_detection();
+0x02f07c	0x1c	uint16_t throttle_return_spring_fault_detection();
+0x02f098	0x268	void probably_some_power_faults_detection();
+0x02f300	0x50	void update_spark_fixed_error_flag();
+0x02f350	0x178	void resolve_disabled_tests_or_clear_on_request();
+0x02f4c8	0xb4	void reset_call2f4c8();
+0x02f57c	0x158	void update_mil();
+0x02f6d4	0x1dc	uint16_t debug_mil_condition();
+0x02f8b0	0x38	uint16_t critical_mil_flash();
+0x02f8e8	8	/*padding*/
+0x02f8f0	0x168	void update_sio0_protocol();
+0x02fa58	0xd4	void sio0_fast_model_call();
+0x02fb2c	0x3b8	void sio0_reply_mut2();
+0x02fee4	0x44c	uint16_t mut_request_data_or_actuators(uint16_t p0);
+0x030330	0x68	uint16_t mut2_get_u16_data(uint16_t p0);
+0x030398	0x60	uint16_t mut_actuator_test_reset_condition();
+0x0303f8	0x1c	void reset_mut_actuator_test_state();
+0x030414	0x408	void sio0_5baud_init_step();
+0x03081c	0x164	void implement_sio0_diagnostic_flags2_resets();
+0x030980	?	void sio0_reply_proto20_default_data();
+0x030a04	?	void sio0_fill_buffer_default_data();
+0x030b4c	?	uint16_t mut_eerpom_area_reset_request(uint16_t p0, uint16_t p1_unused);
+0x030c38	8	/*padding*/
+0x030c40	?	void update_sio0_mut_protocol()
+0x030f38	?	void sio_dma_fast_model_session_init_or_reply_smth();
+0x03102c	?	void sio_dma_reply_from_shaft();
+0x0310b4	4	uint16_t nop310b4(uint16_t p0);
+0x0310b8	?	uint16_t test_substitute_knock_base_engine_noise(uint16_t p0);
+0x0310f0	?	uint16_t test_disable_knock_sum_spark_correction(uint16_t p0);
+0x03110c	?	uint16_t test_substitute_spark_advance_int(uint16_t p0);
+0x031198	?	uint16_t test_substitute31198(uint16_t p0);
+0x0311bc	?	uint16_t test_substitute_air_charge_efficiency(uint16_t p0);
+0x0311f0	?	uint16_t test_substitute_afr_target_final(uint16_t p0);
+0x031258	?	uint16_t test_maf_disabled();
+0x03127c	?	uint16_t test_substitue_tps_load(uint16_t p0);
+0x0312b0
+0x0312b8
+0x0312e0	?	uint16_t test_substitute_maf_charge_max_base(uint16_t p0);
+0x031314	0x18	uint16_t test_substitute_injector_latency(uint16_t p0);
+0x03132c
+0x031344	?	uint16_t test_disable_o2_feedback();
+0x031380	?	uint16_t test_substitute_spark_advance_final(uint16_t p0);
+0x0313b8	0x18	uint16_t test_substitute_idle_spark_compensation(uint16_t p0);
+0x0313d0	?	uint16_t test_disable_knock_enrichment();
+0x0313ec	?	uint16_t test_substitute_octane_level(uint16_t p0);
+0x031410	0x18	uint16_t test_disable_knock_reduced_sensitivity_condition();
+0x031428	0x18	uint16_t test_substitute_icomp_min_spark_spool(uint16_t p0);
+0x031440	0x18	uint16_t test_substitute_init_icomp_min_spark_spool_decay(uint16_t p0);
+0x031458	0x18	uint16_t test_substitute_target_idle_rpm(uint16_t p0);
+0x031470	0x14	uint16_t test_disable_alternator_idle_compensation();
+0x031484	?	uint16_t test_condition31484();
+0x031498	?	uint16_t test_substitute_egr_duty(uint16_t p0);
+0x0314cc	?	uint16_t test_substitute_purge_control_duty(uint16_t p0);
+0x0314e4	0x18	uint16_t test_substitute_wastegate_duty(uint16_t p0);
+0x0314fc	?	uint16_t test_substitute_mivec_target_angle(uint16_t p0);
+0x0315d0	0x20	uint16_t test_disable_accel_pedal_shorted_power_and_switch_check();
+0x0315f0	?	uint16_t test_substitute_mivec_target_current(uint16_t p0);
+0x03168c	0x20	uint16_t test_disable_active_steering_switch();
+0x0316ac	?	uint16_t test_substitute_target_throttle_position_at_start(uint16_t p0);
+0x031748	0x38	uint16_t test_condition31748();
+0x031780	0x3c	void reset_knock_smoothing();
+0x0317bc	?	void shaft_and_coils_related_reset_call317bc();
+0x031890	?	void crank_stop_reset_call31890();
+0x0319fc	?	void shaft_period1_calc_extra_continuation();
+0x0321a8	?	void update_knock_sum_and_related_state();
+0x032a6c	?	uint16_t is_large_crankshaft_time_change();
+0x032ab4	?	void call32ab4(uint16_t p0);
+0x032af4	?	void update_sparkc_interrupt_corrected();
+0x032d20	?	uint16_t predict_spark_shaft_period(uint16_t shaft_period, uint16_t shaft_period_prev);
+0x032ddc	0x08	uint16_t get_coil_dwell(uint16_t p0);
+0x032de4	?	void reset_low_knock_state();
+0x032e10	?	void shaft_period2_calc_extra_continuation();
+0x03300c	0x20	void call3300c();
+0x03302c	?	void unused_call3302c();
+0x033070	0x38	void update_coil_dwell();
+0x0330a8	?	void calc_ipw_shaft_int(uint16_t p0);
+0x033ed4	?	void call33ed4();
+0x033f40	0x4c	void get_injector_duty_latency_compensated(uint16_t p0);
+0x033f8c	?	void injectors_update_duty_extra(uint16_t duty, uint16_t mask);
+0x0340ec	?	void deferred_injectors_update_duty_extra(uint16_t duty, uint16_t mask);
+0x03423c	0x10c	void injectors_fault_detection();
+0x034348	4	void nop34348();
+0x03434c	4	void nop3434c();
+0x034350	?	void coil_interrupt_handler(uint32_t mask);
+0x034428	?	uint16_t get_ipw_fuel_film_compensated(uint16_t ipw);
+0x03468c	?	void update_mivec_measured_angles(const struct *ptr);
+0x034964	?	void update_mivec_target_current(const struct head *ptr);
+0x035104	?	void regen_ignitionless_cam_rotation();
+0x03511c	?	void shaft_call3511c();
+0x035208	8	/*padding*/
+0x035210	0x90	void reset_tps_topen_apps_ineuc();
+0x0352a0	?	void reset_call352a0();
+0x035564	?	void calc_fast_engine_model();
+0x039008	?	void tps_trust_check(p0, uint16_t p1,p2,p3);
+0x0396ac	?	void maf_trust_check(uint16_t p0, uint16_t p1)
+0x03976c	?	void check_ttps_guarded();
+0x0397c8	?	void update_tps_main_return_spring_position_guarded_derivals();
+0x0398b0	0x50	void check_tps_main_ineuc_guarded();
+0x039900	0x50	void check_tps_sub_ineuc_guarded();
+0x039950	0x50	void check_tps_main_topen_guarded();
+0x0399a0	0x50	void check_tps_sub_topen_guarded();
+0x0399f0	0x50	void check_guarded_rom_crc_error_counter();
+0x039a40	0x74	void sio2_fill_ecu_throttle_command_to_etc_useless();
+0x039ab4	12	/*padding*/
+0x039ac0	?	void memory_check_and_sio2_subcon_init();
+0x039c60	?	void sio2_subcon_related_reset_call39c60();
+0x039c8c	?	void mjto5_odd_interrupt_sio2_control();
+0x03a1e8	0x18	void void mjto5_even_interrupt_sio2_error_recover();
+0x03a200	?	uint16_t sio2_error_recover();
+0x03a324	?	void sio2_tx_complete();
+0x03a3d4	?	void sio2_rx_complete();
+0x03a7e8	0x28	void sio2_rx_save_error_timestamp();
+0x03a810	?	void sio2_prepare_and_request_transmit();
+0x03a9d8	?	uint16_t sio2_request_frame(uint8_t p0, uint8_t p1);
+0x03aad4	?	uint16_t sio2_update_frame(uint8_t id, uint8_t data, uint8_t time);
+0x03ac10	?	void sio2_subcon_init_step(uint8_t continue_init);//or reset init?
+0x03ae34	0x48	uint16_t sio2_get_faults();
+0x03ae7c	?	uint16_t sio2_probably_complete_fault();
+0x03aea8	4	void nop3aea8();
+0x03aeac	4	/*file padding*/
+0x03aeb0	4	void nop3aeb0();
+0x03aeb4	12	/*file padding*/
+0x03aec0	?	void unused_subcall3aec0(..);
+0x03aefc	4	/*padding*/
+0x03af00	0x88	void unused_call3af00();
+0x03af88	4	void nop3af88();
+0x03af8c	4	/*padding*/
+0x03af90	?	void unused_subcall3af90();
+0x03b038	8	/*padding*/
+0x03b040	?	void unused_call3b040();
+0x03b098	?	void unused_call3b098();
+0x03b0f0	1	uint8_t flash3b0f0_u8 = 1;
+0x03b0f1	3	/*padding*/
+0x03b0f4	0x400	uint8_t *flash_eeprom_data_map[256];
+0x03b4f4	0x770	void *flash_mut_variables_table[477];
+0x03bc68	0x26c	uint16_t *flash_mut2_variable_table1[154];
+0x03bed4	2	uint16_t flash_mut2_variable_table1_size = 154;
+0x03bed6	2	/*padding*/
+0x03bed8	0x130	uint16_t *flash_mut2_variable_table2[75];
+0x03c008	2	uint16_t flash_mut2_variable_table2_size = 75;
+0x03c00a	0x3fb6	/*Unused area*/
+0x03ffc0	?
+0x040000	0xac	calc_purge_control_duty();//this differs a bit from AUDM (doesn't save flags)
+0x04009c	?	void update_purge_flags_extra();
+0x0402dc	?	uint16_t impure_condition_call402dc();
+0x0406f0	?	uint16_t pure_condition_call406f0();
+0x040774	?	void purge_related_call40774();
+0x0407ec	?	void get_purge_control_duty();
+0x040804	?	void update_purge_base_state();
+0x0411b4	?	uitn16_t get_purge_modified_stft(const struct cylinder_bank *ptr);
+0x0412cc	?	uint16_t calc_purge_duty();
+0x041454	?	void update_purge_open_rate();
+0x04167c	0x30	uint16_t fault_safe_purge_duty(uint16_t p0);
+0x0416ac	?	/*dead fun*/
+0x041738	0x2c	uint16_t alternative_unused_purge_duty();
+0x041764	0x94	void update_purge_control();
+0x0417f8	?	void purge_solenoid_venting_control();
+0x041844	?	uint16_t is_purge_solenoid_venting_enabled();
+0x041870	?	void mode_disabled_call41870();
+0x0419b0	0x2c	void regen_crankshaft_rotation_decays();
+0x0419dc	?	void call419dc();
+0x041b70	?	void reset_call41b70();
+0x041eac	?	void crankshaft_interrupt_call41eac();
+0x041fc0	?	void crankshaft_pin_fixup();
+0x042048	?	void call42048();
+0x042534	?	uint8_t get_crankshaft_acceleration_state();
+0x042778	?	void call42778();
+0x0429a4	?	uint16_t call429a4();
+0x042b40	?	uint16_t call42b40();
+0x043250	?	void update_fp9550b5(uint16_t p0, uint16_t p1);
+0x0432d0	?	void cam_to_crank_sync();
+0x0437f8	?	void call437f8();
+0x043a04	?	void call43a04();
+0x043d7c	?	void shaft_call43d7c();
+0x044324	?	void call44324();
+0x0445fc	?	void coil_sync_reset_call445fc()
+0x0447bc	?	void call447bc(uint16_t p0);
+0x044840	?	void call44840();
+0x044a10	?	void call44a10();
+0x044a90	?	void call44a90();
+0x044e74	?	void call44e74(uint16_t coil, uint16_t mask);
+0x045118	?	uint16_t coil_sync_high_call45118(uint16_t coil, uint16_t mask);
+0x045354	?	void update_cam_advance_angle_measured(uint32_t tms1mr3_x32);
+0x0454e0	?	uint16_t cylinder_mask_from_index(uint16_t p0);
+0x04550c	?	uint16_t spark_advance_scale_up(uint16_t p0);
+0x045538	?	void probably_knock_window_related_calculations();
+0x0455ac	?	void knock_call455ac();
+0x045768	?	void knock_mf_sync_call45768();
+0x045964	0xd4	void knock_mf_interrupt_handler();
+0x045a38	0xf0	void update_knock_idle_state();
+0x045b28	0xa8	void update_knock_smoothed();
+0x045bd0	?	void update_shaft_sensors_ok_decays();
+0x045dbc	0x0c	void trampoline_regen_ignitionless_cam_rotation();
+0x045dc8	8	/*padding*/
+0x045dd0	0x14	uint16_t nop_ignition_compensation45dd0();
+0x045de4	0x0c	uint16_t return0_call45de4();
+0x045df0	0x0c	uint16_t return0_call45df0();
+0x045dfc	4	/*padding*/
+/*misfire_control.c*/
+0x045e00	0x30	void reset_call45e00();
+0x045e30	0xf4	void init_misfire_control();
+0x045f24	?	void jdm_mode_disabled_call45f24();
+0x045fac	?	void jdm_mode_disabled_subcall45fac();
+0x046018	0x60	void call46018();
+0x046078	?	void jdm_mode_disabled_subcall46078();
+0x04630c	?	void regen_decays_x2_fp13412_u16(uint16_t p0);
+0x046324	?	void regen_decays_x2_fp13410_u16(uint16_t p0);
+0x04633c	0x10	void jdm_mode_disabled_subcall4633c();
+0x04634c	?	void jdm_mode_disabled_subcall4634c();
+0x046664	?	uint16_t misfire_count_to_load_threshold(uint16_t p0)
+0x0466d8	?	void call466d8(uint16_t *p0);
+0x04677c	?	uint16_t call4677c(uint16_t *p0, uint16_t p1);
+0x0467d0	?	void jdm_mode_disabled_subcall467d0();
+0x046a58	?	void trampoline_call47808();
+0x046a64	?	void call46a64();
+0x046ac4	?	void update_shaft_jerk(uint16_t shaft_period);
+0x046c60	?	void call46c60();
+0x0471cc	?	void call471cc();
+0x0474c4	?	void reset_misfire_state_area(uint16_t p0);
+0x0475cc	?	void call475cc();
+0x047808	?	void call47808();
+0x047964	0x214	void update_active_injectors_mask_by_faulty_coils_extra();
+0x047b78	8	/*padding*/
+0x047b80	0x22c	void can0_init();
+0x047dac	0x34	void can0_bus_check_noncritical_tx();
+0x047de0	0xdc	void can0_update_bus_state();
+0x047ebc	?	void can0_update_rx_slots_state();
+0x048640	?	void can0_update_tx_data();
+0x048860	0x28	void can0_slot_group0_tx_update();
+0x048888	4	void nop48888();
+0x04888c	0x18	void can0_slot_group1_tx_update();
+0x0488a4	0x18	void can0_slot_group2_tx_update();
+0x0488bc	0xe4	void can0_slot0_tx_update();
+0x0489a0	0x6c	void can0_slot1_tx_update();
+0x048a0c	0xa0	void can0_slot2_tx_update();
+0x048aac	0xc8	void can0_slot3_trip_ambient_tx_update();
+0x048b74	0xac	void can0_slot4_tx_update();
+0x048c20	0x2c	void can0_simple_slots_rx_update();
+0x048c4c	0xb8	void can0_slot6_rx_update();
+0x048d04	0xbc	void can0_slot7_abs_rx_update();
+0x048dc0	0x90	void can0_slot8_eps_rx_update();
+0x048e50	0xa0	void can0_slot10_rx_update();
+0x049ef0	0xb8	void can0_slot11_rx_update();
+/*somehow special*/
+0x049fa8	0xd8	void can0_slot12_rx_update();
+0x049080	0xd8	void can0_slot15_rx_update();
+0x049158	0x50	void can0_slot12_15_rx_update_extra();
+0x0491a8	0x28	uint16_t check_g8(const g8_t *p0, uint8_t p1);
+0x0491d0	0xf8	void can0_slot5_tx_update(p0,p1,p2);
+0x0492c8	0x31c	void canrx12_15_process(uint16_t slot);
+0x0495e4	0x1b4	void can0_slot9_rx_update();
+0x049798	0xb0	void can0_slot13_rpm_accel_pedal_related_tx_update();
+0x049848	0x78	void can0_slot14_asc_tx_update();
+0x0498c0	0x3c	void update_fp12932b2();
+0x0498fc	0xf8	uint16_t impure_condition_call498fc();
+0x0499f4	0x548c	/*Unused area*/			-
+0x04ee80
+
+0x04ef00	0x18	pushi()				disable interrupts, save previous state on stack
+0x04ef18	0x10	popi()				pop interrupt flags from stack
+0x04ef28	0x18	enable_interrupts_level(lvl)	in practive used only with 0 to enable, 7 to disable
+0x04ef40	0xc0	/*Unused area*/			-
+/*same as 7600 in CZT*/
+0x04f000	0x14	uint16_t s_add16(uint16_t l, uint16_t r);
+0x04f014	0x0c	uint32_t add16(uint16_t l, uint16_t r);
+0x04f020	0x0c	uint32_t s_add32(uint32_t x, uint32_t y);
+0x04f02c	0x14	void memzero16(uint16_t *begin, uint16_t *end);
+0x04f040	0x28	void s_dec_u16a_atomic(uint16_t *start, uint16_t *end);
+0x04f068	0x2c	void s_inc_u16a_atomic(uint16_t *start, uint16_t *end);
+0x04f094	0x14	uint8_t s_16to8(uint16_t v);// return v > 255 ? 255 : v;
+0x04f0a8	0x10	uint16_t s_32to16(uint32_t v) return v > 0xffff ? 0xffff : v;
+0x04f0b8	0x2c	uint16_t mid16(uint16_t x, uint16_t y, uint16_t z)
+0x04f0e4	0x20	uint32_t mid32(uint32_t x, uint32_t y, uint32_t z)
+0x04f104	0x24	uint16_t s_mul_divu16(uint16_t x, uint16_t y, uint16_t z)
+0x04f128	0x4c	uint32_t s_mul32_16_divu16(uint32_t x, uint16_t y, uint16_t z)	return x*y/z;
+0x04f174	0x28	uint16_t ps_mul_divu16(uint16_t x, uint16_t y, uint16_t z)
+0x04f19c	0x50	uint32_t ps_mul32_16_divu16(uint32_t x, uint16_t y, uint16_t z)
+0x04f1ec	0x18	uint16_t s_scale_base128(uint16_t x, uint16_t y);
+0x04f204	0x38	uint32_t s32_scale_base128(uint32_t x, uint32_t y)
+0x04f23c	0x18	uint16_t ps_scale_base128(uint16_t x, uint16_t y);
+0x04f254	0x3c	uint32_t ps32_scale_base128(uint32_t x, uint16_t y);
+0x04f290	0x18	uint16_t s_scale_base256(uint16_t x, uint16_t y);
+0x04f2a8	0x38	uint32_t s32_scale_base256(uint32_t x, uint16_t y);
+0x04f2e0	0x1c	uint16_t ps_scale_base256(uint16_t x, uint16_t y);
+0x04f2fc	0x40	uint32_t ps_scale32_base256(uint32_t x, uint16_t y);
+0x04f33c	0x08	uint8_t conv16to8(uint16_t x);
+0x04f344	0x04	uint16_t conv32to16(uint32_t x);
+0x04f348	0x08	uint16_t conv8to16(uint8_t x);
+0x04f350	0x04	uint32_t conv16to32(uint32_t x);
+0x04f354	0x24	uint8_t p_conv8f8_u8(uint16_t v);
+0x04f378	0x28	uint16_t p_conv32_16(uint32_t v);
+0x04f3a0	0x14	uint16_t swap_bytes16(uint16_t v);
+0x04f3b4	0x14	uint16_t to_g16(uint8_t v);
+0x04f3c8	0x20	uint16_t s_divu16(uint16_t l, uint16_t r);
+0x04f3e8	0x1c	uint16_t s16_divu32_16(uint32_t l, uint16_t r)
+0x04f404	0x18	uint32_t s32_divu32_16(uint32_t l, uint16_t r)
+0x04f41c	0x24	uint16_t ps_divu16(uint16_t l, uint16_t r);
+0x04f440	0x34	uint16_t ps16_divu32_16(uint32_t l, uint16_t r)
+0x04f474	0x28	uint32_t ps32_divu32_16(uint32_t l, uint16_t r)
+0x04f49c	0x34	uint16_t aprxu16_256(uint16_t p0, uint16_t p1, uint16_t rat256);//higher rate - more of p0
+0x04f4d0	0x84	uint16_t aprxu32(uint32_t p0, uint32_t p1, uint16_t rat)
+0x04f554	0x38	uint16_t aprxu16_255(uint16_t p0, uint16_t p1, uint16_t rat255);//higher rate - more of p0
+0x04f58c	0x9c	uint32_t p_aprx16f16_255(uint32_t p0, uint32_t p1, uint16 rat255)
+0x04f628	0xd0	uint16_t map8u16(const struct map8_desc *ptr)
+0x04f6f8	0xb8	uint16_t mapu16(const struct map16_desc *ptr);
+0x04f7b0	0x18	uint16_t multimap8u16(const struct map8_description **ptr);
+0x04f7c8	0x18	uint16_t multimapu16(const struct map16_description **ptr);
+0x04f7e0	0x10	uint8_t *multiu8a(uint8_t * const *ptr)
+0x04f7f0	0x10	void *multivoidstar(void * const *ptr)
+0x04f800	0x10	uint8_t multiu8(const uint8_t *ptr)
+0x04f810	0x10	uint16_t multiu16(const uint16_t *ptr)
+0x04f820	0x70	uint16_t p_aprxu16_255_2(uint16_t p0, uint16_t p1, uint16_t rate);//zero rate - first argument
+0x04f890	0x80	void calc_axis(const struct axis_desc *ptr);//	takes value from src, puts calculated index in dst
+0x04f910	0x14	uint16_t s_mul16(uint16_t l, uint16_t r);
+0x04f924	0x0c	uint32_t mul16(uint16_t l, uint16_t r);
+0x04f930	0x50	uint32_t s_mul32(uint32_t l, uint32_t r);
+0x04f980	0x18	uint16_t s_sub16(uint16_t l, uint16_t r);
+0x04f998	0x10	uint32_t s_sub32(uint32_t l, uint32_t r);
+0x04f9a8	0x254	/*Unused area*/
+0x04fbfc	2	uint16_t flash_specific_area_size = 0x0400;
+0x04fbfe	2	/*padding*/
+0x04fc00	0x400	uint8_t flash_specific_area_init_data[1024];//used to init specific_area in ram
+0x050000	0x29c	void update_o2_heater_control();
+0x05029c	0x2c0	uint16_t select_o2_front_heater_mode(const struct head *ptr, uint16_t rear_sensor);
+0x05055c	4	/*padding*/
+0x050560	0x104	void fast_model_throttle_flagged_calc();
+0x050664	12	/*padding*/
+0x050670	?	void throttle_related_reset_call50670();
+0x0506e0	?	void throttle_reset_call506e0();
+0x050734	12	/*padding*/
+0x050740	0x6c	void tps_convert_and_scale_results();
+0x0507ac	0x0c	void trampoline_adc_convert_tps();
+0x0507b8	0xb8	void update_throttle_flags_and_reset_ages();
+0x050870	0x184	void tps_scale_results();
+0x0509f4	0x10	void update_and_analyze_adc_full_throttle_power_smoothed();
+0x050a04	0x0c	void trampoline_adc_convert_throttle_power();
+0x050a10	0x20	void update_adc_full_throttle_power_smoothed();
+0x050a30	0xdc	void analyze_adc_full_throttle_power_smoothed();
+0x050b0c	0x0c	void trampoline_tps_main_8b_delay();
+0x050b18	0x14	void copy_accel_pedal_sub_call50b18();
+0x050b2c	0x58	void tps_main_8b_delay();
+0x050b84	?	void call50b84();
+0x050bd0	4	void nop50bd0();
+0x050bd4	0x28c	void reset_etc_tests_decays();
+0x050e60	?	void tps_tests();
+0x050ea0	?	void call50ea0();
+0x050ec0	?	void disabled_call50ec0();
+0x051158	?	void disabled_call51158();
+0x051390	?	void conditionally_test_tps_main();
+0x051418	?	void tps_main_min_check();
+0x0514d8	?	void tps_main_max_check();
+0x0515d0	?	void tps_main_match_sub_test();
+0x051728	?	void update_tps_problems_flag();
+0x051774	?	void tps_sub_check();
+0x051778	?	void tps_sub_max_check();
+0x05188c	?	void tps_sub_min_check();
+0x051990	?	void cond_set_tps_sub_fault();
+0x0519b8	?	void call519b8();
+0x051aa0	?	void tps_main_check_call51aa0();
+0x051b28	?	void call51b28();
+0x051d98	?	void conditionally_set_fp6228_f8_b6();
+0x051dc0	?
+0x051eac	?	void throttle_power_check_and_tps_dual_match_test();
+0x051ec8	?	void throttle_power_check();
+0x051f94	?	void tps_dual_match_test();
+0x052118	?	/*dead code*/
+0x0521d4	?	void call521d4();
+0x052244	?	void call52244();
+0x0522e8	?	void tps_additional_inputs_checks();
+0x0523a4	?	void tps_additional_inputs_shorted_check();
+0x0526a0	?	void tps_additional_inputs_plausibility_check();
+0x052990	?	void call52990();
+0x0529b8	?	void tps_power_check();
+0x052a1c	?	void tps_double_shorted_check();
+0x052b88	8	/*padding*/
+0x052b90	?	void reset_call52b90();
+0x052bd0	?	void copy_ecu_throttle_command_to_etc();
+0x052c04	?	void fill_throttle_var_data_etc_faults_all();
+0x052c84	?	void fill_throttle_var_data2_etc_faults2();
+0x052d10	?	void fill_throttle_var_data1_etc_faults();
+0x052dc8	8	/*padding*/
+0x052dd0	4	void nop52dd0();
+0x052dd4	0x2f0	void update_etc_ttp_bound_extra();
+0x0530c4	0x88	void update_etc_ttp_bound_by_main_adaptations();
+0x05314c	0x70	void update_etc_ttp_bound_by_sub_adaptations();
+0x0531bc	0xc4	void update_etc_ttp_bound_by_main_and_apps_adaptations();
+0x053280	0x398	void throttle_age_x4_fp6198_u16_based_update_etc_ttp_bound_extra();
+0x053618	8	/*padding*/
+0x053620	?	void reset_throttle_adaptations();
+0x053684	?	void reset_throttle_current_control_state();
+0x053790	?	void throttle_adapt_return_spring();
+0x0537e4	?	void update_tps_main_adapt_current_spring();
+0x0538c4	?	void update_tps_sub_adapt_current_spring();
+0x053998	?	void throttle_adapt_calc_tps_averages();
+0x053a30	?	void update_desired_throttle_duty_etc();
+0x053bc8	0x44	void calc_throttle_current_on_tps_main();
+0x053c0c	0x280	void update_throttle_current_corrections();
+0x053e8c	0x80	void store_ttc_source_from_main();
+0x053f0c	?	void call53f0c();
+0x053f48	?	void update_ttc_fixed_part();
+0x053f98	?	void conditionally_by_main_update_throttle_current_component2_unscaled_extra();
+0x053fac	0xc8	void update_etc_close_fault();
+0x054074	0xc8	void update_etc_open_fault();
+0x05413c	?	void conditionally_by_main_update_throttle_current_component2_unscaled();
+0x0541b0	0x2c	void update_fp6221b6();
+0x0541dc	0x44	void update_target_throttle_current_from_sum();
+0x054220	0x40	void calc_throttle_current_on_tps_sub();
+0x054260	0x80	void store_ttc_source_from_sub();
+0x0542e0	0x74	void conditionally_by_sub_update_throttle_current_component2_unscaled();
+0x054354	0x1c4	void update_desired_throttle_duty();
+0x054518	12	void trampoline_update_throttle_power_filtered();
+0x054524	0x38	void update_throttle_power_filtered();
+0x05455c	0x1c0	void throttle_adapt_closed_and_open();
+0x05471c	0xc8	void update_throttle_motor_direction();
+0x0547e4	0x58	/*dead code*/
+0x05483c	0x108	void update_ttc_proportional_part();
+0x054944	0x60	void update_ttc_integral_part();
+0x0549a4	0x10c	void update_ttc_integral_part_hires();
+0x054ab0	0x10	uint32_t ttc_scale(uint16_t p0, uint16_t p1);
+0x054ac0	?	void throttle_adaptations_check_bounds();
+0x054cbc	4	/*padding*/
+0x054cc0	0x184	void fast_model_throttle_calc();
+0x054e44	12	/*padding*/
+/*debug throttle*/
+0x055ef4	12	/*padding*/
+0x055f00	0x158	void mut_get_values(uint16_t *reqs, uint8_t *values, uint16_t size, uint16_t element_size);
+0x056058	0xd4	uint16_t get_mut_value(uint16_t req);
+0x05612c	0x2c	uint32_t sum8_to32(uint8_t *ptr, uint16_t size);
+0x056158	0x3c	uint16_t sum8_to16_extra(uint8_t *ptr, uint16_t size);
+0x056194	0x2c	void bcopy(void *src, void *dst, uint16_t size);
+0x0561c0	0x34	void fuel_pump_control();
+0x0561f4	0x20	uint16_t is_fuel_pump_active();
+0x056214	12	/*padding*/
+0x056220	0x20	void reset_call56220();
+0x056240	0x88	void reset_obd_monitors();
+0x0562c8	?	void reset_call562c8();
+0x0566f0	?	void update_active_faults();
+0x056948	?	void ignition_decayed_reset_test_state();
+0x0569e8	?	void update_injector_disable_reason_flags();
+0x056a70	?	void call56a70();
+0x056cc0	?	void regenerate_oxygen_feedback_trim_valid_decay(const struct smth *ptr);
+0x056d1c	0x20	void call56d1c();
+0x056d3c	?	void call56d3c();
+0x056f6c	?	void probably_reset_dtc(uint16_t mask, uint16_t idx, uint16_t p2);
+0x056fec	?	void probably_set_dtc(uint16_t mask, uint16_t idx, uint32_t p2_unused, uint32_t p3_unused);
+0x057040	?	void obd_dtc_change_monitor_update(uint16_t mask, uint16_t idx);
+0x05718c	?	void ignition_cycle_dtc_resetting();
+0x0572a4	?	void update_etc_dtc();
+0x0574b4	?	void set_trustful_check_faults();
+0x0575ac	?	void update_sio2_dtc();
+0x0575fc	?	void conditionally_set_etc_motor_feedback_dtc();
+0x05761c	4	/*padding*/
+0x057620	?	void update_active_faults_subcall57620();
+0x057648	?	void dtc_smth_call57648();
+0x057a4c	?	void call57a4c();
+0x057b20	?	void call57b20();
+0x057e38	?	void atomic_reset_call57e38();
+0x057e50	?	void fixup_reset_dtc_buffer_call57e50(uint16_t *p0);
+0x057e9c	4	/*padding*/
+0x057ea0	0x248	void catalyst_check();
+0x0580e8	0x3a0	void catalyst_check_bank(struct feedbak_bank *ptr);
+0x058488	0x4d8	void catalyst_check_iteration();
+0x058960	?	void jdm_mode_disabled_update_coolant_temp_low_dtc();
+0x058a04	?	void jdm_disabled_subcall58a04(const struct feedback_bank *ptr);
+0x058ab0	?	void update_fuel_trims_malfunction_dtc();
+0x058b10	?	void update_fuel_trims_malfunction_dtc_bank(const struct smth *ptr);
+0x059058	8	/*padding*/
+0x059060	?	void jdm_mode_disabled_call59060();
+0x0590cc	?	void jdm_mode_disabled_subcall590cc();
+0x0594c4	12	/*padding*/
+0x0594d0	?	void o2_front_state_check_call594d0();
+0x0596c0	?	void conditional_reset_o2_front_high(const struct feedback_bank *ptr);
+0x059718	?	void conditional_set_or_reset_o2_front_high(const struct feedback_bank *ptr);
+0x059794	?	/*dead fun*/
+0x0599e0	?	/*dead fun*/
+0x059a24	?	/*dead fun*/
+0x059a4c	4	/*padding*/
+0x059a50	?	void update_o2_heaters_dtc();
+0x059aa4	?	void o2_heaters_update_errors();
+0x059d7c	?	uint16_t is_o2_heater_check_enabled();
+0x059dcc	4	/*padding*/
+0x059dd0	?	void mode_disabled_update_egr_flow_malfunction_dtc();
+0x05a178	?	void mode_disabled_subcall5a178();
+0x05a280	?	void mode_disabled_call5a280();
+0x05a314	?	void mode_disabled_subcall5a314();
+0x05a4f4	12	/*padding*/
+0x05a500	?	void mode_disabled_call5a500();
+0x05bba4	?	uint16_t mode_disabled_subcall_pure_condition_call5bba4();
+0x05bd20	?	void mode_disabled_subcall5bd20();
+0x05be60	?	/*dead fun*/
+0x05bfc4	12	/*padding*/
+0x05bfd0	?	void jdm_mode_disabled_call5bfd0();
+0x05c234	?	void jdm_mode_disabled_subcall5c234();
+0x05c380	?	void jdm_mode_disabled_subcall5c380();
+0x05c520	?	void jdm_mode_disabled_call5c520();
+0x05c5d0	?	void not_used_iat_coolant_warmup_check_precalcs();
+0x05c65c	?	void not_used_iat_coolant_warmup_check();
+0x05c998	?	void regen_unused_baro_sensor_ok_decay();
+0x05c9c4	?	void mode_disabled_call5c9c4();
+0x05cbe0	?	void unused_call5cbe0();
+0x05cefc	?	void mode_disabled_evap_pressure_sensor_check();
+0x05d068	?	void mode_disabled_call5d068();
+0x05d2bc	?	void unused_call5d2bc();
+0x05d428	0x20	void reset_p1012_call5d428();
+0x05d448	8	/*padding*/
+0x05d450	0xb0	void conditionally_set_reset_slow_valves_errors();
+0x05d500	0x54	uint16_t translate_slow_valves_errors_flags(uint16_t p0);
+0x05d554	0x364	void update_slow_valves_troubles();
+0x05d8b8	0xd4	void mivec_oil_valve_feeder_control_system_dtc_control();
+0x05d98c	4	/*padding*/
+0x05dd10	?	void freeze_frame_area_init();
+0x05ddec	?	void call5ddec();//half-decoded
+0x05df28	0x64	void reset_parameter_monitor(uint16_t index);
+0x05df8c	?	void call5df8c();
+0x05e120	0x104	void fixup_obd_dtc_tx_buffer(uint16_t *ptr)
+0x05e224	?	uint16_t trouble_code_translate(uint16_t word, uint16_t bit);
+0x05e320	?	void call5e320(uint16_t *p_stored_errors, uint16_t *p_err, uint16_t *p_err_prev);
+0x05e610	?	void update_obd_frame_data();
+0x05e7cc	?	void check_reset_stale_obd_monitor_records(const struct smth *ptr);
+0x05e848	?	void save_monitor_data_cyclic(const struct smth *ptr);
+0x05e91c	?	/*non-decoded fun*/
+0x05eaa0	0x13c	void parameter_monitor_dtc_activation(uint16_t p_dtc, uint16_t p_reason, uint16_t p_ttl);
+0x05ebdc	?	uint16_t get_freeze_frame_data(const struct20 *ptr, uint16_t idx);
+0x05ec7c	?	uint16_t call5ec7c(const struct smth *ptr);
+0x05ecd4	?	void sio0_reply_obd();
+0x05efa8	?	void sio0_obd_request_data_by_pid(uint16_t p0);
+0x05f208	0x114	void obd_get_freeze_frame0(uint16_t pid, const struct *ptr);
+0x05f31c	?	void obd_mode2_handler2();
+0x05f454	?	void obd_mode18_handler();
+0x05f640	0x30	void obd_mode59_handler();
+0x05f670	?	void sio0_fill_trouble_codes(uint16_t p0);
+0x05f7e0	?	/* unused fun */
+0x05f938	?	/* unused fun */
+0x05fb00	0x58	uint16_t obd_get_fuel_system_status(const struct *ptr);
+0x05fb58	0x1c	uint16_t obd_get_stft(const struct *ptr);
+0x05fb74	0x10	uint16_t obd_get_ltft(const struct *ptr);
+0x05fb84	?	uint16_t obd_get_o2_front_voltage(const struct *ptr);
+0x05fb9c	?	uint16_t obd_get_o2_rear_voltage(const struct *ptr);
+0x05fbb4	8	uint16_t obd_get_calculated_engine_load();
+0x05fbbc	4	uint16_t obd_get_oxygen_sensors_present();
+0x05fbc0	?	void update_obd_dtc_top_errors();
+0x05fd98	?	uint16_t get_error_count_in_buffer17(uint16_t *ptr);
+0x05fde4	?	void obd_save_freeze_frame(uint16_t *dtc_buffer, const struct smth *ptr);
+
+0x060064	12	/*padding*/
+0x060070	0x18	void update_can0_errors_persistance();
+0x060088	?	void can0_conditionally_set_bus_off_dtc();
+0x0600b4	?	void update_can_rx_error_flags_persistance();
+0x060178	?	void update_can_rx_timeout_flags_persistance();
+0x0602c4	?	void update_can0_data_insane_flags_persistance();
+0x060328	8	/*padding*/
+0x060330	?	void conditionally_set_intake_valve_timing_control_dtc();
+0x0603bc	?	void vvt_valve_current_check();
+0x060610	0x30	void ac_control();
+0x060640	0x2c8	uint16_t is_ac_enabled();
+0x060908	8	/*padding*/
+0x060910	12	void trampoiline_fan_control();
+0x06091c	0x8c	void fan_control();
+0x0609a8	0x254	uint16_t update_fan_control_flags();
+0x060bfc	0x124	uint16_t is_fan_control_cool_on_highroll(uint16_t p0);
+0x060d20	0xf0	uint16_t is_fan_control_colt_wot_transient_disable();
+0x060e10	0x3c	uint16_t mut_fan_test_flags();
+0x060e4c	0x68	void update_fan_control_output_flags(uint16_t p0);
+0x060eb4	0x94	void update_fan_output_gpio();
+0x060f48	8	/*padding*/
+0x060f50	4	void nop60f50();
+0x060f54	12	/*padding*/
+/*i2c module*/
+0x060f60	0x3c	void i2c_start();
+0x060f9c	0x3c	void i2c_restart();
+0x060fd8	0x38	void i2c_strobe_0();
+0x061010	0x38	void i2c_strobe_1();
+0x061048	0x94	uint16_t i2c_transfer_byte(uint8_t b);
+0x0610dc	0x58	uint16_t i2c_read_byte();
+0x061134	0x60	void i2c_reset();
+0x061194	0x14	void i2c_delay(uint16_t delay);
+0x0611a8	0x44	uint16_t i2c_write_to_address(uint16_t a);
+0x0611ec	0x7c	uint16_t i2c_read_from_address(uint16_t a);
+0x061268	?
+0x0612b8	0x94	uint16_t i2c_eeprom_write(uint16_t address, uint16_t size, uint8_t *data);
+0x06134c	0x70	uint16_t i2c_eeprom_read(uint16_t a, uint16_t size, uint8_t *data);
+0x0613bc	0x74	uint16_t i2c_eeprom_read_with_heartbeat(uint16_t a,uint16_t size, uint8_t *data);
+0x061430	?	void idle_eeprom_call61430();
+0x0614ec	?	void eeprom_call614ec();
+0x061558	?	void eeprom_call61558();
+0x061714	?	void eeprom_call61714();//not decoded
+0x06173c	0xa8	void eeprom_write_block1();
+0x0617e4	0x58	uint16_t i2c_eeprom_read_whole();
+0x06183c	0x60	void eeprom_load_and_check_whole();
+0x06189c	0x94	void eeprom_data_area_crc_check();
+0x061930	0x88	void eeprom_data_area_update_crc();
+0x0619b8	0x44	void eeprom_data_area_pattern_fill();
+0x0619fc	0x6c	void eeprom_data_area_check_guards();
+0x061a68	0x40	uint32_t crc32(uint8_t *buf, uint32_t size);
+0x061aa8	8	/*padding*/
+
+0x061c78	?	void eeprom_init_memory_from_data_area_block0();
+0x061dd8	4	void nop61dd8();
+0x061ddc	?	void eeprom_related_dtc_control_call61ddc();
+0x061ebc	?	void call61ebc();
+0x061ee8	?	void eeprom_copy_first16bytes_from_area_to_map();
+0x061f18	?
+0x061f90	0x1c	uint16_t disabled_reset_trims_condition_call61f90();
+0x061fac	4	/*padding*/
+0x061fb0	0x1c	void alternator_control();
+0x061fcc	0x50	void update_field_sense_fault();
+0x06201c	?	void update_alternator_sense_vars();
+0x0620a0	?	void update_alternator_duty_base_extra();
+0x062294	?	void update_alternator_duty();
+0x0622e8	?	uint16_t is_alternator_closed_loop();
+0x062344	?	uint16_t is_probably_disable_alternator();
+0x0623a0	?	void update_alternator_flags_accel_related();
+0x06263c	?	void update_alternator_flags_limiting_duty();
+0x062760	?	uint16_t is_alternator_duty_limiting_enabled();
+0x0627c8	8	/*padding*/
+0x0627d0	0x7c	void disabled_update_egr_duty();
+0x06284c	0x120	uint16_t is_egr_control_disabled();
+0x06296c	0x94	uint16_t calc_egr_duty();
+0x062a00	0x20	uint16_t *flash_tomo_apps_limiting_stabilizer_low_limit_decrements_ptru16a[8];
+0x062a20	0x10	struct map16_description *flash_tomo_deceleration_gear_shift_low_limit_stage_thresholds_ptr2dmap16a[4];
+0x062a30	0x2c	void update_guarded_checks_execution_flag();
+0x062a5c	0x50	void reset_tomo_apps_neuc();
+0x062aac	?	void reset_call62aac();
+0x062ca0	0x18	void conditional_guarded_checks_execution();
+0x062cb8	?	void guarded_checks_execution();
+0x062d24	?	void init_guarded_checks_vars();
+0x063034	?	void tomo_update_throttle_position_base_and_apps_final();
+0x0630a4	?	void asc_torque_request_trust_check();
+0x063444	0x30	uint16_t even_u16(uint16_t p0);
+0x063474	?	void tomo_can_asc_rx_regen_decays();
+0x0634a4	4	void nop634a4();
+0x0634a8	?	void tomo_update_can_asc_decays();
+0x063504	0x54	void copy_torque_request_flags_and_target_throttle_position_to_monitor();
+0x063558	0x98	void tomo_update_target_throttle_positions();
+0x0635f0	0xa4	void tomo_update_current_torque_output();
+0x063694	?	void tomo_update_torque_output_emargin();
+
+0x0638ac	?	void tomo_update_current_torque_output_continuation();
+0x0638f8	?	void asc_ignition_retard_trust_check();
+0x0639b8	?	void update_tomoing();
+0x063d34	?	void guarded_shaft_rotation_speed_calc();
+0x063e40	?	void guarded_shaft_update();
+0x063eac	?	void guarded_rpm_matching_test();
+
+0x06421c	?	void tomoing_airflow_trust_check();
+
+0x064c04	0x78	uint16_t tomo_is_maf_fault();
+0x064c7c	?	uint16_t tomo_is_tps_fault();
+0x064d28	?	void tomo_calc_load();
+0x064dc8	?	void guarded_accel_pedal_math();
+0x065310	?	void accelerator_pedal_matching_test();
+0x0654d8	?	void accel_pedal_sub_check_and_clear_fault();
+0x06552c	?	void accel_pedal_sub_test();
+0x065664	?	uint16_t is_baro_pressure_guarded_implausible();
+0x0656a0	?	void update_guarded_gear_shift_monitor();
+0x0659bc	4	void nop659bc();
+0x0659c0	?	uint16_t linear_interpolation32_from16_16(uint16_t *xarray, uint16_t *yarray, uint8_t size, uint16_t xvalue);
+0x065a34	?	uint16_t linear_interpolation_from16_8(uint16_t *xarray, uint8_t *yarray, uint8_t size, uint16_t xvalue);
+0x065aa8	?	/*dead code space*/
+0x065c24	0x16c	uint32_t map16_3d_pure(const struct map16_3d_pure_description *ptr, uint16_t x, uint16_t y);//see 48acc in czt
+0x065d90	0x168	uint16_t map8_3d_pure(const struct map8_3d_pure_description *ptr, uint16_t x, uint16_t y);
+0x065ef8	?	/*dead code space*/
+0x066d80	0x40	void update_icomp_steering_fans_alternator();
+0x066dc0	?	void htonic_idle_topcall();
+0x066df4	12	/*padding*/
+0x066e00	?	void htonic_idle_reset();
+0x066edc	4	/*padding*/
+0x066ee0	?	void htonic_idle_control();
+0x067df0	?	flash67fd0_pure3dmap16;
+0x067fe4	?	flash67fe4_pure3dmap16;
+0x068ff8	8	/*padding*/
+0x068000	0x5c	void htonic_load(uint16_t *p0, uint16_t *p1, uint16_t *p2, uint16_t *p3, uint16_t *p4, uint16_t *p5, uint16_t *p6, uint16_t *p7, uint8_t *p8);
+0x06805c	4	/*padding*/
+0x068060	0x24	void htonic_save(p0, p1, p2, p3, p4, p5);
+0x068084	12	/*padding*/
+0x068090	0x1c	void copy_tps_and_shaft_periods_to_htonic();
+0x0680ac	4	/*padding*/
+0x0680b0	0x2c	void unused_call680b0();
+0x0680dc	4	/*padding*/
+0x0680e0	?	void unused_subcall680e0();
+0x068130	?	void unused_subcall68130();
+0x068604	12	/*padding*/
+0x068610	?	void unused_call68610();
+0x068d40	?	void unused_subcall68d40(...);
+0x068de4	12	/*padding*/
+0x068df0	?	void init_memory_area_from_flash_call68df0();
+0x068e20	0x8c	uint8_t flash68e20_u8a[140];
+0x068eac	?	/*unused flash start*/
