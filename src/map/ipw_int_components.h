@@ -1,0 +1,27 @@
+#ifndef IPW_INT_COMPONENTS_H
+#define IPW_INT_COMPONENTS_H
+
+extern uint16_t start_pulse_ipw_int;
+extern uint16_t nominal_load_ipw_int;
+extern uint16_t cranking_or_load_sensor_fault_ipw_int;
+extern uint16_t oxygen_feedback_trim;
+extern uint16_t o2_offset_trim_int;
+extern uint16_t long_term_fuel_trim_int;
+
+extern uint16_t load_source_value;
+extern uint16_t load_source_value_compensated;
+extern uint16_t load_source_value_compensated_sharped;
+
+extern uint16_t ipw_calculated;
+
+extern const uint16_t flash_ffilm3_min_during_fuel_cut;
+extern const uint16_t flash_ffilm4_min_during_fuel_cut;
+extern const void *const flash_fuel_film_coolant_axis;
+extern const void *const flash_instant_ipw_use_decay_vs_coolant_prestart_2dmap8;
+extern const void *const flash_fuel_film_negative_compensation_unusable_vs_coolant_prestart_2dmap8;
+extern uint16_t decays_x2_init10_instant_ipw_use_decay1;
+extern uint16_t decays_x2_fuel_film_negative_compensation_unusable;
+extern uint16_t hot_cranking_injection_restriction_decay;
+
+
+#endif /*IPW_INT_COMPONENTS_H*/
