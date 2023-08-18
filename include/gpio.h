@@ -1,0 +1,121 @@
+#ifndef MMC_GPIO_H
+#define MMC_GPIO_H
+
+#define GPIO1_AC			0x0001
+#define GPIO1_AC_WORKING_LAMP_UNUSED	0x0002
+#define GPIO1_B2_UNUSED		0x0004
+#define GPIO1_MIL		0x0008
+#define GPIO1_FAN_LOW		0x0010
+#define GPIO1_FAN_HI		0x0020
+#define GPIO1_FUEL_PUMP_LOW	0x0040
+#define	GPIO1_FUEL_PUMP		0x0080
+/*heater status for diagnostic purposes only, real control via pwm*/
+#define GPIO1_O2_HEATER_FRONT1	0x0100
+#define GPIO1_O2_HEATER_FRONT2	0x0200
+#define GPIO1_O2_HEATER_REAR1	0x0400
+#define GPIO1_O2_HEATER_REAR2	0x0800
+
+#define GPIO1_O2_FRONT1_CHECKER	0x2000
+
+#define GPIO2_PURGE_VENTING_UNUSED	0x0040
+#define GPIO2_FUEL_PRESSURE_SOLENOID	0x0080
+
+#define GPIO2_SECONDARY_AIR_SYSTEM	0x0200
+#define GPIO2_APPS_NEUTRAL_OUT		0x0400
+
+#define GPIO2_0X1000_SMTH		0x1000
+
+#define GPIO2_0X8000_SMTH		0x8000
+
+#define GPIO3_CHARGING_SYSTEM_OUT	0x0001
+#define GPIO3_KNOCK_IC_GAIN1		0x0002
+#define GPIO3_KNOCK_IC_GAIN2		0x0004
+
+#define GPIO4_PROBABLY_FUEL_WARNING	0x0010
+
+#define GPIO4_PROBABLY_THROTTLE_POWER	0x0080
+
+#define GPIO4_PROBABLY_ETC_BREAKDOWN	0x0800
+
+#define GPIO4_O2_REAR1_CHECKER		0x8000
+
+
+#define GPINPUTS1_AC_RELATED_01		0x0001
+#define GPINPUTS1_IGNITION		0x0002
+#define GPINPUTS1_VEHICLE_MOVEMENT	0x0004
+#define GPINPUTS1_ACTIVE_STEERING	0x0008
+/*in lancer 9 passes through pressure switch*/
+#define GPINPUTS1_AC_SWITCH		0x0010
+#define GPINPUTS1_ON_ALWAYS_20		0x0020
+#define GPINPUTS1_ENGINE_START		0x0040
+#define GPINPUTS1_ACCELERATOR_NEUTRAL	0x0080
+
+#define GPINPUTS1_FIX_SPARK_RELATED	0x0800
+#define GPINPUTS1_FIX_SPARK_5BTDC	0x1000
+
+#define GPINPUTS2_SIO0RXD		0x0020
+
+#define GPINPUTS2_AC_REQUEST		0x0100
+
+/*might be brakes pressed*/
+#define GPINPUTS2_BRAKE_PEDAL		0x0800
+
+/*somehow ac related*/
+#define GPINPUTS2_CANRX10_DATA1_H02	0x1000
+#define GPINPUTS2_OIL_PRESSURE_LOW	0x2000
+
+#define GPINPUTS2_CANRX11_DATA2_H08	0x8000
+
+#define GPINPUTS3_CLUTCH_PEDAL		0x0001
+
+#ifdef CLUTCH_INPUT_INVERTED
+#define IS_CLUTCH_DEPRESSED		(!(alt_inputs3_processed & GPINPUTS3_CLUTCH_PEDAL))
+#else
+#define IS_CLUTCH_DEPRESSED		(alt_inputs3_processed & GPINPUTS3_CLUTCH_PEDAL)
+#endif
+
+#define GPINPUTS3_OIL_FEEDER_SHORTED	0x0010
+
+/*reset*/
+#define GPINPUTS3_SMTH_H20		0x0020
+/*reset*/
+#define GPINPUTS3_SMTH_H40	0x0040
+
+#define GPINPUTS3_O2_HEATER_ERR_FRONT1	0x0100
+#define GPINPUTS3_O2_HEATER_ERR_FRONT2	0x0200
+#define GPINPUTS3_O2_HEATER_ERR_REAR1	0x0400
+#define GPINPUTS3_O2_HEATER_ERR_REAR2	0x0800
+
+/*disabled if a/c off*/
+#define GPINPUTS3_SMTH_H1000		0x1000
+#define GPINPUTS3_SMTH_H2000		0x2000
+#define GPINPUTS3_ICS_AUTO		0x4000
+#define GPINPUTS3_ICS_MANUAL		0x8000
+#define GPINPUTS3_CANRX10_DATA2_H04	0x8000
+
+#define FAST_INPUTS_GEARBOX_SENSOR	0x0002
+
+#define FAST_INPUTS_SI0RXD		0x0020
+
+#define FAST_INPUTS_ENGINE_START	0x0040
+
+extern uint16_t alt_inputs3_processed;
+
+/*
+#define gpinputs1 -12914
+#define gpinputs2 -12904
+#define gpinputs3 -12894
+
+#define alt_inputs1_processed -12910
+#define alt_inputs2_processed -12900
+#define alt_inputs3_processed -12888
+
+#define vehicle_movement_decay -12550
+
+#define fan_control_flags2	+14000
+#define coolant_temp	-12870
+
+#define run_state_flags -12510
+*/
+
+#endif /*MMC_GPIO_H*/
